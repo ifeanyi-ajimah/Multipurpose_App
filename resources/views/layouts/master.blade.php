@@ -16,17 +16,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 <link rel="stylesheet" type="text/css" href="{{asset('css/app.css')}}">
-<!-- <link rel="stylesheet" type="text/css" href="/css/app.css"> -->
+{{-- <!-- <link rel="stylesheet" type="text/css" href="/css/app.css"> -->
   <!-- Font Awesome Icons -->
   <!-- <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css"> -->
   <!-- Theme style -->
   <!-- <link rel="stylesheet" href="dist/css/adminlte.min.css"> -->
   <!-- Google Font: Source Sans Pro -->
-  <!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> -->
+  <!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> --> --}}
 
 </head>
 <body class="hold-transition sidebar-mini">
-<div class="wrapper">
+<div class="wrapper" id="app">
 
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
@@ -64,7 +64,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <a href="index3.html" class="brand-link">
       <img src="{{asset('img/computer.png')}}" alt="Anyi Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">Anyi App</span>
+      <span class="brand-text font-weight-light">Anyis App</span>
     </a>
 
     <!-- Sidebar -->
@@ -87,7 +87,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
           <li class="nav-item">
             <router-link to="/dasboard" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa-tachometer-alt blue"></i>
               <p>
                 Dashboard
               </p>
@@ -96,8 +96,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
           <li class="nav-item has-treeview ">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-cog"></i>
+            <a href="#" class="nav-link ">
+              <i class="nav-icon fas fa-cog green"></i>
               <p>
                 Management
                 <i class="right fa fa-angle-left"></i>
@@ -105,10 +105,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link active">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Active Page</p>
-                </a>
+                <router-link to="/users" class="nav-link ">
+                  <i class="fas fa-users nav-icon orange"></i>
+                  <p>User</p>
+                </router-link>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
@@ -118,7 +118,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </li>
             </ul>
           </li>
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fa fa-th"></i>
               <p>
@@ -126,11 +126,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <span class="right badge badge-danger">New</span>
               </p>
             </a>
-          </li>
+          </li> --}}
 
           <li class="nav-item">
             <router-link to="/profile" class="nav-link">
-              <i class="nav-icon fas fa-user"></i>
+              <i class="nav-icon fas fa-user orange"></i>
               <p>
                 Profiles
               </p>
@@ -138,12 +138,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
 
           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-power-off"></i>
-              <p>
-                Logout
-              </p>
-            </a>
+
+
+            <a class="nav-link" href="{{ route('logout') }}"
+            onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                            <i class="nav-icon fas fa-power-off red"></i>
+            <p>
+            {{ __('Logout') }}
+          </p>
+        </a>
+
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
           </li>
         </ul>
       </nav>
@@ -153,34 +161,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper" id="app">
+  <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    {{--<div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Starter Page</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Starter Page</li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>--}}
-    <!-- /.content-header -->
-
-
     <div class="content">
       <div class="container-fluid">
 
+
+
         <router-view> </router-view>
+
+
 
       </div>
     </div>
-
   </div>
   <!-- <aside class="control-sidebar control-sidebar-dark">
 
@@ -208,13 +201,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
-<!-- jQuery -->
+{{-- <!-- jQuery -->
 <!--
 <script src="plugins/jquery/jquery.min.js"></script> -->
 <!-- Bootstrap 4 --><!--
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script> -->
 <!-- AdminLTE App --><!--
-<script src="dist/js/adminlte.min.js"></script> -->
+<script src="dist/js/adminlte.min.js"></script> --> --}}
 
 </body>
 </html>

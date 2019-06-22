@@ -8,6 +8,13 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+//import vform package that we installed for vue-laravel form validation INSTALLED THUS: npm i axios vform
+import { Form, HasError, AlertError } from 'vform'
+
+window.Form = Form;
+Vue.component(HasError.name, HasError)
+Vue.component(AlertError.name, AlertError)
+//vform
 
 import Vue from 'vue'
 import VueRouter from 'vue-router'
@@ -22,10 +29,13 @@ Vue.component('dashboard',Dashboard);
 import Profile from './components/Profile.vue';
 Vue.component('profile',Profile);
 
+import Users from './components/Users.vue';
+Vue.component('users',Users);
 
-const routes = [
+let routes = [
     { path: '/dasboard', component: Dashboard },
     { path: '/profile', component: Profile },
+    { path: '/users', component: Users },
   ]
 
 //creating the router instance
@@ -37,4 +47,5 @@ routes // short for `routes: routes`
 const app = new Vue({
     el: '#app',
     router
+
 });
