@@ -19,13 +19,16 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>Type</th>
+                    <th> Registered At </th>
                     <th>Modify</th>
                   </tr>
-                  <tr>
-                    <td>183</td>
-                    <td>John Doe</td>
-                    <td>11-7-2014</td>
-                    <td><span class="tag tag-success">Approved</span></td>
+
+                  <tr v-for="user in users" :key="user.id" >
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.email }}</td>
+                    <td><span class="tag tag-success">{{ user.type }}</span></td>
+                    <td>{{ user.created_at }}</td>
                     <td>
                         <a href="">
                             <i class="fa fa-edit"></i>
@@ -53,6 +56,8 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      <form @submit.prevent="createUser" >
+
       <div class="modal-body">
 
     <div class="form-group">
@@ -90,7 +95,7 @@
     </div>
 
     <div class="form-group">
-      <input v-model="form.password" type="password" name="password_confirmation" placeholder="Confirm Password"
+      <input v-model="form.password_confirmation" type="password" name="password_confirmation" placeholder="Confirm Password"
         class="form-control" :class="{ 'is-invalid': form.errors.has('password') }">
       <has-error :form="form" field="password"></has-error>
     </div>
@@ -98,8 +103,10 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary"> Create </button>
+        <button type="submit" class="btn btn-primary"> Create </button>
       </div>
+      </form>
+
     </div>
   </div>
 </div>
@@ -113,6 +120,8 @@
 
         data(){
             return{
+                users:{},
+                geterrors:{},
                 form: new Form({
                     name: '',
                     email:'',
@@ -120,12 +129,28 @@
                     type:'',
                     bio:'',
                     photo:'',
+                    password_confirmation:'',
                 })
             }
         },
 
+        methods:{
+            createUser(){
+                this.form.post('api/user');
+            },
+            loadUsers(){
+                axios.get('api/user')
+                .then(({data}) => (this.users = data.data))
+                .catch( ({error}) => console.log(error) )
+                //.catch(({error}) => (error.data.data.errors = this.geterrors))
+                .finally(  );
+            },
+
+        },
+
         mounted() {
-            console.log('Component mounted.')
+            console.log('Component mounted. GET STARTED');
+            this.loadUsers();
         }
     }
 </script>
