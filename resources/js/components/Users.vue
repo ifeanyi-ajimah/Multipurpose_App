@@ -14,7 +14,8 @@
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0">
                 <table class="table table-hover">
-                  <tbody><tr>
+                  <tbody>
+                  <tr>
                     <th>ID</th>
                     <th>Name</th>
                     <th>Email</th>
@@ -27,8 +28,8 @@
                     <td>{{ user.id }}</td>
                     <td>{{ user.name }}</td>
                     <td>{{ user.email }}</td>
-                    <td><span class="tag tag-success">{{ user.type }}</span></td>
-                    <td>{{ user.created_at }}</td>
+                    <td><span class="tag tag-success">{{ user.type | to-uppercase }}</span></td>
+                    <td>{{ user.created_at | my-date }}</td>
                     <td>
                         <a href="">
                             <i class="fa fa-edit"></i>
@@ -116,6 +117,9 @@
 </template>
 
 <script>
+import { setInterval } from 'timers';
+import { constants } from 'crypto';
+import { log } from 'util';
     export default {
 
         data(){
@@ -136,21 +140,71 @@
 
         methods:{
             createUser(){
-                this.form.post('api/user');
+                //this.form.post('api/user');
+
+               this.$Progress.start();  //start progress bar
+
+              // axios.post('api/user', {
+                this.form.post('api/user', {
+                     name:  this.form.name,
+                     email:  this.form.email,
+                     password:  this.form.password,
+                     type:  this.form.type,
+                     bio:  this.form.bio,
+                     photo:  this.form.photo,
+                     password_confirmation:  this.form.password_confirmation,
+                    })
+
+                    .then( (response) =>{
+                        //console.log(response.data);
+                        this.$Progress.finish();//complete progress bar.
+                        $('#userModal').modal('hide');
+
+                        toast.fire({
+                        type: 'success',
+                        title: 'User Created successfully'
+                        });
+
+                        Fire.$emit('AfterCreate'); //emmit the AfterCreate event
+
+                       // this.users.unshift(response.data); //update users object with latest data
+                    })
+                    .catch( (error) => {
+                        this.$Progress.fail(); //if action fails
+                         console.log(error.response.data.errors);
+                         console.log(error.response.status);
+                         console.log(error.response.headers);
+                         //read about asyn and await new in es6 and javascript
+                    });
+
             },
+
             loadUsers(){
                 axios.get('api/user')
                 .then(({data}) => (this.users = data.data))
-                .catch( ({error}) => console.log(error) )
-                //.catch(({error}) => (error.data.data.errors = this.geterrors))
-                .finally(  );
+                //.catch( ({error}) => console.log(error.data) )
+                .catch(({error}) => (error.data.data.errors = this.geterrors))
+                .finally();
             },
 
         },
 
         mounted() {
             console.log('Component mounted. GET STARTED');
+
             this.loadUsers();
-        }
+
+            Fire.$on('AfterCreate',() => {
+                this.loadUsers();
+            });
+           // setInterval(() => this.loadUsers(), 3000); // to reload data from db every 3 seconds for realtime update.
+        },
+
+    //     filters:{
+    //     'to-uppercase':function(value){
+    //         return value.toUpperCase();
+    //     }
+    //    },
+
     }
 </script>

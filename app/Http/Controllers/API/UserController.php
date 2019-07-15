@@ -46,7 +46,9 @@ class UserController extends Controller
         $data = $request->except(['_token','password_confirmation']);
         $data['password'] = Hash::make($request['password']);
 
-        User::forceCreate($data);
+        $newUser = User::forceCreate($data);
+        return $newUser->toJson();
+
     }
 
     /**
