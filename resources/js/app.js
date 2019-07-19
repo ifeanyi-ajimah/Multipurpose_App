@@ -42,13 +42,13 @@ Vue.use(VueProgressBar, {
 //using sweet alert
 import Swal from 'sweetalert2'
 window.swal = Swal;
+
 const toast = Swal.mixin({
     toast: true,
     position: 'top-end',
     showConfirmButton: false,
     timer: 3000
   });
-
 window.toast = toast;
 
 import Dashboard from './components/Dashboard.vue';

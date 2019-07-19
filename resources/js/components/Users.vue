@@ -5,10 +5,10 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">User Table</h3>
+                <h3 class="card-title">User Tables</h3>
 
                 <div class="card-tools">
-                    <button class="btn btn-success" data-toggle="modal" data-target="#userModal"> Add User <i class="fas fa-user-plus fa-fw"></i></button>
+                    <button class="btn btn-success" @click="openNewModal"> Add User <i class="fas fa-user-plus fa-fw"></i></button>
                 </div>
               </div>
               <!-- /.card-header -->
@@ -17,7 +17,7 @@
                   <tbody>
                   <tr>
                     <th>ID</th>
-                    <th>Name</th>
+                    <th>Name </th>
                     <th>Email</th>
                     <th>Type</th>
                     <th> Registered At </th>
@@ -31,10 +31,13 @@
                     <td><span class="tag tag-success">{{ user.type | to-uppercase }}</span></td>
                     <td>{{ user.created_at | my-date }}</td>
                     <td>
-                        <a href="">
-                            <i class="fa fa-edit"></i>
-                        </a>/
-                        <i class="fa fa-trash red"></i>
+                        <a href="#" @click="openEditModal(user.id)">
+                            <i class="fa fa-edit blue"></i>
+                        </a>
+                            /
+                        <a href="#" @click="deleteUser(user.id)">
+                           <i class="fa fa-trash red"></i>
+                        </a>
 
                     </td>
                   </tr>
@@ -118,8 +121,8 @@
 
 <script>
 import { setInterval } from 'timers';
-import { constants } from 'crypto';
-import { log } from 'util';
+//import { constants } from 'crypto';
+//import { log } from 'util';
     export default {
 
         data(){
@@ -139,6 +142,50 @@ import { log } from 'util';
         },
 
         methods:{
+
+          openEditModal(id){
+
+              $('#userModal').modal('show');
+          },
+
+          openNewModal(){
+                this.form.reset();
+                $('#userModal').modal('show');
+          },
+            deleteUser(id){
+                swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!',
+                }).then((result) => {
+
+                if (result.value) {
+                        swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                        )
+
+                       //sene request to the server
+                 this.form.delete(`/api/user/${id}`).then( (response) => {
+
+                Fire.$emit('ReloadGetUsers');
+
+                }).catch(() => {
+                  swal.fire("Failed!", "Something went wrong.", "warning");
+                  console.log('bad ');
+                 });
+``
+                  }
+
+
+                })
+            },
+
             createUser(){
                 //this.form.post('api/user');
 
@@ -165,7 +212,7 @@ import { log } from 'util';
                         title: 'User Created successfully'
                         });
 
-                        Fire.$emit('AfterCreate'); //emmit the AfterCreate event
+                        Fire.$emit('ReloadGetUsers'); //emmit the ReloadGetUsers event
 
                        // this.users.unshift(response.data); //update users object with latest data
                     })
@@ -194,7 +241,7 @@ import { log } from 'util';
 
             this.loadUsers();
 
-            Fire.$on('AfterCreate',() => {
+            Fire.$on('ReloadGetUsers',() => {
                 this.loadUsers();
             });
            // setInterval(() => this.loadUsers(), 3000); // to reload data from db every 3 seconds for realtime update.
