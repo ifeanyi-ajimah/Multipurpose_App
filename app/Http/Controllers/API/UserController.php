@@ -70,8 +70,23 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
+    {   $user1 = User::findOrFail($id);
+        $this->validate($request,[
+            'name' => 'required',
+            'password' => 'required|string|min:6|confirmed',
+            //'type' => 'required',
+            'bio' => 'required|string|max:191',
+            'email' => 'required|string|email|max:191|unique:users,email,'.$user1->id,
+        ]);
+            $user = User::findOrfail($id);
+            $user->name = $request->name;
+            $user->password = Hash::make($request->password);
+
+            $user->type = $request->type;
+            $user->bio = $request->bio;
+            $user->email = $request->email;
+            $user->save();
+        return response()->json(['message','Updated']);
     }
 
     /**
@@ -83,7 +98,6 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user = User::findOrFail($id);
-
         $user->delete();
 
         return ['message' => 'User Deleted'];

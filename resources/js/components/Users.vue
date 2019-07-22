@@ -31,7 +31,7 @@
                     <td><span class="tag tag-success">{{ user.type | to-uppercase }}</span></td>
                     <td>{{ user.created_at | my-date }}</td>
                     <td>
-                        <a href="#" @click="openEditModal(user.id)">
+                        <a href="#" @click="openEditModal(user)">
                             <i class="fa fa-edit blue"></i>
                         </a>
                             /
@@ -55,12 +55,12 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add New</h5>
+        <h5 class="modal-title" id="exampleModalLabel"> {{ title }}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form @submit.prevent="createUser" >
+      <form @submit.prevent=" editmode ? updateUser() : createUser()" >
 
       <div class="modal-body">
 
@@ -107,7 +107,11 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary"> Create </button>
+        <button type="submit" class="btn btn-primary"> {{ action }} </button>
+
+<!--     alternatively we use v-show
+        <button v-show="editmode" type="submit" class="btn btn-danger" data-dismiss="modal"> Update</button>
+        <button v-show="!editmode" type="submit" class="btn btn-danger" data-dismiss="modal"> Create </button> -->
       </div>
       </form>
 
@@ -127,9 +131,13 @@ import { setInterval } from 'timers';
 
         data(){
             return{
+                action: '',
+                title: '',
+                editmode : false,
                 users:{},
                 geterrors:{},
                 form: new Form({
+                    id: '',
                     name: '',
                     email:'',
                     password:'',
@@ -143,15 +151,59 @@ import { setInterval } from 'timers';
 
         methods:{
 
-          openEditModal(id){
+            updateUser(id){
 
+
+                    this.form.put(`api/user/${this.form.id}`, {
+
+                     name:  this.form.name,
+                     email:  this.form.email,
+                     password:  this.form.password,
+                     type:  this.form.type,
+                     bio:  this.form.bio,
+                     photo:  this.form.photo,
+                     password_confirmation:  this.form.password_confirmation,
+                    })
+
+                    .then( (response) =>{
+                        console.log(response.data);
+                        // this.$Progress.finish();//complete progress bar.
+                         $('#userModal').modal('hide');
+
+                        toast.fire({
+                        type: 'success',
+                        title: 'Updated successfully'
+                        });
+
+                        Fire.$emit('ReloadGetUsers'); //emmit the ReloadGetUsers event
+
+                    })
+                    .catch( (error) => {
+                        // this.$Progress.fail(); //if action fails
+                        //  console.log(error.response.data.errors);
+                        //  console.log(error.response.status);
+                         //console.log(error.response.headers);
+                         //read about asyn and await new in es6 and javascript
+                    });
+            },
+
+            openEditModal(user){
+            this.editmode = true;
+            this.title = 'Edit User';
+            this.action = 'Update';
+               this.form.reset();
               $('#userModal').modal('show');
+              this.form.fill(user);
           },
 
           openNewModal(){
-                this.form.reset();
-                $('#userModal').modal('show');
+            this.editmode = false;
+            this.title = 'Add User';
+            this.action = 'Create';
+            this.form.reset();
+            $('#userModal').modal('show');
           },
+
             deleteUser(id){
                 swal.fire({
                 title: 'Are you sure?',
@@ -188,9 +240,7 @@ import { setInterval } from 'timers';
 
             createUser(){
                 //this.form.post('api/user');
-
                this.$Progress.start();  //start progress bar
-
               // axios.post('api/user', {
                 this.form.post('api/user', {
                      name:  this.form.name,
@@ -220,7 +270,7 @@ import { setInterval } from 'timers';
                         this.$Progress.fail(); //if action fails
                          console.log(error.response.data.errors);
                          console.log(error.response.status);
-                         console.log(error.response.headers);
+                         //console.log(error.response.headers);
                          //read about asyn and await new in es6 and javascript
                     });
 
