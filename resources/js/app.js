@@ -8,11 +8,23 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+// passport components
+Vue.component(
+    'passport-clients',
+    require('./components/passport/Clients.vue').default
+);
+Vue.component(
+    'passport-authorized-clients',
+    require('./components/passport/AuthorizedClients.vue').default
+);
+Vue.component(
+    'passport-personal-access-tokens',
+    require('./components/passport/PersonalAccessTokens.vue').default
+);
+
 
 //import moment after installation
 import moment from 'moment';
-
-
 
 //import vform package that we installed for vue-laravel form validation INSTALLED THUS: npm i axios vform
 import { Form, HasError, AlertError } from 'vform'
@@ -60,10 +72,15 @@ Vue.component('profile',Profile);
 import Users from './components/Users.vue';
 Vue.component('users',Users);
 
+
+import Developer from './components/Developer.vue';
+Vue.component('developer',Developer);
+
 let routes = [
     { path: '/dasboard', component: Dashboard },
     { path: '/profile', component: Profile },
     { path: '/users', component: Users },
+    {path: '/developer',component: Developer},
   ]
 
 //creating the router instance

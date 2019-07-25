@@ -155,7 +155,6 @@ import { setInterval } from 'timers';
 
 
                     this.form.put(`api/user/${this.form.id}`, {
-
                      name:  this.form.name,
                      email:  this.form.email,
                      password:  this.form.password,
@@ -191,7 +190,7 @@ import { setInterval } from 'timers';
             this.editmode = true;
             this.title = 'Edit User';
             this.action = 'Update';
-               this.form.reset();
+            this.form.reset();
               $('#userModal').modal('show');
               this.form.fill(user);
           },
@@ -305,3 +304,10 @@ import { setInterval } from 'timers';
 
     }
 </script>
+
+
+<style scoped >
+
+
+
+</style>

@@ -137,6 +137,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </router-link>
           </li>
 
+
+          <li class="nav-item">
+            <router-link to="/developer" class="nav-link">
+              <i class="nav-icon fas fa-cogs orange"></i>
+              <p>
+                Developer(passport)
+              </p>
+            </router-link>
+          </li>
+
+
           <li class="nav-item">
 
 
@@ -169,7 +180,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
         <router-view> </router-view>
-{{--   
+{{--
         <vue-progress-bar></vue-progress-bar>  --}}
 
       </div>
@@ -191,7 +202,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       Anyi
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2019 <a href="https://adminlte.io">Anyi MultiApp</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2019 <a href="#">Anyi MultiApp</a>.</strong> All rights reserved.
   </footer>
 </div>
 

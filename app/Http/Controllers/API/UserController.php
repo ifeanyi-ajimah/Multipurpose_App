@@ -6,8 +6,15 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\User;
+
 class UserController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth:api');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +22,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return User::latest()->paginate(10);
+        return User::latest()->paginate(15);
     }
 
     /**
@@ -62,6 +69,26 @@ class UserController extends Controller
         //
     }
 
+    public function profile()
+    {
+        return auth('api')->user()->toJson();
+    }
+
+
+    public function updateProfile(Request $request)
+    {
+        $user = auth('api')->user();
+       // return $request->photo;
+
+        if($request->photo){
+
+            $name = time(). '.' . explode('/', explode(':', substr($request->photo,0,strpos
+            ($request->photo, ';'))) [1] ) [1];
+
+        \Image::make($request->photo)->save(public_path('img/profile/').$name);
+        }
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -70,13 +97,14 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {   $user1 = User::findOrFail($id);
+    {
+         $user1 = User::findOrFail($id);
         $this->validate($request,[
             'name' => 'required',
-            'password' => 'required|string|min:6|confirmed',
+            'password' => 'string|min:6|confirmed',
             //'type' => 'required',
             'bio' => 'required|string|max:191',
-            'email' => 'required|string|email|max:191|unique:users,email,'.$user1->id,
+            'email' => 'string|email|max:191|unique:users,email,'.$user1->id,
         ]);
             $user = User::findOrfail($id);
             $user->name = $request->name;
