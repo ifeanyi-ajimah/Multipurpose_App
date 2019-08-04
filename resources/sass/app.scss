@@ -25,3 +25,21 @@ $fa-font-path: "../webfonts";
     background: #007BFF;
     color:#fff !important;
 }
+
+@media print
+{
+.nav.nav-tabs li:not(.active){
+    display:none;
+}
+.invoice{
+    background-position:  center center;
+    background-repeat: no-repeat;
+}
+.table-responsive table{
+    background-color: transparent !important;
+}
+
+@page {
+    margin : 0;
+}
+}

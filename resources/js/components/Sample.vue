@@ -12,6 +12,10 @@ export default {
 
   },
 
+  mounted() {
+
+  },
+
   data(){
     return {
         auth:{},

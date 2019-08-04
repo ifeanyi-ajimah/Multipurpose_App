@@ -11,7 +11,7 @@
                 <h5 class="widget-user-desc">{{ auth.type }}</h5>
               </div>
               <div class="widget-user-image">
-                <img class="img-circle" src="" alt="User Avatar">
+                <img class="img-circle" :src="getProfilePhoto()" alt="User Avatar">
               </div>
               <div class="card-footer">
                 <div class="row">
@@ -166,35 +166,38 @@
                         <label   for="inputName" class="col-sm-2 control-label">Name</label>
 
                         <div class="col-sm-10">
-                          <input type="text" v-model="form.name" class="form-control" id="inputName" placeholder="Name">
+                          <input type="text" v-model="form.name" class="form-control" id="inputName" placeholder="Name"  :class="{ 'is-invalid': form.errors.has('name') }">
+                          <has-error :form="form" field="name"> </has-error>
                         </div>
                       </div>
                       <div class="form-group">
                         <label for="inputEmail" class="col-sm-2 control-label">Email</label>
-
                         <div class="col-sm-10">
-                          <input type="email" v-model="form.email" class="form-control" id="inputEmail" placeholder="Email">
+                          <input type="email" v-model="form.email" class="form-control" id="inputEmail" placeholder="Email" :class="{ 'is-invalid': form.errors.has('email') }">
+                           <has-error :form="form" field="email"> </has-error>
                         </div>
                       </div>
                       <div class="form-group">
-                        <label for="inputName2" class="col-sm-2 control-label">Name</label>
+                        <label for="inputName2" class="col-sm-2 control-label">Password</label>
 
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="inputName2" placeholder="Name">
+                          <input type="password" v-model="form.password" class="form-control" id="inputName2" placeholder="password" :class="{ 'is-invalid': form.errors.has('password') }" >
+                           <has-error :form="form" field="password"> </has-error>
                         </div>
                       </div>
                       <div class="form-group">
                         <label for="inputExperience" class="col-sm-2 control-label">Bio </label>
 
                         <div class="col-sm-10">
-                          <textarea class="form-control" v-model="form.bio" id="inputExperience" placeholder="Experience"></textarea>
+                          <textarea class="form-control" v-model="form.bio" id="inputExperience" placeholder="Experience" :class="{ 'is-invalid': form.errors.has('bio') }"></textarea>
+                           <has-error :form="form" field="bio"> </has-error>
                         </div>
                       </div>
                       <div class="form-group">
                         <label for="inputSkills" class="col-sm-2 control-label">Profile Photo</label>
 
                         <div class="col-sm-10">
-                          <input type="file" class="form-control" @change="updateProfile" id="photo" >
+                          <input type="file" class="form-control" @change="updateProfile" id="photo" :class="{ 'is-invalid': form.errors.has('photo') }">
                         </div>
                       </div>
                       <div class="form-group">
@@ -232,8 +235,14 @@
 <script>
     export default {
         mounted() {
+
             console.log('Component mounted.');
             this.loadAuth();
+
+
+            Fire.$on('reloadAuth',() => {
+                this.loadAuth();
+            });
 
         },
 
@@ -258,25 +267,40 @@
 
          methods:{
 
+               getProfilePhoto(){
+                   let photo = (this.form.photo.length > 200) ? this.form.photo : "img/profile/" + this.form.photo;
+                 return photo;
+             },
+
              updateInfo(){
+                  this.$Progress.start();
+
                  this.form.put('api/profile/')
                  .then( (response)=> {
                      console.log(response)
-                 })
-                 .catch(() => {
 
+                      //emmit reloadAuth
+                Fire.$emit('reloadAuth');
+                //this.$Progress.finish();
+                 })
+                 .catch((error) => {
+                      console.log(error.response.data);
+                     this.$Progress.fail();
                  });
+
+
              },
 
             loadAuth(){
+
                 axios.get('api/profile')
                 .then((response)=> {
                     this.form.fill(response.data);
                     this.auth = response.data;
-                    console.log(this.auth)
+                    console.log( this.auth.name)
                 })
                 .catch((error)=>{
-                    console.log(error.response.data)
+                    console.log(error.response)
                 })
                 .finally(() => {
 
@@ -288,12 +312,23 @@
                 let file = e.target.files[0];
                 //console.log(file);
                 let reader = new FileReader();
+                if(file['size'] < 2111775 ){
+
                 reader.onloadend = (file) => {
-                    //console.log('RESULT', reader.result)
+                //console.log('RESULT', reader.result)
                 this.form.photo = reader.result;
                 }
                 //console.log(reader.readAsDataURL(file));
                 reader.readAsDataURL(file);
+
+                }else {
+                    swal.fire({
+                        type: 'error',
+                        title: 'Ooops....',
+                        text: 'Your file is too large. ',
+                    })
+                }
+
             },
         },
     }

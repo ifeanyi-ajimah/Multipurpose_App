@@ -1,7 +1,7 @@
 <template>
     <div class="container">
 
-        <div class="row mt-5">
+        <div class="row mt-5" v-show="$gate.isAdmin()">
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
@@ -15,6 +15,7 @@
               <div class="card-body table-responsive p-0">
                 <table class="table table-hover">
                   <tbody>
+
                   <tr>
                     <th>ID</th>
                     <th>Name </th>
@@ -24,7 +25,7 @@
                     <th>Modify</th>
                   </tr>
 
-                  <tr v-for="user in users" :key="user.id" >
+                  <tr v-for="user in users.data" :key="user.id" >
                     <td>{{ user.id }}</td>
                     <td>{{ user.name }}</td>
                     <td>{{ user.email }}</td>
@@ -45,9 +46,20 @@
                 </tbody></table>
               </div>
               <!-- /.card-body -->
+              <div class="card-footer">
+                    <pagination :data="users" @pagination-change-page="getResults">
+                        <span slot="prev-nav">&lt; Previous</span>
+	                    <span slot="next-nav">Next &gt;</span>
+                    </pagination>
+              </div>
+              <!-- .card-footer -->
             </div>
             <!-- /.card -->
           </div>
+        </div>
+
+        <div v-if="!$gate.isAdminOrAuthor()">
+            <not-found></not-found>
         </div>
 
     <!-- Modal -->
@@ -79,7 +91,7 @@
     <div class="form-group">
       <textarea v-model="form.bio"  name="bio"  id="bio" placeholder="Short Bio fro user (optional)"
         class="form-control" :class="{ 'is-invalid': form.errors.has('bio') }"> </textarea>
-      <has-error :form="form" field="email"></has-error>
+      <has-error :form="form" field="bio"></has-error>
     </div>
 
     <div class="form-group">
@@ -119,7 +131,6 @@
   </div>
 </div>
 
-
     </div>
 </template>
 
@@ -150,10 +161,25 @@ import { setInterval } from 'timers';
         },
 
         methods:{
+            searchfxn(){
+                let query = this.$parent.search;
+                axios.get('api/findUser?q=' + query)
+                .then((response) => {
+                    this.users = response.data
+                })
+                .catch((error)=> {
+                    console.log(error.response.data.error)
+                })
+            },
+
+           getResults(page = 1) {
+			axios.get('api/user?page=' + page)
+				.then(response => {
+					this.users = response.data;
+				});
+		},
 
             updateUser(id){
-
-
                     this.form.put(`api/user/${this.form.id}`, {
                      name:  this.form.name,
                      email:  this.form.email,
@@ -230,7 +256,7 @@ import { setInterval } from 'timers';
                   swal.fire("Failed!", "Something went wrong.", "warning");
                   console.log('bad ');
                  });
-``
+
                   }
 
 
@@ -253,7 +279,7 @@ import { setInterval } from 'timers';
 
                     .then( (response) =>{
                         //console.log(response.data);
-                        this.$Progress.finish();//complete progress bar.
+                        //this.$Progress.finish();//complete progress bar.
                         $('#userModal').modal('hide');
 
                         toast.fire({
@@ -263,12 +289,17 @@ import { setInterval } from 'timers';
 
                         Fire.$emit('ReloadGetUsers'); //emmit the ReloadGetUsers event
 
+                        //redirect to a new component route on success
+                        //this.$router.replace({ path: 'profile' })
                        // this.users.unshift(response.data); //update users object with latest data
                     })
                     .catch( (error) => {
                         this.$Progress.fail(); //if action fails
+                        //console.log(error);
+                        this.geterrors = error.response.data.errors;
                          console.log(error.response.data.errors);
-                         console.log(error.response.status);
+                         console.log(error.response.data);
+                         console.log('failded');
                          //console.log(error.response.headers);
                          //read about asyn and await new in es6 and javascript
                     });
@@ -276,11 +307,14 @@ import { setInterval } from 'timers';
             },
 
             loadUsers(){
+                if(this.$gate.isAdminOrAuthor){
                 axios.get('api/user')
-                .then(({data}) => (this.users = data.data))
+                .then(({data}) => (this.users = data))
                 //.catch( ({error}) => console.log(error.data) )
                 .catch(({error}) => (error.data.data.errors = this.geterrors))
                 .finally();
+
+                }
             },
 
         },
@@ -294,6 +328,11 @@ import { setInterval } from 'timers';
                 this.loadUsers();
             });
            // setInterval(() => this.loadUsers(), 3000); // to reload data from db every 3 seconds for realtime update.
+
+           Fire.$on('searching',() =>{
+               this.searchfxn();
+           });
+
         },
 
     //     filters:{

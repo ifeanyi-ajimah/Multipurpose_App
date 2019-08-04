@@ -1,9 +1,5 @@
 <!DOCTYPE html>
 
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -44,16 +40,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </ul>
 
     <!-- SEARCH FORM -->
-    <form class="form-inline ml-3">
+    <div class="form-inline ml-3">
       <div class="input-group input-group-sm">
-        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+        <input class="form-control form-control-navbar" type="search" @keyup="searchIt" v-model="search" placeholder="Search" aria-label="Search">
         <div class="input-group-append">
-          <button class="btn btn-navbar" type="submit">
+          <button class="btn btn-navbar" @click="searchIt" >
             <i class="fa fa-search"></i>
           </button>
         </div>
       </div>
-    </form>
+    </div>
 
   </nav>
   <!-- /.navbar -->
@@ -76,6 +72,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </div>
         <div class="info">
           <a href="#" class="d-block">{{Auth::user()->name}}</a>
+          <a href="#" class="d-block">{{Auth::user()->type}}</a>
         </div>
       </div>
 
@@ -137,7 +134,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </router-link>
           </li>
 
-
+          @can('isAdmin')
           <li class="nav-item">
             <router-link to="/developer" class="nav-link">
               <i class="nav-icon fas fa-cogs orange"></i>
@@ -146,7 +143,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </p>
             </router-link>
           </li>
-
+          @endcan
 
           <li class="nav-item">
 
@@ -180,8 +177,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
         <router-view> </router-view>
-{{--
-        <vue-progress-bar></vue-progress-bar>  --}}
+
+        <vue-progress-bar></vue-progress-bar>
 
       </div>
     </div>
@@ -207,9 +204,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </div>
 
 
+@auth
+<script>
+    window.user = @json(auth()->user())
+</script>
+@endauth
+
+
 <script type="text/javascript" src="js/app.js"></script>
-
-
 
 
 {{-- <!-- jQuery -->

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\User;
+use Illuminate\Support\Facades\Gate;
 
 class UserController extends Controller
 {
@@ -13,6 +14,7 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth:api');
+       // $this->authorize('isAdmin');
     }
 
     /**
@@ -22,7 +24,12 @@ class UserController extends Controller
      */
     public function index()
     {
-        return User::latest()->paginate(15);
+        //$this->authorize('isAdmin');
+        if(Gate::allows('isAdmin') || Gate::allows('isAuthor'))
+        {
+            return User::latest()->paginate(10);
+        }
+
     }
 
     /**
@@ -37,7 +44,7 @@ class UserController extends Controller
         $this->validate($request,[
             'name' => 'required',
             'email' => 'required|string|email|max:191|unique:users',
-            'password' => 'required|string|min:6|confirmed'
+            'password' => 'sometimes|required|string|min:6|confirmed'
         ]);
         //return ['message' => 'I have your data'];
         // return User::create([
@@ -58,16 +65,25 @@ class UserController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+
+    public function search(){
+
+        if($search = \Request::get('q')){
+            $users = User::where(function($query) use ($search){
+                $query->where('name', 'LIKE', "%$search%")
+                ->orWhere('email', 'LIKE', "%$search%")
+                ->orWhere('type', 'LIKE', "%$search%");
+            })->paginate(20);
+        } else{
+            $users =  User::latest()->paginate(10);
+        }
+        return  $users;
     }
+
+    // public function show($id)
+    // {
+    //     //
+    // }
 
     public function profile()
     {
@@ -78,27 +94,48 @@ class UserController extends Controller
     public function updateProfile(Request $request)
     {
         $user = auth('api')->user();
-       // return $request->photo;
 
-        if($request->photo){
+        $this->validate($request,[
+            'name' => 'required|string|max:191',
+            'password' => 'sometimes|min:6',
+            'bio' => 'required|string|max:191',
+            'email' => 'required|string|max:191|unique:users,email,'.$user->id
+        ]);
+
+
+        $currentPhoto = $user->photo;
+
+        if($request->photo != $currentPhoto){
 
             $name = time(). '.' . explode('/', explode(':', substr($request->photo,0,strpos
             ($request->photo, ';'))) [1] ) [1];
 
-        \Image::make($request->photo)->save(public_path('img/profile/').$name);
+        \Image::make($request->photo)->save( public_path('img/profile/').$name );
+
+            $request->merge(['photo' => $name]);
+
+            //delete old photo if user changes/updates profile pic
+            $userPhoto = public_path('img/profile/').$currentPhoto;
+            if(file_exists($userPhoto)){
+                @unlink($userPhoto);
+            }
         }
+
+        if(!empty($request->password) ){
+
+            $request->merge(['password'=> Hash::make($request['password'])]);
+        }
+
+        $user->update($request->all());
+        return ['message' => 'Successfull'];
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
+
     public function update(Request $request, $id)
     {
-         $user1 = User::findOrFail($id);
+        $user1 = User::findOrFail($id);
+
         $this->validate($request,[
             'name' => 'required',
             'password' => 'string|min:6|confirmed',
@@ -114,6 +151,7 @@ class UserController extends Controller
             $user->bio = $request->bio;
             $user->email = $request->email;
             $user->save();
+
         return response()->json(['message','Updated']);
     }
 
@@ -125,11 +163,13 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        $this->authorize('isAdmin');
         $user = User::findOrFail($id);
         $user->delete();
 
         return ['message' => 'User Deleted'];
     }
+
 }
 
 

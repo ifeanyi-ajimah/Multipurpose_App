@@ -94,11 +94,11 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
- * AdminLTE v3.0.0-alpha.2 (https://adminlte.io)
- * Copyright 2014-2018 Abdullah Almsaeed <abdullah@almsaeedstudio.com>
+ * AdminLTE v3.0.0-beta.1 (https://adminlte.io)
+ * Copyright 2014-2019 Colorlib <http://colorlib.com>
  * Licensed under MIT (https://github.com/almasaeed2010/AdminLTE/blob/master/LICENSE)
  */
-!function(e,t){ true?t(exports):undefined}(this,function(e){"use strict";var i,t,o,n,r,a,s,c,f,l,u,d,h,p,_,g,y,m,v,C,D,E,A,O,w,b,L,S,j,T,I,Q,R,P,x,B,M,k,H,N,Y,U,V,G,W,X,z,F,q,J,K,Z,$,ee,te,ne="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},ie=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},oe=(i=jQuery,t="ControlSidebar",o="lte.control.sidebar",n=i.fn[t],r=".control-sidebar",a='[data-widget="control-sidebar"]',s=".main-header",c="control-sidebar-open",f="control-sidebar-slide-open",l={slide:!0},u=function(){function n(e,t){ie(this,n),this._element=e,this._config=this._getConfig(t)}return n.prototype.show=function(){this._config.slide?i("body").removeClass(f):i("body").removeClass(c)},n.prototype.collapse=function(){this._config.slide?i("body").addClass(f):i("body").addClass(c)},n.prototype.toggle=function(){this._setMargin(),i("body").hasClass(c)||i("body").hasClass(f)?this.show():this.collapse()},n.prototype._getConfig=function(e){return i.extend({},l,e)},n.prototype._setMargin=function(){i(r).css({top:i(s).outerHeight()})},n._jQueryInterface=function(t){return this.each(function(){var e=i(this).data(o);if(e||(e=new n(this,i(this).data()),i(this).data(o,e)),"undefined"===e[t])throw new Error(t+" is not a function");e[t]()})},n}(),i(document).on("click",a,function(e){e.preventDefault(),u._jQueryInterface.call(i(this),"toggle")}),i.fn[t]=u._jQueryInterface,i.fn[t].Constructor=u,i.fn[t].noConflict=function(){return i.fn[t]=n,u._jQueryInterface},u),re=(d=jQuery,h="Layout",p="lte.layout",_=d.fn[h],g=".main-sidebar",y=".main-header",m=".content-wrapper",v=".main-footer",C="hold-transition",D=function(){function n(e){ie(this,n),this._element=e,this._init()}return n.prototype.fixLayoutHeight=function(){var e={window:d(window).height(),header:d(y).outerHeight(),footer:d(v).outerHeight(),sidebar:d(g).height()},t=this._max(e);d(m).css("min-height",t-e.header),d(g).css("min-height",t-e.header)},n.prototype._init=function(){var e=this;d("body").removeClass(C),this.fixLayoutHeight(),d(g).on("collapsed.lte.treeview expanded.lte.treeview collapsed.lte.pushmenu expanded.lte.pushmenu",function(){e.fixLayoutHeight()}),d(window).resize(function(){e.fixLayoutHeight()}),d("body, html").css("height","auto")},n.prototype._max=function(t){var n=0;return Object.keys(t).forEach(function(e){t[e]>n&&(n=t[e])}),n},n._jQueryInterface=function(t){return this.each(function(){var e=d(this).data(p);e||(e=new n(this),d(this).data(p,e)),t&&e[t]()})},n}(),d(window).on("load",function(){D._jQueryInterface.call(d("body"))}),d.fn[h]=D._jQueryInterface,d.fn[h].Constructor=D,d.fn[h].noConflict=function(){return d.fn[h]=_,D._jQueryInterface},D),ae=(E=jQuery,A="PushMenu",w="."+(O="lte.pushmenu"),b=E.fn[A],L={COLLAPSED:"collapsed"+w,SHOWN:"shown"+w},S={screenCollapseSize:768},j={TOGGLE_BUTTON:'[data-widget="pushmenu"]',SIDEBAR_MINI:".sidebar-mini",SIDEBAR_COLLAPSED:".sidebar-collapse",BODY:"body",OVERLAY:"#sidebar-overlay",WRAPPER:".wrapper"},T="sidebar-collapse",I="sidebar-open",Q=function(){function n(e,t){ie(this,n),this._element=e,this._options=E.extend({},S,t),E(j.OVERLAY).length||this._addOverlay()}return n.prototype.show=function(){E(j.BODY).addClass(I).removeClass(T);var e=E.Event(L.SHOWN);E(this._element).trigger(e)},n.prototype.collapse=function(){E(j.BODY).removeClass(I).addClass(T);var e=E.Event(L.COLLAPSED);E(this._element).trigger(e)},n.prototype.toggle=function(){(E(window).width()>=this._options.screenCollapseSize?!E(j.BODY).hasClass(T):E(j.BODY).hasClass(I))?this.collapse():this.show()},n.prototype._addOverlay=function(){var e=this,t=E("<div />",{id:"sidebar-overlay"});t.on("click",function(){e.collapse()}),E(j.WRAPPER).append(t)},n._jQueryInterface=function(t){return this.each(function(){var e=E(this).data(O);e||(e=new n(this),E(this).data(O,e)),t&&e[t]()})},n}(),E(document).on("click",j.TOGGLE_BUTTON,function(e){e.preventDefault();var t=e.currentTarget;"pushmenu"!==E(t).data("widget")&&(t=E(t).closest(j.TOGGLE_BUTTON)),Q._jQueryInterface.call(E(t),"toggle")}),E.fn[A]=Q._jQueryInterface,E.fn[A].Constructor=Q,E.fn[A].noConflict=function(){return E.fn[A]=b,Q._jQueryInterface},Q),se=(R=jQuery,P="Treeview",B="."+(x="lte.treeview"),M=R.fn[P],k={SELECTED:"selected"+B,EXPANDED:"expanded"+B,COLLAPSED:"collapsed"+B,LOAD_DATA_API:"load"+B},H=".nav-item",N=".nav-treeview",Y=".menu-open",V="menu-open",G={trigger:(U='[data-widget="treeview"]')+" "+".nav-link",animationSpeed:300,accordion:!0},W=function(){function i(e,t){ie(this,i),this._config=t,this._element=e}return i.prototype.init=function(){this._setupListeners()},i.prototype.expand=function(e,t){var n=this,i=R.Event(k.EXPANDED);if(this._config.accordion){var o=t.siblings(Y).first(),r=o.find(N).first();this.collapse(r,o)}e.slideDown(this._config.animationSpeed,function(){t.addClass(V),R(n._element).trigger(i)})},i.prototype.collapse=function(e,t){var n=this,i=R.Event(k.COLLAPSED);e.slideUp(this._config.animationSpeed,function(){t.removeClass(V),R(n._element).trigger(i),e.find(Y+" > "+N).slideUp(),e.find(Y).removeClass(V)})},i.prototype.toggle=function(e){var t=R(e.currentTarget),n=t.next();if(n.is(N)){e.preventDefault();var i=t.parents(H).first();i.hasClass(V)?this.collapse(R(n),i):this.expand(R(n),i)}},i.prototype._setupListeners=function(){var t=this;R(document).on("click",this._config.trigger,function(e){t.toggle(e)})},i._jQueryInterface=function(n){return this.each(function(){var e=R(this).data(x),t=R.extend({},G,R(this).data());e||(e=new i(R(this),t),R(this).data(x,e)),"init"===n&&e[n]()})},i}(),R(window).on(k.LOAD_DATA_API,function(){R(U).each(function(){W._jQueryInterface.call(R(this),"init")})}),R.fn[P]=W._jQueryInterface,R.fn[P].Constructor=W,R.fn[P].noConflict=function(){return R.fn[P]=M,W._jQueryInterface},W),ce=(X=jQuery,z="Widget",q="."+(F="lte.widget"),J=X.fn[z],K={EXPANDED:"expanded"+q,COLLAPSED:"collapsed"+q,REMOVED:"removed"+q},$="collapsed-card",ee={animationSpeed:"normal",collapseTrigger:(Z={DATA_REMOVE:'[data-widget="remove"]',DATA_COLLAPSE:'[data-widget="collapse"]',CARD:".card",CARD_HEADER:".card-header",CARD_BODY:".card-body",CARD_FOOTER:".card-footer",COLLAPSED:".collapsed-card"}).DATA_COLLAPSE,removeTrigger:Z.DATA_REMOVE},te=function(){function n(e,t){ie(this,n),this._element=e,this._parent=e.parents(Z.CARD).first(),this._settings=X.extend({},ee,t)}return n.prototype.collapse=function(){var e=this;this._parent.children(Z.CARD_BODY+", "+Z.CARD_FOOTER).slideUp(this._settings.animationSpeed,function(){e._parent.addClass($)});var t=X.Event(K.COLLAPSED);this._element.trigger(t,this._parent)},n.prototype.expand=function(){var e=this;this._parent.children(Z.CARD_BODY+", "+Z.CARD_FOOTER).slideDown(this._settings.animationSpeed,function(){e._parent.removeClass($)});var t=X.Event(K.EXPANDED);this._element.trigger(t,this._parent)},n.prototype.remove=function(){this._parent.slideUp();var e=X.Event(K.REMOVED);this._element.trigger(e,this._parent)},n.prototype.toggle=function(){this._parent.hasClass($)?this.expand():this.collapse()},n.prototype._init=function(e){var t=this;this._parent=e,X(this).find(this._settings.collapseTrigger).click(function(){t.toggle()}),X(this).find(this._settings.removeTrigger).click(function(){t.remove()})},n._jQueryInterface=function(t){return this.each(function(){var e=X(this).data(F);e||(e=new n(X(this),e),X(this).data(F,"string"==typeof t?e:t)),"string"==typeof t&&t.match(/remove|toggle/)?e[t]():"object"===("undefined"==typeof t?"undefined":ne(t))&&e._init(X(this))})},n}(),X(document).on("click",Z.DATA_COLLAPSE,function(e){e&&e.preventDefault(),te._jQueryInterface.call(X(this),"toggle")}),X(document).on("click",Z.DATA_REMOVE,function(e){e&&e.preventDefault(),te._jQueryInterface.call(X(this),"remove")}),X.fn[z]=te._jQueryInterface,X.fn[z].Constructor=te,X.fn[z].noConflict=function(){return X.fn[z]=J,te._jQueryInterface},te);e.ControlSidebar=oe,e.Layout=re,e.PushMenu=ae,e.Treeview=se,e.Widget=ce,Object.defineProperty(e,"__esModule",{value:!0})});
+!function(e,t){ true?t(exports):undefined}(this,function(e){"use strict";var i,t,s,n,a,o,r,l,c,h,d,u,f,g,p,m,_,v,y,C,w,b,x,I,E,D,j,S,Q,A,L,M,O,z,P,T,k,H,N,X,q,U,W,Z,R,V,B,F,G,J,K,Y,$,ee,te,ne,ie,se,ae,oe,re,le,ce,he,de,ue,fe,ge,pe,me,_e,ve,ye,Ce,we,be,xe,Ie,Ee=(i=jQuery,t="ControlSidebar",s="lte.control.sidebar",n=i.fn[t],a=".control-sidebar",o='[data-widget="control-sidebar"]',r=".main-header",l="control-sidebar-open",c="control-sidebar-slide-open",h={slide:!0},d=function(){function n(e,t){this._element=e,this._config=this._getConfig(t)}var e=n.prototype;return e.show=function(){this._config.slide?i("body").removeClass(c):i("body").removeClass(l)},e.collapse=function(){this._config.slide?i("body").addClass(c):i("body").addClass(l)},e.toggle=function(){this._setMargin(),i("body").hasClass(l)||i("body").hasClass(c)?this.show():this.collapse()},e._getConfig=function(e){return i.extend({},h,e)},e._setMargin=function(){i(a).css({top:i(r).innerHeight()})},n._jQueryInterface=function(t){return this.each(function(){var e=i(this).data(s);if(e||(e=new n(this,i(this).data()),i(this).data(s,e)),"undefined"===e[t])throw new Error(t+" is not a function");e[t]()})},n}(),i(document).on("click",o,function(e){e.preventDefault(),d._jQueryInterface.call(i(this),"toggle")}),i.fn[t]=d._jQueryInterface,i.fn[t].Constructor=d,i.fn[t].noConflict=function(){return i.fn[t]=n,d._jQueryInterface},d),De=(u=jQuery,f="Layout",g="lte.layout",p=u.fn[f],m=".main-header",_=".main-sidebar .sidebar",v=".content-wrapper",y=".brand-link",C=".control-sidebar",w=".main-footer",b="hold-transition",x="content-fixed",I="layout-fixed",E="layout-navbar-fixed",D="layout-footer-fixed",j={scrollbarTheme:"os-theme-light",scrollbarAutoHide:"l"},S=function(){function i(e,t){this._config=t,this._element=e,this._init()}var e=i.prototype;return e.fixLayoutHeight=function(){var e={window:u(window).height(),header:u(m).outerHeight(),footer:u(w).outerHeight(),sidebar:u(_).height()},t=this._max(e);u("body").hasClass(I)?(u(v).css("min-height",t-e.header-e.footer),u(C+" .control-sidebar-content").css("height",t-e.header),"undefined"!=typeof u.fn.overlayScrollbars&&(u(_).overlayScrollbars({className:this._config.scrollbarTheme,sizeAutoCapable:!0,scrollbars:{autoHide:this._config.scrollbarAutoHide,clickScrolling:!0}}),u(C+" .control-sidebar-content").overlayScrollbars({className:this._config.scrollbarTheme,sizeAutoCapable:!0,scrollbars:{autoHide:this._config.scrollbarAutoHide,clickScrolling:!0}}))):e.sidebar<e.window?u(v).css("min-height",e.window-e.header-e.footer):u(v).css("min-height",e.sidebar-e.header),u("body").hasClass(E)&&(u(y).css("height",e.header),u(_).css("margin-top",e.header),u(_).css("margin-top",e.header)),u("body").hasClass(D)&&u(v).css("margin-bottom",e.footer),u("body").hasClass(x)&&u(v).css("height",u(v).css("min-height"))},e._init=function(){var e=this;u("body").removeClass(b),this.fixLayoutHeight(),u(_).on("collapsed.lte.treeview expanded.lte.treeview collapsed.lte.pushmenu expanded.lte.pushmenu",function(){e.fixLayoutHeight()}),u(window).resize(function(){e.fixLayoutHeight()}),u("body, html").css("height","auto")},e._max=function(t){var n=0;return Object.keys(t).forEach(function(e){t[e]>n&&(n=t[e])}),n},i._jQueryInterface=function(n){return this.each(function(){var e=u(this).data(g),t=u.extend({},j,u(this).data());e||(e=new i(u(this),t),u(this).data(g,e)),"init"===n&&e[n]()})},i}(),u(window).on("load",function(){S._jQueryInterface.call(u("body"))}),u.fn[f]=S._jQueryInterface,u.fn[f].Constructor=S,u.fn[f].noConflict=function(){return u.fn[f]=p,S._jQueryInterface},S),je=(Q=jQuery,A="PushMenu",M="."+(L="lte.pushmenu"),O=Q.fn[A],P={autoCollapseSize:!(z={COLLAPSED:"collapsed"+M,SHOWN:"shown"+M}),screenCollapseSize:768},T='[data-widget="pushmenu"]',k="body",H="#sidebar-overlay",N=".wrapper",X="sidebar-collapse",q="sidebar-open",U=function(){function i(e,t){this._element=e,this._options=Q.extend({},P,t),this._init(),Q(H).length||this._addOverlay()}var e=i.prototype;return e.show=function(){Q(k).addClass(q).removeClass(X);var e=Q.Event(z.SHOWN);Q(this._element).trigger(e)},e.collapse=function(){Q(k).removeClass(q).addClass(X);var e=Q.Event(z.COLLAPSED);Q(this._element).trigger(e)},e.isShown=function(){return Q(window).width()>=this._options.screenCollapseSize?!Q(k).hasClass(X):Q(k).hasClass(q)},e.toggle=function(){this.isShown()?this.collapse():this.show()},e.autoCollapse=function(){this._options.autoCollapseSize&&(Q(window).width()<=this._options.autoCollapseSize?this.isShown()&&this.toggle():this.isShown()||this.toggle())},e._init=function(){var e=this;this.autoCollapse(),Q(window).resize(function(){e.autoCollapse()})},e._addOverlay=function(){var e=this,t=Q("<div />",{id:"sidebar-overlay"});t.on("click",function(){e.collapse()}),Q(N).append(t)},i._jQueryInterface=function(n){return this.each(function(){var e=Q(this).data(L),t=Q.extend({},P,Q(this).data());e||(e=new i(this,t),Q(this).data(L,e)),"toggle"===n&&e[n]()})},i}(),Q(document).on("click",T,function(e){e.preventDefault();var t=e.currentTarget;"pushmenu"!==Q(t).data("widget")&&(t=Q(t).closest(T)),U._jQueryInterface.call(Q(t),"toggle")}),Q(window).on("load",function(){U._jQueryInterface.call(Q(T))}),Q.fn[A]=U._jQueryInterface,Q.fn[A].Constructor=U,Q.fn[A].noConflict=function(){return Q.fn[A]=O,U._jQueryInterface},U),Se=(W=jQuery,Z="Treeview",V="."+(R="lte.treeview"),B=W.fn[Z],F={SELECTED:"selected"+V,EXPANDED:"expanded"+V,COLLAPSED:"collapsed"+V,LOAD_DATA_API:"load"+V},G=".nav-item",J=".nav-treeview",K=".menu-open",$="menu-open",ee={trigger:(Y='[data-widget="treeview"]')+" "+".nav-link",animationSpeed:300,accordion:!0},te=function(){function i(e,t){this._config=t,this._element=e}var e=i.prototype;return e.init=function(){this._setupListeners()},e.expand=function(e,t){var n=this,i=W.Event(F.EXPANDED);if(this._config.accordion){var s=t.siblings(K).first(),a=s.find(J).first();this.collapse(a,s)}e.slideDown(this._config.animationSpeed,function(){t.addClass($),W(n._element).trigger(i)})},e.collapse=function(e,t){var n=this,i=W.Event(F.COLLAPSED);e.slideUp(this._config.animationSpeed,function(){t.removeClass($),W(n._element).trigger(i),e.find(K+" > "+J).slideUp(),e.find(K).removeClass($)})},e.toggle=function(e){var t=W(e.currentTarget),n=t.next();if(n.is(J)){e.preventDefault();var i=t.parents(G).first();i.hasClass($)?this.collapse(W(n),i):this.expand(W(n),i)}},e._setupListeners=function(){var t=this;W(document).on("click",this._config.trigger,function(e){t.toggle(e)})},i._jQueryInterface=function(n){return this.each(function(){var e=W(this).data(R),t=W.extend({},ee,W(this).data());e||(e=new i(W(this),t),W(this).data(R,e)),"init"===n&&e[n]()})},i}(),W(window).on(F.LOAD_DATA_API,function(){W(Y).each(function(){te._jQueryInterface.call(W(this),"init")})}),W.fn[Z]=te._jQueryInterface,W.fn[Z].Constructor=te,W.fn[Z].noConflict=function(){return W.fn[Z]=B,te._jQueryInterface},te),Qe=(ne=jQuery,ie="Widget",ae="."+(se="lte.widget"),oe=ne.fn[ie],re={EXPANDED:"expanded"+ae,COLLAPSED:"collapsed"+ae,MAXIMIZED:"maximized"+ae,MINIMIZED:"minimized"+ae,REMOVED:"removed"+ae},he='[data-widget="maximize"]',de=".card",ue=".card-body",fe=".card-footer",ge=".fa-minus",pe=".fa-plus",me="collapsed-card",_e="was-collapsed",ve="maximized-card",ye="fa-minus",Ce="fa-plus",we="fa-expand",be="fa-compress",xe={animationSpeed:"normal",collapseTrigger:ce='[data-widget="collapse"]',removeTrigger:le='[data-widget="remove"]'},Ie=function(){function n(e,t){this._element=e,this._parent=e.parents(de).first(),this._settings=ne.extend({},xe,t)}var e=n.prototype;return e.collapse=function(){var e=this;this._parent.children(ue+", "+fe).slideUp(this._settings.animationSpeed,function(){e._parent.addClass(me)}),this._element.children(ge).addClass(Ce).removeClass(ye);var t=ne.Event(re.COLLAPSED);this._element.trigger(t,this._parent)},e.expand=function(){var e=this;this._parent.children(ue+", "+fe).slideDown(this._settings.animationSpeed,function(){e._parent.removeClass(me)}),this._element.children(pe).addClass(ye).removeClass(Ce);var t=ne.Event(re.EXPANDED);this._element.trigger(t,this._parent)},e.remove=function(){this._parent.slideUp();var e=ne.Event(re.REMOVED);this._element.trigger(e,this._parent)},e.toggle=function(){this._parent.hasClass(me)?this.expand():this.collapse()},e.toggleMaximize=function(){var e=this._element.find("i");this._parent.hasClass(ve)?(e.addClass(we).removeClass(be),this._parent.css("cssText","height:"+this._parent[0].style.height+" !important;width:"+this._parent[0].style.width+" !important; transition: all .15s;").delay(100).queue(function(){ne(this).removeClass(ve),ne("html").removeClass(ve),ne(this).trigger(re.MINIMIZED),ne(this).css({height:"inherit",width:"inherit"}),ne(this).hasClass(_e)&&ne(this).removeClass(_e),ne(this).dequeue()})):(e.addClass(be).removeClass(we),this._parent.css({height:this._parent.height(),width:this._parent.width(),transition:"all .15s"}).delay(150).queue(function(){ne(this).addClass(ve),ne("html").addClass(ve),ne(this).trigger(re.MAXIMIZED),ne(this).hasClass(me)&&ne(this).addClass(_e),ne(this).dequeue()}))},e._init=function(e){var t=this;this._parent=e,ne(this).find(this._settings.collapseTrigger).click(function(){t.toggle()}),ne(this).find(this._settings.removeTrigger).click(function(){t.remove()})},n._jQueryInterface=function(t){return this.each(function(){var e=ne(this).data(se);e||(e=new n(ne(this),e),ne(this).data(se,"string"==typeof t?e:t)),"string"==typeof t&&t.match(/remove|toggle/)?e[t]():"object"==typeof t&&e._init(ne(this))})},n}(),ne(document).on("click",ce,function(e){e&&e.preventDefault(),Ie._jQueryInterface.call(ne(this),"toggle")}),ne(document).on("click",le,function(e){e&&e.preventDefault(),Ie._jQueryInterface.call(ne(this),"remove")}),ne(document).on("click",he,function(e){e&&e.preventDefault(),Ie._jQueryInterface.call(ne(this),"toggleMaximize")}),ne.fn[ie]=Ie._jQueryInterface,ne.fn[ie].Constructor=Ie,ne.fn[ie].noConflict=function(){return ne.fn[ie]=oe,Ie._jQueryInterface},Ie);e.ControlSidebar=Ee,e.Layout=De,e.PushMenu=je,e.Treeview=Se,e.Widget=Qe,Object.defineProperty(e,"__esModule",{value:!0})});
 //# sourceMappingURL=adminlte.min.js.map
 
 /***/ }),
@@ -1746,12 +1746,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log('Component mounted.');
@@ -1794,6 +1788,42 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     console.log('Component mounted.');
   }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/NotFound.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/NotFound.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {},
+  data: function data() {
+    return {};
+  },
+  methods: {}
 });
 
 /***/ }),
@@ -2038,10 +2068,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
+    var _this = this;
+
     console.log('Component mounted.');
     this.loadAuth();
+    Fire.$on('reloadAuth', function () {
+      _this.loadAuth();
+    });
   },
   data: function data() {
     return {
@@ -2059,37 +2097,58 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    updateInfo: function updateInfo() {
-      this.form.put('api/profile/').then(function (response) {
-        console.log(response);
-      })["catch"](function () {});
+    getProfilePhoto: function getProfilePhoto() {
+      var photo = this.form.photo.length > 200 ? this.form.photo : "img/profile/" + this.form.photo;
+      return photo;
     },
-    loadAuth: function loadAuth() {
-      var _this = this;
+    updateInfo: function updateInfo() {
+      var _this2 = this;
 
-      axios.get('api/profile').then(function (response) {
-        _this.form.fill(response.data);
+      this.$Progress.start();
+      this.form.put('api/profile/').then(function (response) {
+        console.log(response); //emmit reloadAuth
 
-        _this.auth = response.data;
-        console.log(_this.auth);
+        Fire.$emit('reloadAuth'); //this.$Progress.finish();
       })["catch"](function (error) {
         console.log(error.response.data);
+
+        _this2.$Progress.fail();
+      });
+    },
+    loadAuth: function loadAuth() {
+      var _this3 = this;
+
+      axios.get('api/profile').then(function (response) {
+        _this3.form.fill(response.data);
+
+        _this3.auth = response.data;
+        console.log(_this3.auth.name);
+      })["catch"](function (error) {
+        console.log(error.response);
       })["finally"](function () {});
     },
     updateProfile: function updateProfile(e) {
-      var _this2 = this;
+      var _this4 = this;
 
       var file = e.target.files[0]; //console.log(file);
 
       var reader = new FileReader();
 
-      reader.onloadend = function (file) {
-        //console.log('RESULT', reader.result)
-        _this2.form.photo = reader.result;
-      }; //console.log(reader.readAsDataURL(file));
+      if (file['size'] < 2111775) {
+        reader.onloadend = function (file) {
+          //console.log('RESULT', reader.result)
+          _this4.form.photo = reader.result;
+        }; //console.log(reader.readAsDataURL(file));
 
 
-      reader.readAsDataURL(file);
+        reader.readAsDataURL(file);
+      } else {
+        swal.fire({
+          type: 'error',
+          title: 'Ooops....',
+          text: 'Your file is too large. '
+        });
+      }
     }
   }
 });
@@ -2107,6 +2166,17 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var timers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! timers */ "./node_modules/timers-browserify/main.js");
 /* harmony import */ var timers__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(timers__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2256,6 +2326,24 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    searchfxn: function searchfxn() {
+      var _this = this;
+
+      var query = this.$parent.search;
+      axios.get('api/findUser?q=' + query).then(function (response) {
+        _this.users = response.data;
+      })["catch"](function (error) {
+        console.log(error.response.data.error);
+      });
+    },
+    getResults: function getResults() {
+      var _this2 = this;
+
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      axios.get('api/user?page=' + page).then(function (response) {
+        _this2.users = response.data;
+      });
+    },
     updateUser: function updateUser(id) {
       this.form.put("api/user/".concat(this.form.id), {
         name: this.form.name,
@@ -2297,7 +2385,7 @@ __webpack_require__.r(__webpack_exports__);
       $('#userModal').modal('show');
     },
     deleteUser: function deleteUser(id) {
-      var _this = this;
+      var _this3 = this;
 
       swal.fire({
         title: 'Are you sure?',
@@ -2311,19 +2399,17 @@ __webpack_require__.r(__webpack_exports__);
         if (result.value) {
           swal.fire('Deleted!', 'Your file has been deleted.', 'success'); //sene request to the server
 
-          _this.form["delete"]("/api/user/".concat(id)).then(function (response) {
+          _this3.form["delete"]("/api/user/".concat(id)).then(function (response) {
             Fire.$emit('ReloadGetUsers');
           })["catch"](function () {
             swal.fire("Failed!", "Something went wrong.", "warning");
             console.log('bad ');
           });
-
-          "";
         }
       });
     },
     createUser: function createUser() {
-      var _this2 = this;
+      var _this4 = this;
 
       //this.form.post('api/user');
       this.$Progress.start(); //start progress bar
@@ -2339,46 +2425,55 @@ __webpack_require__.r(__webpack_exports__);
         password_confirmation: this.form.password_confirmation
       }).then(function (response) {
         //console.log(response.data);
-        _this2.$Progress.finish(); //complete progress bar.
-
-
+        //this.$Progress.finish();//complete progress bar.
         $('#userModal').modal('hide');
         toast.fire({
           type: 'success',
           title: 'User Created successfully'
         });
         Fire.$emit('ReloadGetUsers'); //emmit the ReloadGetUsers event
+        //redirect to a new component route on success
+        //this.$router.replace({ path: 'profile' })
         // this.users.unshift(response.data); //update users object with latest data
       })["catch"](function (error) {
-        _this2.$Progress.fail(); //if action fails
+        _this4.$Progress.fail(); //if action fails
+        //console.log(error);
 
 
+        _this4.geterrors = error.response.data.errors;
         console.log(error.response.data.errors);
-        console.log(error.response.status); //console.log(error.response.headers);
+        console.log(error.response.data);
+        console.log('failded'); //console.log(error.response.headers);
         //read about asyn and await new in es6 and javascript
       });
     },
     loadUsers: function loadUsers() {
-      var _this3 = this;
+      var _this5 = this;
 
-      axios.get('api/user').then(function (_ref) {
-        var data = _ref.data;
-        return _this3.users = data.data;
-      }) //.catch( ({error}) => console.log(error.data) )
-      ["catch"](function (_ref2) {
-        var error = _ref2.error;
-        return error.data.data.errors = _this3.geterrors;
-      })["finally"]();
+      if (this.$gate.isAdminOrAuthor) {
+        axios.get('api/user').then(function (_ref) {
+          var data = _ref.data;
+          return _this5.users = data;
+        }) //.catch( ({error}) => console.log(error.data) )
+        ["catch"](function (_ref2) {
+          var error = _ref2.error;
+          return error.data.data.errors = _this5.geterrors;
+        })["finally"]();
+      }
     }
   },
   mounted: function mounted() {
-    var _this4 = this;
+    var _this6 = this;
 
     console.log('Component mounted. GET STARTED');
     this.loadUsers();
     Fire.$on('ReloadGetUsers', function () {
-      _this4.loadUsers();
+      _this6.loadUsers();
     }); // setInterval(() => this.loadUsers(), 3000); // to reload data from db every 3 seconds for realtime update.
+
+    Fire.$on('searching', function () {
+      _this6.searchfxn();
+    });
   }
 });
 
@@ -18377,6 +18472,1380 @@ return jQuery;
 
 /***/ }),
 
+/***/ "./node_modules/laravel-vue-pagination/dist/laravel-vue-pagination.common.js":
+/*!***********************************************************************************!*\
+  !*** ./node_modules/laravel-vue-pagination/dist/laravel-vue-pagination.common.js ***!
+  \***********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports =
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = "fb15");
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "0d58":
+/***/ (function(module, exports, __webpack_require__) {
+
+// 19.1.2.14 / 15.2.3.14 Object.keys(O)
+var $keys = __webpack_require__("ce10");
+var enumBugKeys = __webpack_require__("e11e");
+
+module.exports = Object.keys || function keys(O) {
+  return $keys(O, enumBugKeys);
+};
+
+
+/***/ }),
+
+/***/ "11e9":
+/***/ (function(module, exports, __webpack_require__) {
+
+var pIE = __webpack_require__("52a7");
+var createDesc = __webpack_require__("4630");
+var toIObject = __webpack_require__("6821");
+var toPrimitive = __webpack_require__("6a99");
+var has = __webpack_require__("69a8");
+var IE8_DOM_DEFINE = __webpack_require__("c69a");
+var gOPD = Object.getOwnPropertyDescriptor;
+
+exports.f = __webpack_require__("9e1e") ? gOPD : function getOwnPropertyDescriptor(O, P) {
+  O = toIObject(O);
+  P = toPrimitive(P, true);
+  if (IE8_DOM_DEFINE) try {
+    return gOPD(O, P);
+  } catch (e) { /* empty */ }
+  if (has(O, P)) return createDesc(!pIE.f.call(O, P), O[P]);
+};
+
+
+/***/ }),
+
+/***/ "1495":
+/***/ (function(module, exports, __webpack_require__) {
+
+var dP = __webpack_require__("86cc");
+var anObject = __webpack_require__("cb7c");
+var getKeys = __webpack_require__("0d58");
+
+module.exports = __webpack_require__("9e1e") ? Object.defineProperties : function defineProperties(O, Properties) {
+  anObject(O);
+  var keys = getKeys(Properties);
+  var length = keys.length;
+  var i = 0;
+  var P;
+  while (length > i) dP.f(O, P = keys[i++], Properties[P]);
+  return O;
+};
+
+
+/***/ }),
+
+/***/ "230e":
+/***/ (function(module, exports, __webpack_require__) {
+
+var isObject = __webpack_require__("d3f4");
+var document = __webpack_require__("7726").document;
+// typeof document.createElement is 'object' in old IE
+var is = isObject(document) && isObject(document.createElement);
+module.exports = function (it) {
+  return is ? document.createElement(it) : {};
+};
+
+
+/***/ }),
+
+/***/ "2aba":
+/***/ (function(module, exports, __webpack_require__) {
+
+var global = __webpack_require__("7726");
+var hide = __webpack_require__("32e9");
+var has = __webpack_require__("69a8");
+var SRC = __webpack_require__("ca5a")('src');
+var $toString = __webpack_require__("fa5b");
+var TO_STRING = 'toString';
+var TPL = ('' + $toString).split(TO_STRING);
+
+__webpack_require__("8378").inspectSource = function (it) {
+  return $toString.call(it);
+};
+
+(module.exports = function (O, key, val, safe) {
+  var isFunction = typeof val == 'function';
+  if (isFunction) has(val, 'name') || hide(val, 'name', key);
+  if (O[key] === val) return;
+  if (isFunction) has(val, SRC) || hide(val, SRC, O[key] ? '' + O[key] : TPL.join(String(key)));
+  if (O === global) {
+    O[key] = val;
+  } else if (!safe) {
+    delete O[key];
+    hide(O, key, val);
+  } else if (O[key]) {
+    O[key] = val;
+  } else {
+    hide(O, key, val);
+  }
+// add fake Function#toString for correct work wrapped methods / constructors with methods like LoDash isNative
+})(Function.prototype, TO_STRING, function toString() {
+  return typeof this == 'function' && this[SRC] || $toString.call(this);
+});
+
+
+/***/ }),
+
+/***/ "2aeb":
+/***/ (function(module, exports, __webpack_require__) {
+
+// 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
+var anObject = __webpack_require__("cb7c");
+var dPs = __webpack_require__("1495");
+var enumBugKeys = __webpack_require__("e11e");
+var IE_PROTO = __webpack_require__("613b")('IE_PROTO');
+var Empty = function () { /* empty */ };
+var PROTOTYPE = 'prototype';
+
+// Create object with fake `null` prototype: use iframe Object with cleared prototype
+var createDict = function () {
+  // Thrash, waste and sodomy: IE GC bug
+  var iframe = __webpack_require__("230e")('iframe');
+  var i = enumBugKeys.length;
+  var lt = '<';
+  var gt = '>';
+  var iframeDocument;
+  iframe.style.display = 'none';
+  __webpack_require__("fab2").appendChild(iframe);
+  iframe.src = 'javascript:'; // eslint-disable-line no-script-url
+  // createDict = iframe.contentWindow.Object;
+  // html.removeChild(iframe);
+  iframeDocument = iframe.contentWindow.document;
+  iframeDocument.open();
+  iframeDocument.write(lt + 'script' + gt + 'document.F=Object' + lt + '/script' + gt);
+  iframeDocument.close();
+  createDict = iframeDocument.F;
+  while (i--) delete createDict[PROTOTYPE][enumBugKeys[i]];
+  return createDict();
+};
+
+module.exports = Object.create || function create(O, Properties) {
+  var result;
+  if (O !== null) {
+    Empty[PROTOTYPE] = anObject(O);
+    result = new Empty();
+    Empty[PROTOTYPE] = null;
+    // add "__proto__" for Object.getPrototypeOf polyfill
+    result[IE_PROTO] = O;
+  } else result = createDict();
+  return Properties === undefined ? result : dPs(result, Properties);
+};
+
+
+/***/ }),
+
+/***/ "2d00":
+/***/ (function(module, exports) {
+
+module.exports = false;
+
+
+/***/ }),
+
+/***/ "2d95":
+/***/ (function(module, exports) {
+
+var toString = {}.toString;
+
+module.exports = function (it) {
+  return toString.call(it).slice(8, -1);
+};
+
+
+/***/ }),
+
+/***/ "32e9":
+/***/ (function(module, exports, __webpack_require__) {
+
+var dP = __webpack_require__("86cc");
+var createDesc = __webpack_require__("4630");
+module.exports = __webpack_require__("9e1e") ? function (object, key, value) {
+  return dP.f(object, key, createDesc(1, value));
+} : function (object, key, value) {
+  object[key] = value;
+  return object;
+};
+
+
+/***/ }),
+
+/***/ "4588":
+/***/ (function(module, exports) {
+
+// 7.1.4 ToInteger
+var ceil = Math.ceil;
+var floor = Math.floor;
+module.exports = function (it) {
+  return isNaN(it = +it) ? 0 : (it > 0 ? floor : ceil)(it);
+};
+
+
+/***/ }),
+
+/***/ "4630":
+/***/ (function(module, exports) {
+
+module.exports = function (bitmap, value) {
+  return {
+    enumerable: !(bitmap & 1),
+    configurable: !(bitmap & 2),
+    writable: !(bitmap & 4),
+    value: value
+  };
+};
+
+
+/***/ }),
+
+/***/ "52a7":
+/***/ (function(module, exports) {
+
+exports.f = {}.propertyIsEnumerable;
+
+
+/***/ }),
+
+/***/ "5537":
+/***/ (function(module, exports, __webpack_require__) {
+
+var core = __webpack_require__("8378");
+var global = __webpack_require__("7726");
+var SHARED = '__core-js_shared__';
+var store = global[SHARED] || (global[SHARED] = {});
+
+(module.exports = function (key, value) {
+  return store[key] || (store[key] = value !== undefined ? value : {});
+})('versions', []).push({
+  version: core.version,
+  mode: __webpack_require__("2d00") ? 'pure' : 'global',
+  copyright: '© 2019 Denis Pushkarev (zloirock.ru)'
+});
+
+
+/***/ }),
+
+/***/ "5ca1":
+/***/ (function(module, exports, __webpack_require__) {
+
+var global = __webpack_require__("7726");
+var core = __webpack_require__("8378");
+var hide = __webpack_require__("32e9");
+var redefine = __webpack_require__("2aba");
+var ctx = __webpack_require__("9b43");
+var PROTOTYPE = 'prototype';
+
+var $export = function (type, name, source) {
+  var IS_FORCED = type & $export.F;
+  var IS_GLOBAL = type & $export.G;
+  var IS_STATIC = type & $export.S;
+  var IS_PROTO = type & $export.P;
+  var IS_BIND = type & $export.B;
+  var target = IS_GLOBAL ? global : IS_STATIC ? global[name] || (global[name] = {}) : (global[name] || {})[PROTOTYPE];
+  var exports = IS_GLOBAL ? core : core[name] || (core[name] = {});
+  var expProto = exports[PROTOTYPE] || (exports[PROTOTYPE] = {});
+  var key, own, out, exp;
+  if (IS_GLOBAL) source = name;
+  for (key in source) {
+    // contains in native
+    own = !IS_FORCED && target && target[key] !== undefined;
+    // export native or passed
+    out = (own ? target : source)[key];
+    // bind timers to global for call from export context
+    exp = IS_BIND && own ? ctx(out, global) : IS_PROTO && typeof out == 'function' ? ctx(Function.call, out) : out;
+    // extend global
+    if (target) redefine(target, key, out, type & $export.U);
+    // export
+    if (exports[key] != out) hide(exports, key, exp);
+    if (IS_PROTO && expProto[key] != out) expProto[key] = out;
+  }
+};
+global.core = core;
+// type bitmap
+$export.F = 1;   // forced
+$export.G = 2;   // global
+$export.S = 4;   // static
+$export.P = 8;   // proto
+$export.B = 16;  // bind
+$export.W = 32;  // wrap
+$export.U = 64;  // safe
+$export.R = 128; // real proto method for `library`
+module.exports = $export;
+
+
+/***/ }),
+
+/***/ "5dbc":
+/***/ (function(module, exports, __webpack_require__) {
+
+var isObject = __webpack_require__("d3f4");
+var setPrototypeOf = __webpack_require__("8b97").set;
+module.exports = function (that, target, C) {
+  var S = target.constructor;
+  var P;
+  if (S !== C && typeof S == 'function' && (P = S.prototype) !== C.prototype && isObject(P) && setPrototypeOf) {
+    setPrototypeOf(that, P);
+  } return that;
+};
+
+
+/***/ }),
+
+/***/ "613b":
+/***/ (function(module, exports, __webpack_require__) {
+
+var shared = __webpack_require__("5537")('keys');
+var uid = __webpack_require__("ca5a");
+module.exports = function (key) {
+  return shared[key] || (shared[key] = uid(key));
+};
+
+
+/***/ }),
+
+/***/ "626a":
+/***/ (function(module, exports, __webpack_require__) {
+
+// fallback for non-array-like ES3 and non-enumerable old V8 strings
+var cof = __webpack_require__("2d95");
+// eslint-disable-next-line no-prototype-builtins
+module.exports = Object('z').propertyIsEnumerable(0) ? Object : function (it) {
+  return cof(it) == 'String' ? it.split('') : Object(it);
+};
+
+
+/***/ }),
+
+/***/ "6821":
+/***/ (function(module, exports, __webpack_require__) {
+
+// to indexed object, toObject with fallback for non-array-like ES3 strings
+var IObject = __webpack_require__("626a");
+var defined = __webpack_require__("be13");
+module.exports = function (it) {
+  return IObject(defined(it));
+};
+
+
+/***/ }),
+
+/***/ "69a8":
+/***/ (function(module, exports) {
+
+var hasOwnProperty = {}.hasOwnProperty;
+module.exports = function (it, key) {
+  return hasOwnProperty.call(it, key);
+};
+
+
+/***/ }),
+
+/***/ "6a99":
+/***/ (function(module, exports, __webpack_require__) {
+
+// 7.1.1 ToPrimitive(input [, PreferredType])
+var isObject = __webpack_require__("d3f4");
+// instead of the ES6 spec version, we didn't implement @@toPrimitive case
+// and the second argument - flag - preferred type is a string
+module.exports = function (it, S) {
+  if (!isObject(it)) return it;
+  var fn, val;
+  if (S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it))) return val;
+  if (typeof (fn = it.valueOf) == 'function' && !isObject(val = fn.call(it))) return val;
+  if (!S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it))) return val;
+  throw TypeError("Can't convert object to primitive value");
+};
+
+
+/***/ }),
+
+/***/ "7726":
+/***/ (function(module, exports) {
+
+// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
+var global = module.exports = typeof window != 'undefined' && window.Math == Math
+  ? window : typeof self != 'undefined' && self.Math == Math ? self
+  // eslint-disable-next-line no-new-func
+  : Function('return this')();
+if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
+
+
+/***/ }),
+
+/***/ "77f1":
+/***/ (function(module, exports, __webpack_require__) {
+
+var toInteger = __webpack_require__("4588");
+var max = Math.max;
+var min = Math.min;
+module.exports = function (index, length) {
+  index = toInteger(index);
+  return index < 0 ? max(index + length, 0) : min(index, length);
+};
+
+
+/***/ }),
+
+/***/ "79e5":
+/***/ (function(module, exports) {
+
+module.exports = function (exec) {
+  try {
+    return !!exec();
+  } catch (e) {
+    return true;
+  }
+};
+
+
+/***/ }),
+
+/***/ "8378":
+/***/ (function(module, exports) {
+
+var core = module.exports = { version: '2.6.5' };
+if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
+
+
+/***/ }),
+
+/***/ "86cc":
+/***/ (function(module, exports, __webpack_require__) {
+
+var anObject = __webpack_require__("cb7c");
+var IE8_DOM_DEFINE = __webpack_require__("c69a");
+var toPrimitive = __webpack_require__("6a99");
+var dP = Object.defineProperty;
+
+exports.f = __webpack_require__("9e1e") ? Object.defineProperty : function defineProperty(O, P, Attributes) {
+  anObject(O);
+  P = toPrimitive(P, true);
+  anObject(Attributes);
+  if (IE8_DOM_DEFINE) try {
+    return dP(O, P, Attributes);
+  } catch (e) { /* empty */ }
+  if ('get' in Attributes || 'set' in Attributes) throw TypeError('Accessors not supported!');
+  if ('value' in Attributes) O[P] = Attributes.value;
+  return O;
+};
+
+
+/***/ }),
+
+/***/ "8b97":
+/***/ (function(module, exports, __webpack_require__) {
+
+// Works with __proto__ only. Old v8 can't work with null proto objects.
+/* eslint-disable no-proto */
+var isObject = __webpack_require__("d3f4");
+var anObject = __webpack_require__("cb7c");
+var check = function (O, proto) {
+  anObject(O);
+  if (!isObject(proto) && proto !== null) throw TypeError(proto + ": can't set as prototype!");
+};
+module.exports = {
+  set: Object.setPrototypeOf || ('__proto__' in {} ? // eslint-disable-line
+    function (test, buggy, set) {
+      try {
+        set = __webpack_require__("9b43")(Function.call, __webpack_require__("11e9").f(Object.prototype, '__proto__').set, 2);
+        set(test, []);
+        buggy = !(test instanceof Array);
+      } catch (e) { buggy = true; }
+      return function setPrototypeOf(O, proto) {
+        check(O, proto);
+        if (buggy) O.__proto__ = proto;
+        else set(O, proto);
+        return O;
+      };
+    }({}, false) : undefined),
+  check: check
+};
+
+
+/***/ }),
+
+/***/ "9093":
+/***/ (function(module, exports, __webpack_require__) {
+
+// 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
+var $keys = __webpack_require__("ce10");
+var hiddenKeys = __webpack_require__("e11e").concat('length', 'prototype');
+
+exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
+  return $keys(O, hiddenKeys);
+};
+
+
+/***/ }),
+
+/***/ "9b43":
+/***/ (function(module, exports, __webpack_require__) {
+
+// optional / simple context binding
+var aFunction = __webpack_require__("d8e8");
+module.exports = function (fn, that, length) {
+  aFunction(fn);
+  if (that === undefined) return fn;
+  switch (length) {
+    case 1: return function (a) {
+      return fn.call(that, a);
+    };
+    case 2: return function (a, b) {
+      return fn.call(that, a, b);
+    };
+    case 3: return function (a, b, c) {
+      return fn.call(that, a, b, c);
+    };
+  }
+  return function (/* ...args */) {
+    return fn.apply(that, arguments);
+  };
+};
+
+
+/***/ }),
+
+/***/ "9def":
+/***/ (function(module, exports, __webpack_require__) {
+
+// 7.1.15 ToLength
+var toInteger = __webpack_require__("4588");
+var min = Math.min;
+module.exports = function (it) {
+  return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
+};
+
+
+/***/ }),
+
+/***/ "9e1e":
+/***/ (function(module, exports, __webpack_require__) {
+
+// Thank's IE8 for his funny defineProperty
+module.exports = !__webpack_require__("79e5")(function () {
+  return Object.defineProperty({}, 'a', { get: function () { return 7; } }).a != 7;
+});
+
+
+/***/ }),
+
+/***/ "aa77":
+/***/ (function(module, exports, __webpack_require__) {
+
+var $export = __webpack_require__("5ca1");
+var defined = __webpack_require__("be13");
+var fails = __webpack_require__("79e5");
+var spaces = __webpack_require__("fdef");
+var space = '[' + spaces + ']';
+var non = '\u200b\u0085';
+var ltrim = RegExp('^' + space + space + '*');
+var rtrim = RegExp(space + space + '*$');
+
+var exporter = function (KEY, exec, ALIAS) {
+  var exp = {};
+  var FORCE = fails(function () {
+    return !!spaces[KEY]() || non[KEY]() != non;
+  });
+  var fn = exp[KEY] = FORCE ? exec(trim) : spaces[KEY];
+  if (ALIAS) exp[ALIAS] = fn;
+  $export($export.P + $export.F * FORCE, 'String', exp);
+};
+
+// 1 -> String#trimLeft
+// 2 -> String#trimRight
+// 3 -> String#trim
+var trim = exporter.trim = function (string, TYPE) {
+  string = String(defined(string));
+  if (TYPE & 1) string = string.replace(ltrim, '');
+  if (TYPE & 2) string = string.replace(rtrim, '');
+  return string;
+};
+
+module.exports = exporter;
+
+
+/***/ }),
+
+/***/ "be13":
+/***/ (function(module, exports) {
+
+// 7.2.1 RequireObjectCoercible(argument)
+module.exports = function (it) {
+  if (it == undefined) throw TypeError("Can't call method on  " + it);
+  return it;
+};
+
+
+/***/ }),
+
+/***/ "c366":
+/***/ (function(module, exports, __webpack_require__) {
+
+// false -> Array#indexOf
+// true  -> Array#includes
+var toIObject = __webpack_require__("6821");
+var toLength = __webpack_require__("9def");
+var toAbsoluteIndex = __webpack_require__("77f1");
+module.exports = function (IS_INCLUDES) {
+  return function ($this, el, fromIndex) {
+    var O = toIObject($this);
+    var length = toLength(O.length);
+    var index = toAbsoluteIndex(fromIndex, length);
+    var value;
+    // Array#includes uses SameValueZero equality algorithm
+    // eslint-disable-next-line no-self-compare
+    if (IS_INCLUDES && el != el) while (length > index) {
+      value = O[index++];
+      // eslint-disable-next-line no-self-compare
+      if (value != value) return true;
+    // Array#indexOf ignores holes, Array#includes - not
+    } else for (;length > index; index++) if (IS_INCLUDES || index in O) {
+      if (O[index] === el) return IS_INCLUDES || index || 0;
+    } return !IS_INCLUDES && -1;
+  };
+};
+
+
+/***/ }),
+
+/***/ "c5f6":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var global = __webpack_require__("7726");
+var has = __webpack_require__("69a8");
+var cof = __webpack_require__("2d95");
+var inheritIfRequired = __webpack_require__("5dbc");
+var toPrimitive = __webpack_require__("6a99");
+var fails = __webpack_require__("79e5");
+var gOPN = __webpack_require__("9093").f;
+var gOPD = __webpack_require__("11e9").f;
+var dP = __webpack_require__("86cc").f;
+var $trim = __webpack_require__("aa77").trim;
+var NUMBER = 'Number';
+var $Number = global[NUMBER];
+var Base = $Number;
+var proto = $Number.prototype;
+// Opera ~12 has broken Object#toString
+var BROKEN_COF = cof(__webpack_require__("2aeb")(proto)) == NUMBER;
+var TRIM = 'trim' in String.prototype;
+
+// 7.1.3 ToNumber(argument)
+var toNumber = function (argument) {
+  var it = toPrimitive(argument, false);
+  if (typeof it == 'string' && it.length > 2) {
+    it = TRIM ? it.trim() : $trim(it, 3);
+    var first = it.charCodeAt(0);
+    var third, radix, maxCode;
+    if (first === 43 || first === 45) {
+      third = it.charCodeAt(2);
+      if (third === 88 || third === 120) return NaN; // Number('+0x1') should be NaN, old V8 fix
+    } else if (first === 48) {
+      switch (it.charCodeAt(1)) {
+        case 66: case 98: radix = 2; maxCode = 49; break; // fast equal /^0b[01]+$/i
+        case 79: case 111: radix = 8; maxCode = 55; break; // fast equal /^0o[0-7]+$/i
+        default: return +it;
+      }
+      for (var digits = it.slice(2), i = 0, l = digits.length, code; i < l; i++) {
+        code = digits.charCodeAt(i);
+        // parseInt parses a string to a first unavailable symbol
+        // but ToNumber should return NaN if a string contains unavailable symbols
+        if (code < 48 || code > maxCode) return NaN;
+      } return parseInt(digits, radix);
+    }
+  } return +it;
+};
+
+if (!$Number(' 0o1') || !$Number('0b1') || $Number('+0x1')) {
+  $Number = function Number(value) {
+    var it = arguments.length < 1 ? 0 : value;
+    var that = this;
+    return that instanceof $Number
+      // check on 1..constructor(foo) case
+      && (BROKEN_COF ? fails(function () { proto.valueOf.call(that); }) : cof(that) != NUMBER)
+        ? inheritIfRequired(new Base(toNumber(it)), that, $Number) : toNumber(it);
+  };
+  for (var keys = __webpack_require__("9e1e") ? gOPN(Base) : (
+    // ES3:
+    'MAX_VALUE,MIN_VALUE,NaN,NEGATIVE_INFINITY,POSITIVE_INFINITY,' +
+    // ES6 (in case, if modules with ES6 Number statics required before):
+    'EPSILON,isFinite,isInteger,isNaN,isSafeInteger,MAX_SAFE_INTEGER,' +
+    'MIN_SAFE_INTEGER,parseFloat,parseInt,isInteger'
+  ).split(','), j = 0, key; keys.length > j; j++) {
+    if (has(Base, key = keys[j]) && !has($Number, key)) {
+      dP($Number, key, gOPD(Base, key));
+    }
+  }
+  $Number.prototype = proto;
+  proto.constructor = $Number;
+  __webpack_require__("2aba")(global, NUMBER, $Number);
+}
+
+
+/***/ }),
+
+/***/ "c69a":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = !__webpack_require__("9e1e") && !__webpack_require__("79e5")(function () {
+  return Object.defineProperty(__webpack_require__("230e")('div'), 'a', { get: function () { return 7; } }).a != 7;
+});
+
+
+/***/ }),
+
+/***/ "ca5a":
+/***/ (function(module, exports) {
+
+var id = 0;
+var px = Math.random();
+module.exports = function (key) {
+  return 'Symbol('.concat(key === undefined ? '' : key, ')_', (++id + px).toString(36));
+};
+
+
+/***/ }),
+
+/***/ "cb7c":
+/***/ (function(module, exports, __webpack_require__) {
+
+var isObject = __webpack_require__("d3f4");
+module.exports = function (it) {
+  if (!isObject(it)) throw TypeError(it + ' is not an object!');
+  return it;
+};
+
+
+/***/ }),
+
+/***/ "ce10":
+/***/ (function(module, exports, __webpack_require__) {
+
+var has = __webpack_require__("69a8");
+var toIObject = __webpack_require__("6821");
+var arrayIndexOf = __webpack_require__("c366")(false);
+var IE_PROTO = __webpack_require__("613b")('IE_PROTO');
+
+module.exports = function (object, names) {
+  var O = toIObject(object);
+  var i = 0;
+  var result = [];
+  var key;
+  for (key in O) if (key != IE_PROTO) has(O, key) && result.push(key);
+  // Don't enum bug & hidden keys
+  while (names.length > i) if (has(O, key = names[i++])) {
+    ~arrayIndexOf(result, key) || result.push(key);
+  }
+  return result;
+};
+
+
+/***/ }),
+
+/***/ "d3f4":
+/***/ (function(module, exports) {
+
+module.exports = function (it) {
+  return typeof it === 'object' ? it !== null : typeof it === 'function';
+};
+
+
+/***/ }),
+
+/***/ "d8e8":
+/***/ (function(module, exports) {
+
+module.exports = function (it) {
+  if (typeof it != 'function') throw TypeError(it + ' is not a function!');
+  return it;
+};
+
+
+/***/ }),
+
+/***/ "e11e":
+/***/ (function(module, exports) {
+
+// IE 8- don't enum bug keys
+module.exports = (
+  'constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf'
+).split(',');
+
+
+/***/ }),
+
+/***/ "fa5b":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__("5537")('native-function-to-string', Function.toString);
+
+
+/***/ }),
+
+/***/ "fab2":
+/***/ (function(module, exports, __webpack_require__) {
+
+var document = __webpack_require__("7726").document;
+module.exports = document && document.documentElement;
+
+
+/***/ }),
+
+/***/ "fb15":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+
+// CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/setPublicPath.js
+// This file is imported into lib/wc client bundles.
+
+if (typeof window !== 'undefined') {
+  var i
+  if ((i = window.document.currentScript) && (i = i.src.match(/(.+\/)[^/]+\.js(\?.*)?$/))) {
+    __webpack_require__.p = i[1] // eslint-disable-line
+  }
+}
+
+// Indicate to webpack that this file can be concatenated
+/* harmony default export */ var setPublicPath = (null);
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"0fa2e68e-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/LaravelVuePagination.vue?vue&type=template&id=7f71b5a7&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('renderless-laravel-vue-pagination',{attrs:{"data":_vm.data,"limit":_vm.limit,"show-disabled":_vm.showDisabled,"size":_vm.size,"align":_vm.align},on:{"pagination-change-page":_vm.onPaginationChangePage},scopedSlots:_vm._u([{key:"default",fn:function(ref){
+var data = ref.data;
+var limit = ref.limit;
+var showDisabled = ref.showDisabled;
+var size = ref.size;
+var align = ref.align;
+var computed = ref.computed;
+var prevButtonEvents = ref.prevButtonEvents;
+var nextButtonEvents = ref.nextButtonEvents;
+var pageButtonEvents = ref.pageButtonEvents;
+return (computed.total > computed.perPage)?_c('ul',{staticClass:"pagination",class:{
+            'pagination-sm': size == 'small',
+            'pagination-lg': size == 'large',
+            'justify-content-center': align == 'center',
+            'justify-content-end': align == 'right'
+        }},[(computed.prevPageUrl || showDisabled)?_c('li',{staticClass:"page-item pagination-prev-nav",class:{'disabled': !computed.prevPageUrl}},[_c('a',_vm._g({staticClass:"page-link",attrs:{"href":"#","aria-label":"Previous","tabindex":!computed.prevPageUrl && -1}},prevButtonEvents),[_vm._t("prev-nav",[_c('span',{attrs:{"aria-hidden":"true"}},[_vm._v("«")]),_c('span',{staticClass:"sr-only"},[_vm._v("Previous")])])],2)]):_vm._e(),_vm._l((computed.pageRange),function(page,key){return _c('li',{key:key,staticClass:"page-item pagination-page-nav",class:{ 'active': page == computed.currentPage }},[_c('a',_vm._g({staticClass:"page-link",attrs:{"href":"#"}},pageButtonEvents(page)),[_vm._v("\n                "+_vm._s(page)+"\n                "),(page == computed.currentPage)?_c('span',{staticClass:"sr-only"},[_vm._v("(current)")]):_vm._e()])])}),(computed.nextPageUrl || showDisabled)?_c('li',{staticClass:"page-item pagination-next-nav",class:{'disabled': !computed.nextPageUrl}},[_c('a',_vm._g({staticClass:"page-link",attrs:{"href":"#","aria-label":"Next","tabindex":!computed.nextPageUrl && -1}},nextButtonEvents),[_vm._t("next-nav",[_c('span',{attrs:{"aria-hidden":"true"}},[_vm._v("»")]),_c('span',{staticClass:"sr-only"},[_vm._v("Next")])])],2)]):_vm._e()],2):_vm._e()}}],null,true)})}
+var staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/LaravelVuePagination.vue?vue&type=template&id=7f71b5a7&
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.number.constructor.js
+var es6_number_constructor = __webpack_require__("c5f6");
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/RenderlessLaravelVuePagination.vue?vue&type=script&lang=js&
+
+/* harmony default export */ var RenderlessLaravelVuePaginationvue_type_script_lang_js_ = ({
+  props: {
+    data: {
+      type: Object,
+      default: function _default() {}
+    },
+    limit: {
+      type: Number,
+      default: 0
+    },
+    showDisabled: {
+      type: Boolean,
+      default: false
+    },
+    size: {
+      type: String,
+      default: 'default',
+      validator: function validator(value) {
+        return ['small', 'default', 'large'].indexOf(value) !== -1;
+      }
+    },
+    align: {
+      type: String,
+      default: 'left',
+      validator: function validator(value) {
+        return ['left', 'center', 'right'].indexOf(value) !== -1;
+      }
+    }
+  },
+  computed: {
+    isApiResource: function isApiResource() {
+      return !!this.data.meta;
+    },
+    currentPage: function currentPage() {
+      return this.isApiResource ? this.data.meta.current_page : this.data.current_page;
+    },
+    firstPageUrl: function firstPageUrl() {
+      return this.isApiResource ? this.data.links.first : null;
+    },
+    from: function from() {
+      return this.isApiResource ? this.data.meta.from : this.data.from;
+    },
+    lastPage: function lastPage() {
+      return this.isApiResource ? this.data.meta.last_page : this.data.last_page;
+    },
+    lastPageUrl: function lastPageUrl() {
+      return this.isApiResource ? this.data.links.last : null;
+    },
+    nextPageUrl: function nextPageUrl() {
+      return this.isApiResource ? this.data.links.next : this.data.next_page_url;
+    },
+    perPage: function perPage() {
+      return this.isApiResource ? this.data.meta.per_page : this.data.per_page;
+    },
+    prevPageUrl: function prevPageUrl() {
+      return this.isApiResource ? this.data.links.prev : this.data.prev_page_url;
+    },
+    to: function to() {
+      return this.isApiResource ? this.data.meta.to : this.data.to;
+    },
+    total: function total() {
+      return this.isApiResource ? this.data.meta.total : this.data.total;
+    },
+    pageRange: function pageRange() {
+      if (this.limit === -1) {
+        return 0;
+      }
+
+      if (this.limit === 0) {
+        return this.lastPage;
+      }
+
+      var current = this.currentPage;
+      var last = this.lastPage;
+      var delta = this.limit;
+      var left = current - delta;
+      var right = current + delta + 1;
+      var range = [];
+      var pages = [];
+      var l;
+
+      for (var i = 1; i <= last; i++) {
+        if (i === 1 || i === last || i >= left && i < right) {
+          range.push(i);
+        }
+      }
+
+      range.forEach(function (i) {
+        if (l) {
+          if (i - l === 2) {
+            pages.push(l + 1);
+          } else if (i - l !== 1) {
+            pages.push('...');
+          }
+        }
+
+        pages.push(i);
+        l = i;
+      });
+      return pages;
+    }
+  },
+  methods: {
+    previousPage: function previousPage() {
+      this.selectPage(this.currentPage - 1);
+    },
+    nextPage: function nextPage() {
+      this.selectPage(this.currentPage + 1);
+    },
+    selectPage: function selectPage(page) {
+      if (page === '...') {
+        return;
+      }
+
+      this.$emit('pagination-change-page', page);
+    }
+  },
+  render: function render() {
+    var _this = this;
+
+    return this.$scopedSlots.default({
+      data: this.data,
+      limit: this.limit,
+      showDisabled: this.showDisabled,
+      size: this.size,
+      align: this.align,
+      computed: {
+        isApiResource: this.isApiResource,
+        currentPage: this.currentPage,
+        firstPageUrl: this.firstPageUrl,
+        from: this.from,
+        lastPage: this.lastPage,
+        lastPageUrl: this.lastPageUrl,
+        nextPageUrl: this.nextPageUrl,
+        perPage: this.perPage,
+        prevPageUrl: this.prevPageUrl,
+        to: this.to,
+        total: this.total,
+        pageRange: this.pageRange
+      },
+      prevButtonEvents: {
+        click: function click(e) {
+          e.preventDefault();
+
+          _this.previousPage();
+        }
+      },
+      nextButtonEvents: {
+        click: function click(e) {
+          e.preventDefault();
+
+          _this.nextPage();
+        }
+      },
+      pageButtonEvents: function pageButtonEvents(page) {
+        return {
+          click: function click(e) {
+            e.preventDefault();
+
+            _this.selectPage(page);
+          }
+        };
+      }
+    });
+  }
+});
+// CONCATENATED MODULE: ./src/RenderlessLaravelVuePagination.vue?vue&type=script&lang=js&
+ /* harmony default export */ var src_RenderlessLaravelVuePaginationvue_type_script_lang_js_ = (RenderlessLaravelVuePaginationvue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
+/* globals __VUE_SSR_CONTEXT__ */
+
+// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
+// This module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle.
+
+function normalizeComponent (
+  scriptExports,
+  render,
+  staticRenderFns,
+  functionalTemplate,
+  injectStyles,
+  scopeId,
+  moduleIdentifier, /* server only */
+  shadowMode /* vue-cli only */
+) {
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // render functions
+  if (render) {
+    options.render = render
+    options.staticRenderFns = staticRenderFns
+    options._compiled = true
+  }
+
+  // functional template
+  if (functionalTemplate) {
+    options.functional = true
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = 'data-v-' + scopeId
+  }
+
+  var hook
+  if (moduleIdentifier) { // server build
+    hook = function (context) {
+      // 2.3 injection
+      context =
+        context || // cached call
+        (this.$vnode && this.$vnode.ssrContext) || // stateful
+        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
+      // 2.2 with runInNewContext: true
+      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+        context = __VUE_SSR_CONTEXT__
+      }
+      // inject component styles
+      if (injectStyles) {
+        injectStyles.call(this, context)
+      }
+      // register component module identifier for async chunk inferrence
+      if (context && context._registeredComponents) {
+        context._registeredComponents.add(moduleIdentifier)
+      }
+    }
+    // used by ssr in case component is cached and beforeCreate
+    // never gets called
+    options._ssrRegister = hook
+  } else if (injectStyles) {
+    hook = shadowMode
+      ? function () { injectStyles.call(this, this.$root.$options.shadowRoot) }
+      : injectStyles
+  }
+
+  if (hook) {
+    if (options.functional) {
+      // for template-only hot-reload because in that case the render fn doesn't
+      // go through the normalizer
+      options._injectStyles = hook
+      // register for functioal component in vue file
+      var originalRender = options.render
+      options.render = function renderWithStyleInjection (h, context) {
+        hook.call(context)
+        return originalRender(h, context)
+      }
+    } else {
+      // inject component registration as beforeCreate hook
+      var existing = options.beforeCreate
+      options.beforeCreate = existing
+        ? [].concat(existing, hook)
+        : [hook]
+    }
+  }
+
+  return {
+    exports: scriptExports,
+    options: options
+  }
+}
+
+// CONCATENATED MODULE: ./src/RenderlessLaravelVuePagination.vue
+var RenderlessLaravelVuePagination_render, RenderlessLaravelVuePagination_staticRenderFns
+
+
+
+
+/* normalize component */
+
+var component = normalizeComponent(
+  src_RenderlessLaravelVuePaginationvue_type_script_lang_js_,
+  RenderlessLaravelVuePagination_render,
+  RenderlessLaravelVuePagination_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var RenderlessLaravelVuePagination = (component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/LaravelVuePagination.vue?vue&type=script&lang=js&
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ var LaravelVuePaginationvue_type_script_lang_js_ = ({
+  props: {
+    data: {
+      type: Object,
+      default: function _default() {}
+    },
+    limit: {
+      type: Number,
+      default: 0
+    },
+    showDisabled: {
+      type: Boolean,
+      default: false
+    },
+    size: {
+      type: String,
+      default: 'default',
+      validator: function validator(value) {
+        return ['small', 'default', 'large'].indexOf(value) !== -1;
+      }
+    },
+    align: {
+      type: String,
+      default: 'left',
+      validator: function validator(value) {
+        return ['left', 'center', 'right'].indexOf(value) !== -1;
+      }
+    }
+  },
+  methods: {
+    onPaginationChangePage: function onPaginationChangePage(page) {
+      this.$emit('pagination-change-page', page);
+    }
+  },
+  components: {
+    RenderlessLaravelVuePagination: RenderlessLaravelVuePagination
+  }
+});
+// CONCATENATED MODULE: ./src/LaravelVuePagination.vue?vue&type=script&lang=js&
+ /* harmony default export */ var src_LaravelVuePaginationvue_type_script_lang_js_ = (LaravelVuePaginationvue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/LaravelVuePagination.vue
+
+
+
+
+
+/* normalize component */
+
+var LaravelVuePagination_component = normalizeComponent(
+  src_LaravelVuePaginationvue_type_script_lang_js_,
+  render,
+  staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var LaravelVuePagination = (LaravelVuePagination_component.exports);
+// CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/entry-lib.js
+
+
+/* harmony default export */ var entry_lib = __webpack_exports__["default"] = (LaravelVuePagination);
+
+
+
+/***/ }),
+
+/***/ "fdef":
+/***/ (function(module, exports) {
+
+module.exports = '\x09\x0A\x0B\x0C\x0D\x20\xA0\u1680\u180E\u2000\u2001\u2002\u2003' +
+  '\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF';
+
+
+/***/ })
+
+/******/ })["default"];
+//# sourceMappingURL=laravel-vue-pagination.common.js.map
+
+/***/ }),
+
 /***/ "./node_modules/lodash/lodash.js":
 /*!***************************************!*\
   !*** ./node_modules/lodash/lodash.js ***!
@@ -18387,7 +19856,7 @@ return jQuery;
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
  * @license
  * Lodash <https://lodash.com/>
- * Copyright JS Foundation and other contributors <https://js.foundation/>
+ * Copyright OpenJS Foundation and other contributors <https://openjsf.org/>
  * Released under MIT license <https://lodash.com/license>
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
  * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -18398,7 +19867,7 @@ return jQuery;
   var undefined;
 
   /** Used as the semantic version number. */
-  var VERSION = '4.17.11';
+  var VERSION = '4.17.15';
 
   /** Used as the size to enable large array optimizations. */
   var LARGE_ARRAY_SIZE = 200;
@@ -21057,16 +22526,10 @@ return jQuery;
         value.forEach(function(subValue) {
           result.add(baseClone(subValue, bitmask, customizer, subValue, value, stack));
         });
-
-        return result;
-      }
-
-      if (isMap(value)) {
+      } else if (isMap(value)) {
         value.forEach(function(subValue, key) {
           result.set(key, baseClone(subValue, bitmask, customizer, key, value, stack));
         });
-
-        return result;
       }
 
       var keysFunc = isFull
@@ -21990,8 +23453,8 @@ return jQuery;
         return;
       }
       baseFor(source, function(srcValue, key) {
+        stack || (stack = new Stack);
         if (isObject(srcValue)) {
-          stack || (stack = new Stack);
           baseMergeDeep(object, source, key, srcIndex, baseMerge, customizer, stack);
         }
         else {
@@ -23808,7 +25271,7 @@ return jQuery;
       return function(number, precision) {
         number = toNumber(number);
         precision = precision == null ? 0 : nativeMin(toInteger(precision), 292);
-        if (precision) {
+        if (precision && nativeIsFinite(number)) {
           // Shift with exponential notation to avoid floating-point issues.
           // See [MDN](https://mdn.io/round#Examples) for more details.
           var pair = (toString(number) + 'e').split('e'),
@@ -24991,7 +26454,7 @@ return jQuery;
     }
 
     /**
-     * Gets the value at `key`, unless `key` is "__proto__".
+     * Gets the value at `key`, unless `key` is "__proto__" or "constructor".
      *
      * @private
      * @param {Object} object The object to query.
@@ -24999,6 +26462,10 @@ return jQuery;
      * @returns {*} Returns the property value.
      */
     function safeGet(object, key) {
+      if (key === 'constructor' && typeof object[key] === 'function') {
+        return;
+      }
+
       if (key == '__proto__') {
         return;
       }
@@ -28799,6 +30266,7 @@ return jQuery;
           }
           if (maxing) {
             // Handle invocations in a tight loop.
+            clearTimeout(timerId);
             timerId = setTimeout(timerExpired, wait);
             return invokeFunc(lastCallTime);
           }
@@ -33185,9 +34653,12 @@ return jQuery;
       , 'g');
 
       // Use a sourceURL for easier debugging.
+      // The sourceURL gets injected into the source that's eval-ed, so be careful
+      // with lookup (in case of e.g. prototype pollution), and strip newlines if any.
+      // A newline wouldn't be a valid sourceURL anyway, and it'd enable code injection.
       var sourceURL = '//# sourceURL=' +
-        ('sourceURL' in options
-          ? options.sourceURL
+        (hasOwnProperty.call(options, 'sourceURL')
+          ? (options.sourceURL + '').replace(/[\r\n]/g, ' ')
           : ('lodash.templateSources[' + (++templateCounter) + ']')
         ) + '\n';
 
@@ -33220,7 +34691,9 @@ return jQuery;
 
       // If `variable` is not specified wrap a with-statement around the generated
       // code to add the data object to the top of the scope chain.
-      var variable = options.variable;
+      // Like with sourceURL, we take care to not check the option's prototype,
+      // as this configuration is a code injection vector.
+      var variable = hasOwnProperty.call(options, 'variable') && options.variable;
       if (!variable) {
         source = 'with (obj) {\n' + source + '\n}\n';
       }
@@ -35425,10 +36898,11 @@ return jQuery;
     baseForOwn(LazyWrapper.prototype, function(func, methodName) {
       var lodashFunc = lodash[methodName];
       if (lodashFunc) {
-        var key = (lodashFunc.name + ''),
-            names = realNames[key] || (realNames[key] = []);
-
-        names.push({ 'name': methodName, 'func': lodashFunc });
+        var key = lodashFunc.name + '';
+        if (!hasOwnProperty.call(realNames, key)) {
+          realNames[key] = [];
+        }
+        realNames[key].push({ 'name': methodName, 'func': lodashFunc });
       }
     });
 
@@ -56741,7 +58215,7 @@ module.exports = function (css) {
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
-* sweetalert2 v8.13.4
+* sweetalert2 v8.14.0
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -57266,7 +58740,7 @@ var isNodeEnv = function isNodeEnv() {
   return typeof window === 'undefined' || typeof document === 'undefined';
 };
 
-var sweetHTML = "\n <div aria-labelledby=\"".concat(swalClasses.title, "\" aria-describedby=\"").concat(swalClasses.content, "\" class=\"").concat(swalClasses.popup, "\" tabindex=\"-1\">\n   <div class=\"").concat(swalClasses.header, "\">\n     <ul class=\"").concat(swalClasses['progress-steps'], "\"></ul>\n     <div class=\"").concat(swalClasses.icon, " ").concat(iconTypes.error, "\">\n       <span class=\"swal2-x-mark\"><span class=\"swal2-x-mark-line-left\"></span><span class=\"swal2-x-mark-line-right\"></span></span>\n     </div>\n     <div class=\"").concat(swalClasses.icon, " ").concat(iconTypes.question, "\"></div>\n     <div class=\"").concat(swalClasses.icon, " ").concat(iconTypes.warning, "\"></div>\n     <div class=\"").concat(swalClasses.icon, " ").concat(iconTypes.info, "\"></div>\n     <div class=\"").concat(swalClasses.icon, " ").concat(iconTypes.success, "\">\n       <div class=\"swal2-success-circular-line-left\"></div>\n       <span class=\"swal2-success-line-tip\"></span> <span class=\"swal2-success-line-long\"></span>\n       <div class=\"swal2-success-ring\"></div> <div class=\"swal2-success-fix\"></div>\n       <div class=\"swal2-success-circular-line-right\"></div>\n     </div>\n     <img class=\"").concat(swalClasses.image, "\" />\n     <h2 class=\"").concat(swalClasses.title, "\" id=\"").concat(swalClasses.title, "\"></h2>\n     <button type=\"button\" class=\"").concat(swalClasses.close, "\">&times;</button>\n   </div>\n   <div class=\"").concat(swalClasses.content, "\">\n     <div id=\"").concat(swalClasses.content, "\"></div>\n     <input class=\"").concat(swalClasses.input, "\" />\n     <input type=\"file\" class=\"").concat(swalClasses.file, "\" />\n     <div class=\"").concat(swalClasses.range, "\">\n       <input type=\"range\" />\n       <output></output>\n     </div>\n     <select class=\"").concat(swalClasses.select, "\"></select>\n     <div class=\"").concat(swalClasses.radio, "\"></div>\n     <label for=\"").concat(swalClasses.checkbox, "\" class=\"").concat(swalClasses.checkbox, "\">\n       <input type=\"checkbox\" />\n       <span class=\"").concat(swalClasses.label, "\"></span>\n     </label>\n     <textarea class=\"").concat(swalClasses.textarea, "\"></textarea>\n     <div class=\"").concat(swalClasses['validation-message'], "\" id=\"").concat(swalClasses['validation-message'], "\"></div>\n   </div>\n   <div class=\"").concat(swalClasses.actions, "\">\n     <button type=\"button\" class=\"").concat(swalClasses.confirm, "\">OK</button>\n     <button type=\"button\" class=\"").concat(swalClasses.cancel, "\">Cancel</button>\n   </div>\n   <div class=\"").concat(swalClasses.footer, "\">\n   </div>\n </div>\n").replace(/(^|\n)\s*/g, '');
+var sweetHTML = "\n <div aria-labelledby=\"".concat(swalClasses.title, "\" aria-describedby=\"").concat(swalClasses.content, "\" class=\"").concat(swalClasses.popup, "\" tabindex=\"-1\">\n   <div class=\"").concat(swalClasses.header, "\">\n     <ul class=\"").concat(swalClasses['progress-steps'], "\"></ul>\n     <div class=\"").concat(swalClasses.icon, " ").concat(iconTypes.error, "\">\n       <span class=\"swal2-x-mark\"><span class=\"swal2-x-mark-line-left\"></span><span class=\"swal2-x-mark-line-right\"></span></span>\n     </div>\n     <div class=\"").concat(swalClasses.icon, " ").concat(iconTypes.question, "\"></div>\n     <div class=\"").concat(swalClasses.icon, " ").concat(iconTypes.warning, "\"></div>\n     <div class=\"").concat(swalClasses.icon, " ").concat(iconTypes.info, "\"></div>\n     <div class=\"").concat(swalClasses.icon, " ").concat(iconTypes.success, "\">\n       <div class=\"swal2-success-circular-line-left\"></div>\n       <span class=\"swal2-success-line-tip\"></span> <span class=\"swal2-success-line-long\"></span>\n       <div class=\"swal2-success-ring\"></div> <div class=\"swal2-success-fix\"></div>\n       <div class=\"swal2-success-circular-line-right\"></div>\n     </div>\n     <img class=\"").concat(swalClasses.image, "\" />\n     <h2 class=\"").concat(swalClasses.title, "\" id=\"").concat(swalClasses.title, "\"></h2>\n     <button type=\"button\" class=\"").concat(swalClasses.close, "\"></button>\n   </div>\n   <div class=\"").concat(swalClasses.content, "\">\n     <div id=\"").concat(swalClasses.content, "\"></div>\n     <input class=\"").concat(swalClasses.input, "\" />\n     <input type=\"file\" class=\"").concat(swalClasses.file, "\" />\n     <div class=\"").concat(swalClasses.range, "\">\n       <input type=\"range\" />\n       <output></output>\n     </div>\n     <select class=\"").concat(swalClasses.select, "\"></select>\n     <div class=\"").concat(swalClasses.radio, "\"></div>\n     <label for=\"").concat(swalClasses.checkbox, "\" class=\"").concat(swalClasses.checkbox, "\">\n       <input type=\"checkbox\" />\n       <span class=\"").concat(swalClasses.label, "\"></span>\n     </label>\n     <textarea class=\"").concat(swalClasses.textarea, "\"></textarea>\n     <div class=\"").concat(swalClasses['validation-message'], "\" id=\"").concat(swalClasses['validation-message'], "\"></div>\n   </div>\n   <div class=\"").concat(swalClasses.actions, "\">\n     <button type=\"button\" class=\"").concat(swalClasses.confirm, "\">OK</button>\n     <button type=\"button\" class=\"").concat(swalClasses.cancel, "\">Cancel</button>\n   </div>\n   <div class=\"").concat(swalClasses.footer, "\">\n   </div>\n </div>\n").replace(/(^|\n)\s*/g, '');
 
 var resetOldContainer = function resetOldContainer() {
   var oldContainer = getContainer();
@@ -57392,9 +58866,9 @@ var animationEndEvent = function () {
 
   var testEl = document.createElement('div');
   var transEndEventNames = {
-    'WebkitAnimation': 'webkitAnimationEnd',
-    'OAnimation': 'oAnimationEnd oanimationend',
-    'animation': 'animationend'
+    WebkitAnimation: 'webkitAnimationEnd',
+    OAnimation: 'oAnimationEnd oanimationend',
+    animation: 'animationend'
   };
 
   for (var i in transEndEventNames) {
@@ -57732,7 +59206,8 @@ var renderFooter = function renderFooter(instance, params) {
 };
 
 var renderCloseButton = function renderCloseButton(instance, params) {
-  var closeButton = getCloseButton(); // Custom class
+  var closeButton = getCloseButton();
+  closeButton.innerHTML = params.closeButtonHtml; // Custom class
 
   applyCustomClass(closeButton, params.customClass, 'closeButton');
   toggle(closeButton, params.showCloseButton);
@@ -58099,7 +59574,6 @@ var showLoading = function showLoading() {
 };
 
 var RESTORE_FOCUS_TIMEOUT = 100;
-var DISPOSE_SWAL_TIMEOUT = 36000;
 
 var globalState = {};
 var focusPreviousActiveElement = function focusPreviousActiveElement() {
@@ -58214,6 +59688,7 @@ var defaultParams = {
   focusConfirm: true,
   focusCancel: false,
   showCloseButton: false,
+  closeButtonHtml: '&times;',
   closeButtonAriaLabel: 'Close this dialog',
   showLoaderOnConfirm: false,
   imageUrl: null,
@@ -58383,6 +59858,11 @@ function hideLoading() {
 function getInput$1(instance) {
   var innerParams = privateProps.innerParams.get(instance || this);
   var domCache = privateProps.domCache.get(instance || this);
+
+  if (!domCache) {
+    return null;
+  }
+
   return getInput(domCache.content, innerParams.input);
 }
 
@@ -58528,12 +60008,12 @@ var privateMethods = {
  * Instance method to close sweetAlert
  */
 
-function removePopupAndResetState(container, isToast, onAfterClose) {
+function removePopupAndResetState(instance, container, isToast, onAfterClose) {
   if (isToast) {
-    triggerOnAfterClose(onAfterClose);
+    triggerOnAfterCloseAndDispose(instance, onAfterClose);
   } else {
     restoreActiveElement().then(function () {
-      return triggerOnAfterClose(onAfterClose);
+      return triggerOnAfterCloseAndDispose(instance, onAfterClose);
     });
     globalState.keydownTarget.removeEventListener('keydown', globalState.keydownHandler, {
       capture: globalState.keydownListenerCapture
@@ -58559,9 +60039,9 @@ function removeBodyClasses() {
   removeClass([document.documentElement, document.body], [swalClasses.shown, swalClasses['height-auto'], swalClasses['no-backdrop'], swalClasses['toast-shown'], swalClasses['toast-column']]);
 }
 
-function disposeSwal() {
+function disposeSwal(instance) {
   // Unset this.params so GC will dispose it (#1569)
-  delete this.params; // Unset globalState props so GC will dispose globalState (#1569)
+  delete instance.params; // Unset globalState props so GC will dispose globalState (#1569)
 
   delete globalState.keydownHandler;
   delete globalState.keydownTarget; // Unset WeakMaps so GC will be able to dispose them (#1569)
@@ -58578,41 +60058,42 @@ function close(resolveValue) {
   }
 
   var innerParams = privateProps.innerParams.get(this);
+
+  if (!innerParams) {
+    return;
+  }
+
   var swalPromiseResolve = privateMethods.swalPromiseResolve.get(this);
-  var onClose = innerParams.onClose,
-      onAfterClose = innerParams.onAfterClose;
   removeClass(popup, swalClasses.show);
   addClass(popup, swalClasses.hide);
-  handlePopupAnimation(popup, onAfterClose);
-
-  if (onClose !== null && typeof onClose === 'function') {
-    onClose(popup);
-  } // Resolve Swal promise
-
+  handlePopupAnimation(this, popup, innerParams); // Resolve Swal promise
 
   swalPromiseResolve(resolveValue || {});
-  globalState.deferDisposalTimer = setTimeout(disposeSwal.bind(this), DISPOSE_SWAL_TIMEOUT);
 }
 
-var handlePopupAnimation = function handlePopupAnimation(popup, onAfterClose) {
+var handlePopupAnimation = function handlePopupAnimation(instance, popup, innerParams) {
   var container = getContainer(); // If animation is supported, animate
 
   var animationIsSupported = animationEndEvent && hasCssAnimation(popup);
+  var onClose = innerParams.onClose,
+      onAfterClose = innerParams.onAfterClose;
+
+  if (onClose !== null && typeof onClose === 'function') {
+    onClose(popup);
+  }
 
   if (animationIsSupported) {
-    animatePopup(popup, container, onAfterClose);
+    animatePopup(instance, popup, container, onAfterClose);
   } else {
     // Otherwise, remove immediately
-    removePopupAndResetState(container, isToast(), onAfterClose);
+    removePopupAndResetState(instance, container, isToast(), onAfterClose);
   }
 };
 
-var animatePopup = function animatePopup(popup, container, onAfterClose) {
-  globalState.swalClosing = true;
-  globalState.swalCloseEventFinishedCallback = removePopupAndResetState.bind(null, container, isToast(), onAfterClose);
+var animatePopup = function animatePopup(instance, popup, container, onAfterClose) {
+  globalState.swalCloseEventFinishedCallback = removePopupAndResetState.bind(null, instance, container, isToast(), onAfterClose);
   popup.addEventListener(animationEndEvent, function (e) {
-    if (e.target === popup && globalState.swalClosing) {
-      delete globalState.swalClosing;
+    if (e.target === popup) {
       globalState.swalCloseEventFinishedCallback();
       delete globalState.swalCloseEventFinishedCallback;
     }
@@ -58625,12 +60106,16 @@ var unsetWeakMaps = function unsetWeakMaps(obj) {
   }
 };
 
-var triggerOnAfterClose = function triggerOnAfterClose(onAfterClose) {
-  if (onAfterClose !== null && typeof onAfterClose === 'function') {
-    setTimeout(function () {
+var triggerOnAfterCloseAndDispose = function triggerOnAfterCloseAndDispose(instance, onAfterClose) {
+  setTimeout(function () {
+    if (onAfterClose !== null && typeof onAfterClose === 'function') {
       onAfterClose();
-    });
-  }
+    }
+
+    if (!getPopup()) {
+      disposeSwal(instance);
+    }
+  });
 };
 
 function setButtonsDisabled(instance, buttons, disabled) {
@@ -58881,52 +60366,64 @@ var openPopup = function openPopup(params) {
   var container = getContainer();
   var popup = getPopup();
 
-  if (params.onBeforeOpen !== null && typeof params.onBeforeOpen === 'function') {
+  if (typeof params.onBeforeOpen === 'function') {
     params.onBeforeOpen(popup);
   }
 
-  if (params.animation) {
-    addClass(popup, swalClasses.show);
-    addClass(container, swalClasses.fade);
-  }
+  addClasses(container, popup, params); // scrolling is 'hidden' until animation is done, after that 'auto'
 
-  show(popup); // scrolling is 'hidden' until animation is done, after that 'auto'
-
-  if (animationEndEvent && hasCssAnimation(popup)) {
-    container.style.overflowY = 'hidden';
-    popup.addEventListener(animationEndEvent, swalOpenAnimationFinished.bind(null, popup, container));
-  } else {
-    container.style.overflowY = 'auto';
-  }
-
-  addClass([document.documentElement, document.body, container], swalClasses.shown);
-
-  if (params.heightAuto && params.backdrop && !params.toast) {
-    addClass([document.documentElement, document.body], swalClasses['height-auto']);
-  }
+  setScrollingVisibility(container, popup);
 
   if (isModal()) {
-    if (params.scrollbarPadding) {
-      fixScrollbar();
-    }
-
-    iOSfix();
-    IEfix();
-    setAriaHidden(); // sweetalert2/issues/1247
-
-    setTimeout(function () {
-      container.scrollTop = 0;
-    });
+    fixScrollContainer(container, params.scrollbarPadding);
   }
 
   if (!isToast() && !globalState.previousActiveElement) {
     globalState.previousActiveElement = document.activeElement;
   }
 
-  if (params.onOpen !== null && typeof params.onOpen === 'function') {
+  if (typeof params.onOpen === 'function') {
     setTimeout(function () {
-      params.onOpen(popup);
+      return params.onOpen(popup);
     });
+  }
+};
+
+var setScrollingVisibility = function setScrollingVisibility(container, popup) {
+  if (animationEndEvent && hasCssAnimation(popup)) {
+    container.style.overflowY = 'hidden';
+    popup.addEventListener(animationEndEvent, swalOpenAnimationFinished.bind(null, popup, container));
+  } else {
+    container.style.overflowY = 'auto';
+  }
+};
+
+var fixScrollContainer = function fixScrollContainer(container, scrollbarPadding) {
+  iOSfix();
+  IEfix();
+  setAriaHidden();
+
+  if (scrollbarPadding) {
+    fixScrollbar();
+  } // sweetalert2/issues/1247
+
+
+  setTimeout(function () {
+    container.scrollTop = 0;
+  });
+};
+
+var addClasses = function addClasses(container, popup, params) {
+  if (params.animation) {
+    addClass(popup, swalClasses.show);
+    addClass(container, swalClasses.fade);
+  }
+
+  show(popup);
+  addClass([document.documentElement, document.body, container], swalClasses.shown);
+
+  if (params.heightAuto && params.backdrop && !params.toast) {
+    addClass([document.documentElement, document.body], swalClasses['height-auto']);
   }
 };
 
@@ -59039,8 +60536,7 @@ function _main(userParams) {
 
   showWarningsForParams(userParams); // Check if there is another Swal closing
 
-  if (globalState.swalClosing) {
-    delete globalState.swalClosing;
+  if (getPopup() && globalState.swalCloseEventFinishedCallback) {
     globalState.swalCloseEventFinishedCallback();
     delete globalState.swalCloseEventFinishedCallback;
   } // Check if there is a swal disposal defer timer
@@ -59542,7 +61038,7 @@ Object.keys(instanceMethods).forEach(function (key) {
   };
 });
 SweetAlert.DismissReason = DismissReason;
-SweetAlert.version = '8.13.4';
+SweetAlert.version = '8.14.0';
 
 var Swal = SweetAlert;
 Swal["default"] = Swal;
@@ -59552,7 +61048,7 @@ return Swal;
 })));
 if (typeof this !== 'undefined' && this.Sweetalert2){  this.swal = this.sweetAlert = this.Swal = this.SweetAlert = this.Sweetalert2}
 
-"undefined"!=typeof document&&function(e,t){var n=e.createElement("style");if(e.getElementsByTagName("head")[0].appendChild(n),n.styleSheet)n.styleSheet.disabled||(n.styleSheet.cssText=t);else try{n.innerHTML=t}catch(e){n.innerText=t}}(document,"@charset \"UTF-8\";@-webkit-keyframes swal2-show{0%{-webkit-transform:scale(.7);transform:scale(.7)}45%{-webkit-transform:scale(1.05);transform:scale(1.05)}80%{-webkit-transform:scale(.95);transform:scale(.95)}100%{-webkit-transform:scale(1);transform:scale(1)}}@keyframes swal2-show{0%{-webkit-transform:scale(.7);transform:scale(.7)}45%{-webkit-transform:scale(1.05);transform:scale(1.05)}80%{-webkit-transform:scale(.95);transform:scale(.95)}100%{-webkit-transform:scale(1);transform:scale(1)}}@-webkit-keyframes swal2-hide{0%{-webkit-transform:scale(1);transform:scale(1);opacity:1}100%{-webkit-transform:scale(.5);transform:scale(.5);opacity:0}}@keyframes swal2-hide{0%{-webkit-transform:scale(1);transform:scale(1);opacity:1}100%{-webkit-transform:scale(.5);transform:scale(.5);opacity:0}}@-webkit-keyframes swal2-animate-success-line-tip{0%{top:1.1875em;left:.0625em;width:0}54%{top:1.0625em;left:.125em;width:0}70%{top:2.1875em;left:-.375em;width:3.125em}84%{top:3em;left:1.3125em;width:1.0625em}100%{top:2.8125em;left:.875em;width:1.5625em}}@keyframes swal2-animate-success-line-tip{0%{top:1.1875em;left:.0625em;width:0}54%{top:1.0625em;left:.125em;width:0}70%{top:2.1875em;left:-.375em;width:3.125em}84%{top:3em;left:1.3125em;width:1.0625em}100%{top:2.8125em;left:.875em;width:1.5625em}}@-webkit-keyframes swal2-animate-success-line-long{0%{top:3.375em;right:2.875em;width:0}65%{top:3.375em;right:2.875em;width:0}84%{top:2.1875em;right:0;width:3.4375em}100%{top:2.375em;right:.5em;width:2.9375em}}@keyframes swal2-animate-success-line-long{0%{top:3.375em;right:2.875em;width:0}65%{top:3.375em;right:2.875em;width:0}84%{top:2.1875em;right:0;width:3.4375em}100%{top:2.375em;right:.5em;width:2.9375em}}@-webkit-keyframes swal2-rotate-success-circular-line{0%{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}5%{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}12%{-webkit-transform:rotate(-405deg);transform:rotate(-405deg)}100%{-webkit-transform:rotate(-405deg);transform:rotate(-405deg)}}@keyframes swal2-rotate-success-circular-line{0%{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}5%{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}12%{-webkit-transform:rotate(-405deg);transform:rotate(-405deg)}100%{-webkit-transform:rotate(-405deg);transform:rotate(-405deg)}}@-webkit-keyframes swal2-animate-error-x-mark{0%{margin-top:1.625em;-webkit-transform:scale(.4);transform:scale(.4);opacity:0}50%{margin-top:1.625em;-webkit-transform:scale(.4);transform:scale(.4);opacity:0}80%{margin-top:-.375em;-webkit-transform:scale(1.15);transform:scale(1.15)}100%{margin-top:0;-webkit-transform:scale(1);transform:scale(1);opacity:1}}@keyframes swal2-animate-error-x-mark{0%{margin-top:1.625em;-webkit-transform:scale(.4);transform:scale(.4);opacity:0}50%{margin-top:1.625em;-webkit-transform:scale(.4);transform:scale(.4);opacity:0}80%{margin-top:-.375em;-webkit-transform:scale(1.15);transform:scale(1.15)}100%{margin-top:0;-webkit-transform:scale(1);transform:scale(1);opacity:1}}@-webkit-keyframes swal2-animate-error-icon{0%{-webkit-transform:rotateX(100deg);transform:rotateX(100deg);opacity:0}100%{-webkit-transform:rotateX(0);transform:rotateX(0);opacity:1}}@keyframes swal2-animate-error-icon{0%{-webkit-transform:rotateX(100deg);transform:rotateX(100deg);opacity:0}100%{-webkit-transform:rotateX(0);transform:rotateX(0);opacity:1}}body.swal2-toast-shown .swal2-container{background-color:transparent}body.swal2-toast-shown .swal2-container.swal2-shown{background-color:transparent}body.swal2-toast-shown .swal2-container.swal2-top{top:0;right:auto;bottom:auto;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%)}body.swal2-toast-shown .swal2-container.swal2-top-end,body.swal2-toast-shown .swal2-container.swal2-top-right{top:0;right:0;bottom:auto;left:auto}body.swal2-toast-shown .swal2-container.swal2-top-left,body.swal2-toast-shown .swal2-container.swal2-top-start{top:0;right:auto;bottom:auto;left:0}body.swal2-toast-shown .swal2-container.swal2-center-left,body.swal2-toast-shown .swal2-container.swal2-center-start{top:50%;right:auto;bottom:auto;left:0;-webkit-transform:translateY(-50%);transform:translateY(-50%)}body.swal2-toast-shown .swal2-container.swal2-center{top:50%;right:auto;bottom:auto;left:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}body.swal2-toast-shown .swal2-container.swal2-center-end,body.swal2-toast-shown .swal2-container.swal2-center-right{top:50%;right:0;bottom:auto;left:auto;-webkit-transform:translateY(-50%);transform:translateY(-50%)}body.swal2-toast-shown .swal2-container.swal2-bottom-left,body.swal2-toast-shown .swal2-container.swal2-bottom-start{top:auto;right:auto;bottom:0;left:0}body.swal2-toast-shown .swal2-container.swal2-bottom{top:auto;right:auto;bottom:0;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%)}body.swal2-toast-shown .swal2-container.swal2-bottom-end,body.swal2-toast-shown .swal2-container.swal2-bottom-right{top:auto;right:0;bottom:0;left:auto}body.swal2-toast-column .swal2-toast{-webkit-box-orient:vertical;-webkit-box-direction:normal;flex-direction:column;-webkit-box-align:stretch;align-items:stretch}body.swal2-toast-column .swal2-toast .swal2-actions{-webkit-box-flex:1;flex:1;align-self:stretch;height:2.2em;margin-top:.3125em}body.swal2-toast-column .swal2-toast .swal2-loading{-webkit-box-pack:center;justify-content:center}body.swal2-toast-column .swal2-toast .swal2-input{height:2em;margin:.3125em auto;font-size:1em}body.swal2-toast-column .swal2-toast .swal2-validation-message{font-size:1em}.swal2-popup.swal2-toast{-webkit-box-orient:horizontal;-webkit-box-direction:normal;flex-direction:row;-webkit-box-align:center;align-items:center;width:auto;padding:.625em;overflow-y:hidden;box-shadow:0 0 .625em #d9d9d9}.swal2-popup.swal2-toast .swal2-header{-webkit-box-orient:horizontal;-webkit-box-direction:normal;flex-direction:row}.swal2-popup.swal2-toast .swal2-title{-webkit-box-flex:1;flex-grow:1;-webkit-box-pack:start;justify-content:flex-start;margin:0 .6em;font-size:1em}.swal2-popup.swal2-toast .swal2-footer{margin:.5em 0 0;padding:.5em 0 0;font-size:.8em}.swal2-popup.swal2-toast .swal2-close{position:static;width:.8em;height:.8em;line-height:.8}.swal2-popup.swal2-toast .swal2-content{-webkit-box-pack:start;justify-content:flex-start;font-size:1em}.swal2-popup.swal2-toast .swal2-icon{width:2em;min-width:2em;height:2em;margin:0}.swal2-popup.swal2-toast .swal2-icon::before{display:-webkit-box;display:flex;-webkit-box-align:center;align-items:center;font-size:2em;font-weight:700}@media all and (-ms-high-contrast:none),(-ms-high-contrast:active){.swal2-popup.swal2-toast .swal2-icon::before{font-size:.25em}}.swal2-popup.swal2-toast .swal2-icon.swal2-success .swal2-success-ring{width:2em;height:2em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line]{top:.875em;width:1.375em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left]{left:.3125em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=right]{right:.3125em}.swal2-popup.swal2-toast .swal2-actions{flex-basis:auto!important;height:auto;margin:0 .3125em}.swal2-popup.swal2-toast .swal2-styled{margin:0 .3125em;padding:.3125em .625em;font-size:1em}.swal2-popup.swal2-toast .swal2-styled:focus{box-shadow:0 0 0 .0625em #fff,0 0 0 .125em rgba(50,100,150,.4)}.swal2-popup.swal2-toast .swal2-success{border-color:#a5dc86}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line]{position:absolute;width:1.6em;height:3em;-webkit-transform:rotate(45deg);transform:rotate(45deg);border-radius:50%}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=left]{top:-.8em;left:-.5em;-webkit-transform:rotate(-45deg);transform:rotate(-45deg);-webkit-transform-origin:2em 2em;transform-origin:2em 2em;border-radius:4em 0 0 4em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=right]{top:-.25em;left:.9375em;-webkit-transform-origin:0 1.5em;transform-origin:0 1.5em;border-radius:0 4em 4em 0}.swal2-popup.swal2-toast .swal2-success .swal2-success-ring{width:2em;height:2em}.swal2-popup.swal2-toast .swal2-success .swal2-success-fix{top:0;left:.4375em;width:.4375em;height:2.6875em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line]{height:.3125em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line][class$=tip]{top:1.125em;left:.1875em;width:.75em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line][class$=long]{top:.9375em;right:.1875em;width:1.375em}.swal2-popup.swal2-toast.swal2-show{-webkit-animation:swal2-toast-show .5s;animation:swal2-toast-show .5s}.swal2-popup.swal2-toast.swal2-hide{-webkit-animation:swal2-toast-hide .1s forwards;animation:swal2-toast-hide .1s forwards}.swal2-popup.swal2-toast .swal2-animate-success-icon .swal2-success-line-tip{-webkit-animation:swal2-toast-animate-success-line-tip .75s;animation:swal2-toast-animate-success-line-tip .75s}.swal2-popup.swal2-toast .swal2-animate-success-icon .swal2-success-line-long{-webkit-animation:swal2-toast-animate-success-line-long .75s;animation:swal2-toast-animate-success-line-long .75s}@-webkit-keyframes swal2-toast-show{0%{-webkit-transform:translateY(-.625em) rotateZ(2deg);transform:translateY(-.625em) rotateZ(2deg)}33%{-webkit-transform:translateY(0) rotateZ(-2deg);transform:translateY(0) rotateZ(-2deg)}66%{-webkit-transform:translateY(.3125em) rotateZ(2deg);transform:translateY(.3125em) rotateZ(2deg)}100%{-webkit-transform:translateY(0) rotateZ(0);transform:translateY(0) rotateZ(0)}}@keyframes swal2-toast-show{0%{-webkit-transform:translateY(-.625em) rotateZ(2deg);transform:translateY(-.625em) rotateZ(2deg)}33%{-webkit-transform:translateY(0) rotateZ(-2deg);transform:translateY(0) rotateZ(-2deg)}66%{-webkit-transform:translateY(.3125em) rotateZ(2deg);transform:translateY(.3125em) rotateZ(2deg)}100%{-webkit-transform:translateY(0) rotateZ(0);transform:translateY(0) rotateZ(0)}}@-webkit-keyframes swal2-toast-hide{100%{-webkit-transform:rotateZ(1deg);transform:rotateZ(1deg);opacity:0}}@keyframes swal2-toast-hide{100%{-webkit-transform:rotateZ(1deg);transform:rotateZ(1deg);opacity:0}}@-webkit-keyframes swal2-toast-animate-success-line-tip{0%{top:.5625em;left:.0625em;width:0}54%{top:.125em;left:.125em;width:0}70%{top:.625em;left:-.25em;width:1.625em}84%{top:1.0625em;left:.75em;width:.5em}100%{top:1.125em;left:.1875em;width:.75em}}@keyframes swal2-toast-animate-success-line-tip{0%{top:.5625em;left:.0625em;width:0}54%{top:.125em;left:.125em;width:0}70%{top:.625em;left:-.25em;width:1.625em}84%{top:1.0625em;left:.75em;width:.5em}100%{top:1.125em;left:.1875em;width:.75em}}@-webkit-keyframes swal2-toast-animate-success-line-long{0%{top:1.625em;right:1.375em;width:0}65%{top:1.25em;right:.9375em;width:0}84%{top:.9375em;right:0;width:1.125em}100%{top:.9375em;right:.1875em;width:1.375em}}@keyframes swal2-toast-animate-success-line-long{0%{top:1.625em;right:1.375em;width:0}65%{top:1.25em;right:.9375em;width:0}84%{top:.9375em;right:0;width:1.125em}100%{top:.9375em;right:.1875em;width:1.375em}}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown){overflow:hidden}body.swal2-height-auto{height:auto!important}body.swal2-no-backdrop .swal2-shown{top:auto;right:auto;bottom:auto;left:auto;max-width:calc(100% - .625em * 2);background-color:transparent}body.swal2-no-backdrop .swal2-shown>.swal2-modal{box-shadow:0 0 10px rgba(0,0,0,.4)}body.swal2-no-backdrop .swal2-shown.swal2-top{top:0;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%)}body.swal2-no-backdrop .swal2-shown.swal2-top-left,body.swal2-no-backdrop .swal2-shown.swal2-top-start{top:0;left:0}body.swal2-no-backdrop .swal2-shown.swal2-top-end,body.swal2-no-backdrop .swal2-shown.swal2-top-right{top:0;right:0}body.swal2-no-backdrop .swal2-shown.swal2-center{top:50%;left:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}body.swal2-no-backdrop .swal2-shown.swal2-center-left,body.swal2-no-backdrop .swal2-shown.swal2-center-start{top:50%;left:0;-webkit-transform:translateY(-50%);transform:translateY(-50%)}body.swal2-no-backdrop .swal2-shown.swal2-center-end,body.swal2-no-backdrop .swal2-shown.swal2-center-right{top:50%;right:0;-webkit-transform:translateY(-50%);transform:translateY(-50%)}body.swal2-no-backdrop .swal2-shown.swal2-bottom{bottom:0;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%)}body.swal2-no-backdrop .swal2-shown.swal2-bottom-left,body.swal2-no-backdrop .swal2-shown.swal2-bottom-start{bottom:0;left:0}body.swal2-no-backdrop .swal2-shown.swal2-bottom-end,body.swal2-no-backdrop .swal2-shown.swal2-bottom-right{right:0;bottom:0}.swal2-container{display:-webkit-box;display:flex;position:fixed;z-index:1060;top:0;right:0;bottom:0;left:0;-webkit-box-orient:horizontal;-webkit-box-direction:normal;flex-direction:row;-webkit-box-align:center;align-items:center;-webkit-box-pack:center;justify-content:center;padding:.625em;overflow-x:hidden;background-color:transparent;-webkit-overflow-scrolling:touch}.swal2-container.swal2-top{-webkit-box-align:start;align-items:flex-start}.swal2-container.swal2-top-left,.swal2-container.swal2-top-start{-webkit-box-align:start;align-items:flex-start;-webkit-box-pack:start;justify-content:flex-start}.swal2-container.swal2-top-end,.swal2-container.swal2-top-right{-webkit-box-align:start;align-items:flex-start;-webkit-box-pack:end;justify-content:flex-end}.swal2-container.swal2-center{-webkit-box-align:center;align-items:center}.swal2-container.swal2-center-left,.swal2-container.swal2-center-start{-webkit-box-align:center;align-items:center;-webkit-box-pack:start;justify-content:flex-start}.swal2-container.swal2-center-end,.swal2-container.swal2-center-right{-webkit-box-align:center;align-items:center;-webkit-box-pack:end;justify-content:flex-end}.swal2-container.swal2-bottom{-webkit-box-align:end;align-items:flex-end}.swal2-container.swal2-bottom-left,.swal2-container.swal2-bottom-start{-webkit-box-align:end;align-items:flex-end;-webkit-box-pack:start;justify-content:flex-start}.swal2-container.swal2-bottom-end,.swal2-container.swal2-bottom-right{-webkit-box-align:end;align-items:flex-end;-webkit-box-pack:end;justify-content:flex-end}.swal2-container.swal2-bottom-end>:first-child,.swal2-container.swal2-bottom-left>:first-child,.swal2-container.swal2-bottom-right>:first-child,.swal2-container.swal2-bottom-start>:first-child,.swal2-container.swal2-bottom>:first-child{margin-top:auto}.swal2-container.swal2-grow-fullscreen>.swal2-modal{display:-webkit-box!important;display:flex!important;-webkit-box-flex:1;flex:1;align-self:stretch;-webkit-box-pack:center;justify-content:center}.swal2-container.swal2-grow-row>.swal2-modal{display:-webkit-box!important;display:flex!important;-webkit-box-flex:1;flex:1;align-content:center;-webkit-box-pack:center;justify-content:center}.swal2-container.swal2-grow-column{-webkit-box-flex:1;flex:1;-webkit-box-orient:vertical;-webkit-box-direction:normal;flex-direction:column}.swal2-container.swal2-grow-column.swal2-bottom,.swal2-container.swal2-grow-column.swal2-center,.swal2-container.swal2-grow-column.swal2-top{-webkit-box-align:center;align-items:center}.swal2-container.swal2-grow-column.swal2-bottom-left,.swal2-container.swal2-grow-column.swal2-bottom-start,.swal2-container.swal2-grow-column.swal2-center-left,.swal2-container.swal2-grow-column.swal2-center-start,.swal2-container.swal2-grow-column.swal2-top-left,.swal2-container.swal2-grow-column.swal2-top-start{-webkit-box-align:start;align-items:flex-start}.swal2-container.swal2-grow-column.swal2-bottom-end,.swal2-container.swal2-grow-column.swal2-bottom-right,.swal2-container.swal2-grow-column.swal2-center-end,.swal2-container.swal2-grow-column.swal2-center-right,.swal2-container.swal2-grow-column.swal2-top-end,.swal2-container.swal2-grow-column.swal2-top-right{-webkit-box-align:end;align-items:flex-end}.swal2-container.swal2-grow-column>.swal2-modal{display:-webkit-box!important;display:flex!important;-webkit-box-flex:1;flex:1;align-content:center;-webkit-box-pack:center;justify-content:center}.swal2-container:not(.swal2-top):not(.swal2-top-start):not(.swal2-top-end):not(.swal2-top-left):not(.swal2-top-right):not(.swal2-center-start):not(.swal2-center-end):not(.swal2-center-left):not(.swal2-center-right):not(.swal2-bottom):not(.swal2-bottom-start):not(.swal2-bottom-end):not(.swal2-bottom-left):not(.swal2-bottom-right):not(.swal2-grow-fullscreen)>.swal2-modal{margin:auto}@media all and (-ms-high-contrast:none),(-ms-high-contrast:active){.swal2-container .swal2-modal{margin:0!important}}.swal2-container.swal2-fade{-webkit-transition:background-color .1s;transition:background-color .1s}.swal2-container.swal2-shown{background-color:rgba(0,0,0,.4)}.swal2-popup{display:none;position:relative;box-sizing:border-box;-webkit-box-orient:vertical;-webkit-box-direction:normal;flex-direction:column;-webkit-box-pack:center;justify-content:center;width:32em;max-width:100%;padding:1.25em;border:none;border-radius:.3125em;background:#fff;font-family:inherit;font-size:1rem}.swal2-popup:focus{outline:0}.swal2-popup.swal2-loading{overflow-y:hidden}.swal2-header{display:-webkit-box;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;flex-direction:column;-webkit-box-align:center;align-items:center}.swal2-title{position:relative;max-width:100%;margin:0 0 .4em;padding:0;color:#595959;font-size:1.875em;font-weight:600;text-align:center;text-transform:none;word-wrap:break-word}.swal2-actions{z-index:1;flex-wrap:wrap;-webkit-box-align:center;align-items:center;-webkit-box-pack:center;justify-content:center;width:100%;margin:1.25em auto 0}.swal2-actions:not(.swal2-loading) .swal2-styled[disabled]{opacity:.4}.swal2-actions:not(.swal2-loading) .swal2-styled:hover{background-image:-webkit-gradient(linear,left top,left bottom,from(rgba(0,0,0,.1)),to(rgba(0,0,0,.1)));background-image:linear-gradient(rgba(0,0,0,.1),rgba(0,0,0,.1))}.swal2-actions:not(.swal2-loading) .swal2-styled:active{background-image:-webkit-gradient(linear,left top,left bottom,from(rgba(0,0,0,.2)),to(rgba(0,0,0,.2)));background-image:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2))}.swal2-actions.swal2-loading .swal2-styled.swal2-confirm{box-sizing:border-box;width:2.5em;height:2.5em;margin:.46875em;padding:0;-webkit-animation:swal2-rotate-loading 1.5s linear 0s infinite normal;animation:swal2-rotate-loading 1.5s linear 0s infinite normal;border:.25em solid transparent;border-radius:100%;border-color:transparent;background-color:transparent!important;color:transparent;cursor:default;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.swal2-actions.swal2-loading .swal2-styled.swal2-cancel{margin-right:30px;margin-left:30px}.swal2-actions.swal2-loading :not(.swal2-styled).swal2-confirm::after{content:\"\";display:inline-block;width:15px;height:15px;margin-left:5px;-webkit-animation:swal2-rotate-loading 1.5s linear 0s infinite normal;animation:swal2-rotate-loading 1.5s linear 0s infinite normal;border:3px solid #999;border-radius:50%;border-right-color:transparent;box-shadow:1px 1px 1px #fff}.swal2-styled{margin:.3125em;padding:.625em 2em;box-shadow:none;font-weight:500}.swal2-styled:not([disabled]){cursor:pointer}.swal2-styled.swal2-confirm{border:0;border-radius:.25em;background:initial;background-color:#3085d6;color:#fff;font-size:1.0625em}.swal2-styled.swal2-cancel{border:0;border-radius:.25em;background:initial;background-color:#aaa;color:#fff;font-size:1.0625em}.swal2-styled:focus{outline:0;box-shadow:0 0 0 2px #fff,0 0 0 4px rgba(50,100,150,.4)}.swal2-styled::-moz-focus-inner{border:0}.swal2-footer{-webkit-box-pack:center;justify-content:center;margin:1.25em 0 0;padding:1em 0 0;border-top:1px solid #eee;color:#545454;font-size:1em}.swal2-image{max-width:100%;margin:1.25em auto}.swal2-close{position:absolute;z-index:2;top:0;right:0;-webkit-box-pack:center;justify-content:center;width:1.2em;height:1.2em;padding:0;overflow:hidden;-webkit-transition:color .1s ease-out;transition:color .1s ease-out;border:none;border-radius:0;outline:initial;background:0 0;color:#ccc;font-family:serif;font-size:2.5em;line-height:1.2;cursor:pointer}.swal2-close:hover{-webkit-transform:none;transform:none;background:0 0;color:#f27474}.swal2-content{z-index:1;-webkit-box-pack:center;justify-content:center;margin:0;padding:0;color:#545454;font-size:1.125em;font-weight:300;line-height:normal;text-align:center;word-wrap:break-word}.swal2-checkbox,.swal2-file,.swal2-input,.swal2-radio,.swal2-select,.swal2-textarea{margin:1em auto}.swal2-file,.swal2-input,.swal2-textarea{box-sizing:border-box;width:100%;-webkit-transition:border-color .3s,box-shadow .3s;transition:border-color .3s,box-shadow .3s;border:1px solid #d9d9d9;border-radius:.1875em;background:inherit;box-shadow:inset 0 1px 1px rgba(0,0,0,.06);color:inherit;font-size:1.125em}.swal2-file.swal2-inputerror,.swal2-input.swal2-inputerror,.swal2-textarea.swal2-inputerror{border-color:#f27474!important;box-shadow:0 0 2px #f27474!important}.swal2-file:focus,.swal2-input:focus,.swal2-textarea:focus{border:1px solid #b4dbed;outline:0;box-shadow:0 0 3px #c4e6f5}.swal2-file::-webkit-input-placeholder,.swal2-input::-webkit-input-placeholder,.swal2-textarea::-webkit-input-placeholder{color:#ccc}.swal2-file::-moz-placeholder,.swal2-input::-moz-placeholder,.swal2-textarea::-moz-placeholder{color:#ccc}.swal2-file:-ms-input-placeholder,.swal2-input:-ms-input-placeholder,.swal2-textarea:-ms-input-placeholder{color:#ccc}.swal2-file::-ms-input-placeholder,.swal2-input::-ms-input-placeholder,.swal2-textarea::-ms-input-placeholder{color:#ccc}.swal2-file::placeholder,.swal2-input::placeholder,.swal2-textarea::placeholder{color:#ccc}.swal2-range{margin:1em auto;background:inherit}.swal2-range input{width:80%}.swal2-range output{width:20%;color:inherit;font-weight:600;text-align:center}.swal2-range input,.swal2-range output{height:2.625em;padding:0;font-size:1.125em;line-height:2.625em}.swal2-input{height:2.625em;padding:0 .75em}.swal2-input[type=number]{max-width:10em}.swal2-file{background:inherit;font-size:1.125em}.swal2-textarea{height:6.75em;padding:.75em}.swal2-select{min-width:50%;max-width:100%;padding:.375em .625em;background:inherit;color:inherit;font-size:1.125em}.swal2-checkbox,.swal2-radio{-webkit-box-align:center;align-items:center;-webkit-box-pack:center;justify-content:center;background:inherit;color:inherit}.swal2-checkbox label,.swal2-radio label{margin:0 .6em;font-size:1.125em}.swal2-checkbox input,.swal2-radio input{margin:0 .4em}.swal2-validation-message{display:none;-webkit-box-align:center;align-items:center;-webkit-box-pack:center;justify-content:center;padding:.625em;overflow:hidden;background:#f0f0f0;color:#666;font-size:1em;font-weight:300}.swal2-validation-message::before{content:\"!\";display:inline-block;width:1.5em;min-width:1.5em;height:1.5em;margin:0 .625em;zoom:normal;border-radius:50%;background-color:#f27474;color:#fff;font-weight:600;line-height:1.5em;text-align:center}@supports (-ms-accelerator:true){.swal2-range input{width:100%!important}.swal2-range output{display:none}}@media all and (-ms-high-contrast:none),(-ms-high-contrast:active){.swal2-range input{width:100%!important}.swal2-range output{display:none}}@-moz-document url-prefix(){.swal2-close:focus{outline:2px solid rgba(50,100,150,.4)}}.swal2-icon{position:relative;box-sizing:content-box;-webkit-box-pack:center;justify-content:center;width:5em;height:5em;margin:1.25em auto 1.875em;zoom:normal;border:.25em solid transparent;border-radius:50%;font-family:inherit;line-height:5em;cursor:default;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.swal2-icon::before{display:-webkit-box;display:flex;-webkit-box-align:center;align-items:center;height:92%;font-size:3.75em}.swal2-icon.swal2-error{border-color:#f27474}.swal2-icon.swal2-error .swal2-x-mark{position:relative;-webkit-box-flex:1;flex-grow:1}.swal2-icon.swal2-error [class^=swal2-x-mark-line]{display:block;position:absolute;top:2.3125em;width:2.9375em;height:.3125em;border-radius:.125em;background-color:#f27474}.swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left]{left:1.0625em;-webkit-transform:rotate(45deg);transform:rotate(45deg)}.swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=right]{right:1em;-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}.swal2-icon.swal2-warning{border-color:#facea8;color:#f8bb86}.swal2-icon.swal2-warning::before{content:\"!\"}.swal2-icon.swal2-info{border-color:#9de0f6;color:#3fc3ee}.swal2-icon.swal2-info::before{content:\"i\"}.swal2-icon.swal2-question{border-color:#c9dae1;color:#87adbd}.swal2-icon.swal2-question::before{content:\"?\"}.swal2-icon.swal2-question.swal2-arabic-question-mark::before{content:\"؟\"}.swal2-icon.swal2-success{border-color:#a5dc86}.swal2-icon.swal2-success [class^=swal2-success-circular-line]{position:absolute;width:3.75em;height:7.5em;-webkit-transform:rotate(45deg);transform:rotate(45deg);border-radius:50%}.swal2-icon.swal2-success [class^=swal2-success-circular-line][class$=left]{top:-.4375em;left:-2.0635em;-webkit-transform:rotate(-45deg);transform:rotate(-45deg);-webkit-transform-origin:3.75em 3.75em;transform-origin:3.75em 3.75em;border-radius:7.5em 0 0 7.5em}.swal2-icon.swal2-success [class^=swal2-success-circular-line][class$=right]{top:-.6875em;left:1.875em;-webkit-transform:rotate(-45deg);transform:rotate(-45deg);-webkit-transform-origin:0 3.75em;transform-origin:0 3.75em;border-radius:0 7.5em 7.5em 0}.swal2-icon.swal2-success .swal2-success-ring{position:absolute;z-index:2;top:-.25em;left:-.25em;box-sizing:content-box;width:100%;height:100%;border:.25em solid rgba(165,220,134,.3);border-radius:50%}.swal2-icon.swal2-success .swal2-success-fix{position:absolute;z-index:1;top:.5em;left:1.625em;width:.4375em;height:5.625em;-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}.swal2-icon.swal2-success [class^=swal2-success-line]{display:block;position:absolute;z-index:2;height:.3125em;border-radius:.125em;background-color:#a5dc86}.swal2-icon.swal2-success [class^=swal2-success-line][class$=tip]{top:2.875em;left:.875em;width:1.5625em;-webkit-transform:rotate(45deg);transform:rotate(45deg)}.swal2-icon.swal2-success [class^=swal2-success-line][class$=long]{top:2.375em;right:.5em;width:2.9375em;-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}.swal2-progress-steps{-webkit-box-align:center;align-items:center;margin:0 0 1.25em;padding:0;background:inherit;font-weight:600}.swal2-progress-steps li{display:inline-block;position:relative}.swal2-progress-steps .swal2-progress-step{z-index:20;width:2em;height:2em;border-radius:2em;background:#3085d6;color:#fff;line-height:2em;text-align:center}.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step{background:#3085d6}.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step~.swal2-progress-step{background:#add8e6;color:#fff}.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step~.swal2-progress-step-line{background:#add8e6}.swal2-progress-steps .swal2-progress-step-line{z-index:10;width:2.5em;height:.4em;margin:0 -1px;background:#3085d6}[class^=swal2]{-webkit-tap-highlight-color:transparent}.swal2-show{-webkit-animation:swal2-show .3s;animation:swal2-show .3s}.swal2-show.swal2-noanimation{-webkit-animation:none;animation:none}.swal2-hide{-webkit-animation:swal2-hide .15s forwards;animation:swal2-hide .15s forwards}.swal2-hide.swal2-noanimation{-webkit-animation:none;animation:none}.swal2-rtl .swal2-close{right:auto;left:0}.swal2-animate-success-icon .swal2-success-line-tip{-webkit-animation:swal2-animate-success-line-tip .75s;animation:swal2-animate-success-line-tip .75s}.swal2-animate-success-icon .swal2-success-line-long{-webkit-animation:swal2-animate-success-line-long .75s;animation:swal2-animate-success-line-long .75s}.swal2-animate-success-icon .swal2-success-circular-line-right{-webkit-animation:swal2-rotate-success-circular-line 4.25s ease-in;animation:swal2-rotate-success-circular-line 4.25s ease-in}.swal2-animate-error-icon{-webkit-animation:swal2-animate-error-icon .5s;animation:swal2-animate-error-icon .5s}.swal2-animate-error-icon .swal2-x-mark{-webkit-animation:swal2-animate-error-x-mark .5s;animation:swal2-animate-error-x-mark .5s}@-webkit-keyframes swal2-rotate-loading{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes swal2-rotate-loading{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@media print{body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown){overflow-y:scroll!important}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown)>[aria-hidden=true]{display:none}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) .swal2-container{position:static!important}}");
+"undefined"!=typeof document&&function(e,t){var n=e.createElement("style");if(e.getElementsByTagName("head")[0].appendChild(n),n.styleSheet)n.styleSheet.disabled||(n.styleSheet.cssText=t);else try{n.innerHTML=t}catch(e){n.innerText=t}}(document,"@charset \"UTF-8\";@-webkit-keyframes swal2-show{0%{transform:scale(.7)}45%{transform:scale(1.05)}80%{transform:scale(.95)}100%{transform:scale(1)}}@keyframes swal2-show{0%{transform:scale(.7)}45%{transform:scale(1.05)}80%{transform:scale(.95)}100%{transform:scale(1)}}@-webkit-keyframes swal2-hide{0%{transform:scale(1);opacity:1}100%{transform:scale(.5);opacity:0}}@keyframes swal2-hide{0%{transform:scale(1);opacity:1}100%{transform:scale(.5);opacity:0}}@-webkit-keyframes swal2-animate-success-line-tip{0%{top:1.1875em;left:.0625em;width:0}54%{top:1.0625em;left:.125em;width:0}70%{top:2.1875em;left:-.375em;width:3.125em}84%{top:3em;left:1.3125em;width:1.0625em}100%{top:2.8125em;left:.875em;width:1.5625em}}@keyframes swal2-animate-success-line-tip{0%{top:1.1875em;left:.0625em;width:0}54%{top:1.0625em;left:.125em;width:0}70%{top:2.1875em;left:-.375em;width:3.125em}84%{top:3em;left:1.3125em;width:1.0625em}100%{top:2.8125em;left:.875em;width:1.5625em}}@-webkit-keyframes swal2-animate-success-line-long{0%{top:3.375em;right:2.875em;width:0}65%{top:3.375em;right:2.875em;width:0}84%{top:2.1875em;right:0;width:3.4375em}100%{top:2.375em;right:.5em;width:2.9375em}}@keyframes swal2-animate-success-line-long{0%{top:3.375em;right:2.875em;width:0}65%{top:3.375em;right:2.875em;width:0}84%{top:2.1875em;right:0;width:3.4375em}100%{top:2.375em;right:.5em;width:2.9375em}}@-webkit-keyframes swal2-rotate-success-circular-line{0%{transform:rotate(-45deg)}5%{transform:rotate(-45deg)}12%{transform:rotate(-405deg)}100%{transform:rotate(-405deg)}}@keyframes swal2-rotate-success-circular-line{0%{transform:rotate(-45deg)}5%{transform:rotate(-45deg)}12%{transform:rotate(-405deg)}100%{transform:rotate(-405deg)}}@-webkit-keyframes swal2-animate-error-x-mark{0%{margin-top:1.625em;transform:scale(.4);opacity:0}50%{margin-top:1.625em;transform:scale(.4);opacity:0}80%{margin-top:-.375em;transform:scale(1.15)}100%{margin-top:0;transform:scale(1);opacity:1}}@keyframes swal2-animate-error-x-mark{0%{margin-top:1.625em;transform:scale(.4);opacity:0}50%{margin-top:1.625em;transform:scale(.4);opacity:0}80%{margin-top:-.375em;transform:scale(1.15)}100%{margin-top:0;transform:scale(1);opacity:1}}@-webkit-keyframes swal2-animate-error-icon{0%{transform:rotateX(100deg);opacity:0}100%{transform:rotateX(0);opacity:1}}@keyframes swal2-animate-error-icon{0%{transform:rotateX(100deg);opacity:0}100%{transform:rotateX(0);opacity:1}}body.swal2-toast-shown .swal2-container{background-color:transparent}body.swal2-toast-shown .swal2-container.swal2-shown{background-color:transparent}body.swal2-toast-shown .swal2-container.swal2-top{top:0;right:auto;bottom:auto;left:50%;transform:translateX(-50%)}body.swal2-toast-shown .swal2-container.swal2-top-end,body.swal2-toast-shown .swal2-container.swal2-top-right{top:0;right:0;bottom:auto;left:auto}body.swal2-toast-shown .swal2-container.swal2-top-left,body.swal2-toast-shown .swal2-container.swal2-top-start{top:0;right:auto;bottom:auto;left:0}body.swal2-toast-shown .swal2-container.swal2-center-left,body.swal2-toast-shown .swal2-container.swal2-center-start{top:50%;right:auto;bottom:auto;left:0;transform:translateY(-50%)}body.swal2-toast-shown .swal2-container.swal2-center{top:50%;right:auto;bottom:auto;left:50%;transform:translate(-50%,-50%)}body.swal2-toast-shown .swal2-container.swal2-center-end,body.swal2-toast-shown .swal2-container.swal2-center-right{top:50%;right:0;bottom:auto;left:auto;transform:translateY(-50%)}body.swal2-toast-shown .swal2-container.swal2-bottom-left,body.swal2-toast-shown .swal2-container.swal2-bottom-start{top:auto;right:auto;bottom:0;left:0}body.swal2-toast-shown .swal2-container.swal2-bottom{top:auto;right:auto;bottom:0;left:50%;transform:translateX(-50%)}body.swal2-toast-shown .swal2-container.swal2-bottom-end,body.swal2-toast-shown .swal2-container.swal2-bottom-right{top:auto;right:0;bottom:0;left:auto}body.swal2-toast-column .swal2-toast{flex-direction:column;align-items:stretch}body.swal2-toast-column .swal2-toast .swal2-actions{flex:1;align-self:stretch;height:2.2em;margin-top:.3125em}body.swal2-toast-column .swal2-toast .swal2-loading{justify-content:center}body.swal2-toast-column .swal2-toast .swal2-input{height:2em;margin:.3125em auto;font-size:1em}body.swal2-toast-column .swal2-toast .swal2-validation-message{font-size:1em}.swal2-popup.swal2-toast{flex-direction:row;align-items:center;width:auto;padding:.625em;overflow-y:hidden;box-shadow:0 0 .625em #d9d9d9}.swal2-popup.swal2-toast .swal2-header{flex-direction:row}.swal2-popup.swal2-toast .swal2-title{flex-grow:1;justify-content:flex-start;margin:0 .6em;font-size:1em}.swal2-popup.swal2-toast .swal2-footer{margin:.5em 0 0;padding:.5em 0 0;font-size:.8em}.swal2-popup.swal2-toast .swal2-close{position:static;width:.8em;height:.8em;line-height:.8}.swal2-popup.swal2-toast .swal2-content{justify-content:flex-start;font-size:1em}.swal2-popup.swal2-toast .swal2-icon{width:2em;min-width:2em;height:2em;margin:0}.swal2-popup.swal2-toast .swal2-icon::before{display:flex;align-items:center;font-size:2em;font-weight:700}@media all and (-ms-high-contrast:none),(-ms-high-contrast:active){.swal2-popup.swal2-toast .swal2-icon::before{font-size:.25em}}.swal2-popup.swal2-toast .swal2-icon.swal2-success .swal2-success-ring{width:2em;height:2em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line]{top:.875em;width:1.375em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left]{left:.3125em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=right]{right:.3125em}.swal2-popup.swal2-toast .swal2-actions{flex-basis:auto!important;width:auto;height:auto;margin:0 .3125em}.swal2-popup.swal2-toast .swal2-styled{margin:0 .3125em;padding:.3125em .625em;font-size:1em}.swal2-popup.swal2-toast .swal2-styled:focus{box-shadow:0 0 0 .0625em #fff,0 0 0 .125em rgba(50,100,150,.4)}.swal2-popup.swal2-toast .swal2-success{border-color:#a5dc86}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line]{position:absolute;width:1.6em;height:3em;transform:rotate(45deg);border-radius:50%}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=left]{top:-.8em;left:-.5em;transform:rotate(-45deg);transform-origin:2em 2em;border-radius:4em 0 0 4em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=right]{top:-.25em;left:.9375em;transform-origin:0 1.5em;border-radius:0 4em 4em 0}.swal2-popup.swal2-toast .swal2-success .swal2-success-ring{width:2em;height:2em}.swal2-popup.swal2-toast .swal2-success .swal2-success-fix{top:0;left:.4375em;width:.4375em;height:2.6875em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line]{height:.3125em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line][class$=tip]{top:1.125em;left:.1875em;width:.75em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line][class$=long]{top:.9375em;right:.1875em;width:1.375em}.swal2-popup.swal2-toast.swal2-show{-webkit-animation:swal2-toast-show .5s;animation:swal2-toast-show .5s}.swal2-popup.swal2-toast.swal2-hide{-webkit-animation:swal2-toast-hide .1s forwards;animation:swal2-toast-hide .1s forwards}.swal2-popup.swal2-toast .swal2-animate-success-icon .swal2-success-line-tip{-webkit-animation:swal2-toast-animate-success-line-tip .75s;animation:swal2-toast-animate-success-line-tip .75s}.swal2-popup.swal2-toast .swal2-animate-success-icon .swal2-success-line-long{-webkit-animation:swal2-toast-animate-success-line-long .75s;animation:swal2-toast-animate-success-line-long .75s}@-webkit-keyframes swal2-toast-show{0%{transform:translateY(-.625em) rotateZ(2deg)}33%{transform:translateY(0) rotateZ(-2deg)}66%{transform:translateY(.3125em) rotateZ(2deg)}100%{transform:translateY(0) rotateZ(0)}}@keyframes swal2-toast-show{0%{transform:translateY(-.625em) rotateZ(2deg)}33%{transform:translateY(0) rotateZ(-2deg)}66%{transform:translateY(.3125em) rotateZ(2deg)}100%{transform:translateY(0) rotateZ(0)}}@-webkit-keyframes swal2-toast-hide{100%{transform:rotateZ(1deg);opacity:0}}@keyframes swal2-toast-hide{100%{transform:rotateZ(1deg);opacity:0}}@-webkit-keyframes swal2-toast-animate-success-line-tip{0%{top:.5625em;left:.0625em;width:0}54%{top:.125em;left:.125em;width:0}70%{top:.625em;left:-.25em;width:1.625em}84%{top:1.0625em;left:.75em;width:.5em}100%{top:1.125em;left:.1875em;width:.75em}}@keyframes swal2-toast-animate-success-line-tip{0%{top:.5625em;left:.0625em;width:0}54%{top:.125em;left:.125em;width:0}70%{top:.625em;left:-.25em;width:1.625em}84%{top:1.0625em;left:.75em;width:.5em}100%{top:1.125em;left:.1875em;width:.75em}}@-webkit-keyframes swal2-toast-animate-success-line-long{0%{top:1.625em;right:1.375em;width:0}65%{top:1.25em;right:.9375em;width:0}84%{top:.9375em;right:0;width:1.125em}100%{top:.9375em;right:.1875em;width:1.375em}}@keyframes swal2-toast-animate-success-line-long{0%{top:1.625em;right:1.375em;width:0}65%{top:1.25em;right:.9375em;width:0}84%{top:.9375em;right:0;width:1.125em}100%{top:.9375em;right:.1875em;width:1.375em}}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown){overflow:hidden}body.swal2-height-auto{height:auto!important}body.swal2-no-backdrop .swal2-shown{top:auto;right:auto;bottom:auto;left:auto;max-width:calc(100% - .625em * 2);background-color:transparent}body.swal2-no-backdrop .swal2-shown>.swal2-modal{box-shadow:0 0 10px rgba(0,0,0,.4)}body.swal2-no-backdrop .swal2-shown.swal2-top{top:0;left:50%;transform:translateX(-50%)}body.swal2-no-backdrop .swal2-shown.swal2-top-left,body.swal2-no-backdrop .swal2-shown.swal2-top-start{top:0;left:0}body.swal2-no-backdrop .swal2-shown.swal2-top-end,body.swal2-no-backdrop .swal2-shown.swal2-top-right{top:0;right:0}body.swal2-no-backdrop .swal2-shown.swal2-center{top:50%;left:50%;transform:translate(-50%,-50%)}body.swal2-no-backdrop .swal2-shown.swal2-center-left,body.swal2-no-backdrop .swal2-shown.swal2-center-start{top:50%;left:0;transform:translateY(-50%)}body.swal2-no-backdrop .swal2-shown.swal2-center-end,body.swal2-no-backdrop .swal2-shown.swal2-center-right{top:50%;right:0;transform:translateY(-50%)}body.swal2-no-backdrop .swal2-shown.swal2-bottom{bottom:0;left:50%;transform:translateX(-50%)}body.swal2-no-backdrop .swal2-shown.swal2-bottom-left,body.swal2-no-backdrop .swal2-shown.swal2-bottom-start{bottom:0;left:0}body.swal2-no-backdrop .swal2-shown.swal2-bottom-end,body.swal2-no-backdrop .swal2-shown.swal2-bottom-right{right:0;bottom:0}.swal2-container{display:flex;position:fixed;z-index:1060;top:0;right:0;bottom:0;left:0;flex-direction:row;align-items:center;justify-content:center;padding:.625em;overflow-x:hidden;background-color:transparent;-webkit-overflow-scrolling:touch}.swal2-container.swal2-top{align-items:flex-start}.swal2-container.swal2-top-left,.swal2-container.swal2-top-start{align-items:flex-start;justify-content:flex-start}.swal2-container.swal2-top-end,.swal2-container.swal2-top-right{align-items:flex-start;justify-content:flex-end}.swal2-container.swal2-center{align-items:center}.swal2-container.swal2-center-left,.swal2-container.swal2-center-start{align-items:center;justify-content:flex-start}.swal2-container.swal2-center-end,.swal2-container.swal2-center-right{align-items:center;justify-content:flex-end}.swal2-container.swal2-bottom{align-items:flex-end}.swal2-container.swal2-bottom-left,.swal2-container.swal2-bottom-start{align-items:flex-end;justify-content:flex-start}.swal2-container.swal2-bottom-end,.swal2-container.swal2-bottom-right{align-items:flex-end;justify-content:flex-end}.swal2-container.swal2-bottom-end>:first-child,.swal2-container.swal2-bottom-left>:first-child,.swal2-container.swal2-bottom-right>:first-child,.swal2-container.swal2-bottom-start>:first-child,.swal2-container.swal2-bottom>:first-child{margin-top:auto}.swal2-container.swal2-grow-fullscreen>.swal2-modal{display:flex!important;flex:1;align-self:stretch;justify-content:center}.swal2-container.swal2-grow-row>.swal2-modal{display:flex!important;flex:1;align-content:center;justify-content:center}.swal2-container.swal2-grow-column{flex:1;flex-direction:column}.swal2-container.swal2-grow-column.swal2-bottom,.swal2-container.swal2-grow-column.swal2-center,.swal2-container.swal2-grow-column.swal2-top{align-items:center}.swal2-container.swal2-grow-column.swal2-bottom-left,.swal2-container.swal2-grow-column.swal2-bottom-start,.swal2-container.swal2-grow-column.swal2-center-left,.swal2-container.swal2-grow-column.swal2-center-start,.swal2-container.swal2-grow-column.swal2-top-left,.swal2-container.swal2-grow-column.swal2-top-start{align-items:flex-start}.swal2-container.swal2-grow-column.swal2-bottom-end,.swal2-container.swal2-grow-column.swal2-bottom-right,.swal2-container.swal2-grow-column.swal2-center-end,.swal2-container.swal2-grow-column.swal2-center-right,.swal2-container.swal2-grow-column.swal2-top-end,.swal2-container.swal2-grow-column.swal2-top-right{align-items:flex-end}.swal2-container.swal2-grow-column>.swal2-modal{display:flex!important;flex:1;align-content:center;justify-content:center}.swal2-container:not(.swal2-top):not(.swal2-top-start):not(.swal2-top-end):not(.swal2-top-left):not(.swal2-top-right):not(.swal2-center-start):not(.swal2-center-end):not(.swal2-center-left):not(.swal2-center-right):not(.swal2-bottom):not(.swal2-bottom-start):not(.swal2-bottom-end):not(.swal2-bottom-left):not(.swal2-bottom-right):not(.swal2-grow-fullscreen)>.swal2-modal{margin:auto}@media all and (-ms-high-contrast:none),(-ms-high-contrast:active){.swal2-container .swal2-modal{margin:0!important}}.swal2-container.swal2-fade{transition:background-color .1s}.swal2-container.swal2-shown{background-color:rgba(0,0,0,.4)}.swal2-popup{display:none;position:relative;box-sizing:border-box;flex-direction:column;justify-content:center;width:32em;max-width:100%;padding:1.25em;border:none;border-radius:.3125em;background:#fff;font-family:inherit;font-size:1rem}.swal2-popup:focus{outline:0}.swal2-popup.swal2-loading{overflow-y:hidden}.swal2-header{display:flex;flex-direction:column;align-items:center}.swal2-title{position:relative;max-width:100%;margin:0 0 .4em;padding:0;color:#595959;font-size:1.875em;font-weight:600;text-align:center;text-transform:none;word-wrap:break-word}.swal2-actions{z-index:1;flex-wrap:wrap;align-items:center;justify-content:center;width:100%;margin:1.25em auto 0}.swal2-actions:not(.swal2-loading) .swal2-styled[disabled]{opacity:.4}.swal2-actions:not(.swal2-loading) .swal2-styled:hover{background-image:linear-gradient(rgba(0,0,0,.1),rgba(0,0,0,.1))}.swal2-actions:not(.swal2-loading) .swal2-styled:active{background-image:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2))}.swal2-actions.swal2-loading .swal2-styled.swal2-confirm{box-sizing:border-box;width:2.5em;height:2.5em;margin:.46875em;padding:0;-webkit-animation:swal2-rotate-loading 1.5s linear 0s infinite normal;animation:swal2-rotate-loading 1.5s linear 0s infinite normal;border:.25em solid transparent;border-radius:100%;border-color:transparent;background-color:transparent!important;color:transparent;cursor:default;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.swal2-actions.swal2-loading .swal2-styled.swal2-cancel{margin-right:30px;margin-left:30px}.swal2-actions.swal2-loading :not(.swal2-styled).swal2-confirm::after{content:\"\";display:inline-block;width:15px;height:15px;margin-left:5px;-webkit-animation:swal2-rotate-loading 1.5s linear 0s infinite normal;animation:swal2-rotate-loading 1.5s linear 0s infinite normal;border:3px solid #999;border-radius:50%;border-right-color:transparent;box-shadow:1px 1px 1px #fff}.swal2-styled{margin:.3125em;padding:.625em 2em;box-shadow:none;font-weight:500}.swal2-styled:not([disabled]){cursor:pointer}.swal2-styled.swal2-confirm{border:0;border-radius:.25em;background:initial;background-color:#3085d6;color:#fff;font-size:1.0625em}.swal2-styled.swal2-cancel{border:0;border-radius:.25em;background:initial;background-color:#aaa;color:#fff;font-size:1.0625em}.swal2-styled:focus{outline:0;box-shadow:0 0 0 2px #fff,0 0 0 4px rgba(50,100,150,.4)}.swal2-styled::-moz-focus-inner{border:0}.swal2-footer{justify-content:center;margin:1.25em 0 0;padding:1em 0 0;border-top:1px solid #eee;color:#545454;font-size:1em}.swal2-image{max-width:100%;margin:1.25em auto}.swal2-close{position:absolute;z-index:2;top:0;right:0;justify-content:center;width:1.2em;height:1.2em;padding:0;overflow:hidden;transition:color .1s ease-out;border:none;border-radius:0;outline:initial;background:0 0;color:#ccc;font-family:serif;font-size:2.5em;line-height:1.2;cursor:pointer}.swal2-close:hover{transform:none;background:0 0;color:#f27474}.swal2-content{z-index:1;justify-content:center;margin:0;padding:0;color:#545454;font-size:1.125em;font-weight:300;line-height:normal;text-align:center;word-wrap:break-word}.swal2-checkbox,.swal2-file,.swal2-input,.swal2-radio,.swal2-select,.swal2-textarea{margin:1em auto}.swal2-file,.swal2-input,.swal2-textarea{box-sizing:border-box;width:100%;transition:border-color .3s,box-shadow .3s;border:1px solid #d9d9d9;border-radius:.1875em;background:inherit;box-shadow:inset 0 1px 1px rgba(0,0,0,.06);color:inherit;font-size:1.125em}.swal2-file.swal2-inputerror,.swal2-input.swal2-inputerror,.swal2-textarea.swal2-inputerror{border-color:#f27474!important;box-shadow:0 0 2px #f27474!important}.swal2-file:focus,.swal2-input:focus,.swal2-textarea:focus{border:1px solid #b4dbed;outline:0;box-shadow:0 0 3px #c4e6f5}.swal2-file::-webkit-input-placeholder,.swal2-input::-webkit-input-placeholder,.swal2-textarea::-webkit-input-placeholder{color:#ccc}.swal2-file::-moz-placeholder,.swal2-input::-moz-placeholder,.swal2-textarea::-moz-placeholder{color:#ccc}.swal2-file:-ms-input-placeholder,.swal2-input:-ms-input-placeholder,.swal2-textarea:-ms-input-placeholder{color:#ccc}.swal2-file::-ms-input-placeholder,.swal2-input::-ms-input-placeholder,.swal2-textarea::-ms-input-placeholder{color:#ccc}.swal2-file::placeholder,.swal2-input::placeholder,.swal2-textarea::placeholder{color:#ccc}.swal2-range{margin:1em auto;background:inherit}.swal2-range input{width:80%}.swal2-range output{width:20%;color:inherit;font-weight:600;text-align:center}.swal2-range input,.swal2-range output{height:2.625em;padding:0;font-size:1.125em;line-height:2.625em}.swal2-input{height:2.625em;padding:0 .75em}.swal2-input[type=number]{max-width:10em}.swal2-file{background:inherit;font-size:1.125em}.swal2-textarea{height:6.75em;padding:.75em}.swal2-select{min-width:50%;max-width:100%;padding:.375em .625em;background:inherit;color:inherit;font-size:1.125em}.swal2-checkbox,.swal2-radio{align-items:center;justify-content:center;background:inherit;color:inherit}.swal2-checkbox label,.swal2-radio label{margin:0 .6em;font-size:1.125em}.swal2-checkbox input,.swal2-radio input{margin:0 .4em}.swal2-validation-message{display:none;align-items:center;justify-content:center;padding:.625em;overflow:hidden;background:#f0f0f0;color:#666;font-size:1em;font-weight:300}.swal2-validation-message::before{content:\"!\";display:inline-block;width:1.5em;min-width:1.5em;height:1.5em;margin:0 .625em;zoom:normal;border-radius:50%;background-color:#f27474;color:#fff;font-weight:600;line-height:1.5em;text-align:center}@supports (-ms-accelerator:true){.swal2-range input{width:100%!important}.swal2-range output{display:none}}@media all and (-ms-high-contrast:none),(-ms-high-contrast:active){.swal2-range input{width:100%!important}.swal2-range output{display:none}}@-moz-document url-prefix(){.swal2-close:focus{outline:2px solid rgba(50,100,150,.4)}}.swal2-icon{position:relative;box-sizing:content-box;justify-content:center;width:5em;height:5em;margin:1.25em auto 1.875em;zoom:normal;border:.25em solid transparent;border-radius:50%;font-family:inherit;line-height:5em;cursor:default;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.swal2-icon::before{display:flex;align-items:center;height:92%;font-size:3.75em}.swal2-icon.swal2-error{border-color:#f27474}.swal2-icon.swal2-error .swal2-x-mark{position:relative;flex-grow:1}.swal2-icon.swal2-error [class^=swal2-x-mark-line]{display:block;position:absolute;top:2.3125em;width:2.9375em;height:.3125em;border-radius:.125em;background-color:#f27474}.swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left]{left:1.0625em;transform:rotate(45deg)}.swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=right]{right:1em;transform:rotate(-45deg)}.swal2-icon.swal2-warning{border-color:#facea8;color:#f8bb86}.swal2-icon.swal2-warning::before{content:\"!\"}.swal2-icon.swal2-info{border-color:#9de0f6;color:#3fc3ee}.swal2-icon.swal2-info::before{content:\"i\"}.swal2-icon.swal2-question{border-color:#c9dae1;color:#87adbd}.swal2-icon.swal2-question::before{content:\"?\"}.swal2-icon.swal2-question.swal2-arabic-question-mark::before{content:\"؟\"}.swal2-icon.swal2-success{border-color:#a5dc86}.swal2-icon.swal2-success [class^=swal2-success-circular-line]{position:absolute;width:3.75em;height:7.5em;transform:rotate(45deg);border-radius:50%}.swal2-icon.swal2-success [class^=swal2-success-circular-line][class$=left]{top:-.4375em;left:-2.0635em;transform:rotate(-45deg);transform-origin:3.75em 3.75em;border-radius:7.5em 0 0 7.5em}.swal2-icon.swal2-success [class^=swal2-success-circular-line][class$=right]{top:-.6875em;left:1.875em;transform:rotate(-45deg);transform-origin:0 3.75em;border-radius:0 7.5em 7.5em 0}.swal2-icon.swal2-success .swal2-success-ring{position:absolute;z-index:2;top:-.25em;left:-.25em;box-sizing:content-box;width:100%;height:100%;border:.25em solid rgba(165,220,134,.3);border-radius:50%}.swal2-icon.swal2-success .swal2-success-fix{position:absolute;z-index:1;top:.5em;left:1.625em;width:.4375em;height:5.625em;transform:rotate(-45deg)}.swal2-icon.swal2-success [class^=swal2-success-line]{display:block;position:absolute;z-index:2;height:.3125em;border-radius:.125em;background-color:#a5dc86}.swal2-icon.swal2-success [class^=swal2-success-line][class$=tip]{top:2.875em;left:.875em;width:1.5625em;transform:rotate(45deg)}.swal2-icon.swal2-success [class^=swal2-success-line][class$=long]{top:2.375em;right:.5em;width:2.9375em;transform:rotate(-45deg)}.swal2-progress-steps{align-items:center;margin:0 0 1.25em;padding:0;background:inherit;font-weight:600}.swal2-progress-steps li{display:inline-block;position:relative}.swal2-progress-steps .swal2-progress-step{z-index:20;width:2em;height:2em;border-radius:2em;background:#3085d6;color:#fff;line-height:2em;text-align:center}.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step{background:#3085d6}.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step~.swal2-progress-step{background:#add8e6;color:#fff}.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step~.swal2-progress-step-line{background:#add8e6}.swal2-progress-steps .swal2-progress-step-line{z-index:10;width:2.5em;height:.4em;margin:0 -1px;background:#3085d6}[class^=swal2]{-webkit-tap-highlight-color:transparent}.swal2-show{-webkit-animation:swal2-show .3s;animation:swal2-show .3s}.swal2-show.swal2-noanimation{-webkit-animation:none;animation:none}.swal2-hide{-webkit-animation:swal2-hide .15s forwards;animation:swal2-hide .15s forwards}.swal2-hide.swal2-noanimation{-webkit-animation:none;animation:none}.swal2-rtl .swal2-close{right:auto;left:0}.swal2-animate-success-icon .swal2-success-line-tip{-webkit-animation:swal2-animate-success-line-tip .75s;animation:swal2-animate-success-line-tip .75s}.swal2-animate-success-icon .swal2-success-line-long{-webkit-animation:swal2-animate-success-line-long .75s;animation:swal2-animate-success-line-long .75s}.swal2-animate-success-icon .swal2-success-circular-line-right{-webkit-animation:swal2-rotate-success-circular-line 4.25s ease-in;animation:swal2-rotate-success-circular-line 4.25s ease-in}.swal2-animate-error-icon{-webkit-animation:swal2-animate-error-icon .5s;animation:swal2-animate-error-icon .5s}.swal2-animate-error-icon .swal2-x-mark{-webkit-animation:swal2-animate-error-x-mark .5s;animation:swal2-animate-error-x-mark .5s}@-webkit-keyframes swal2-rotate-loading{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}@keyframes swal2-rotate-loading{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}@media print{body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown){overflow-y:scroll!important}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown)>[aria-hidden=true]{display:none}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) .swal2-container{position:static!important}}");
 
 /***/ }),
 
@@ -60668,32 +62164,16 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "container" }, [
+    _c(
+      "div",
+      { staticClass: "row justify-content-center" },
+      [_c("not-found")],
+      1
+    )
+  ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-md-8" }, [
-          _c("div", { staticClass: "card" }, [
-            _c("div", { staticClass: "card-header" }, [
-              _vm._v("Dashoard Component")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _vm._v(
-                "\n                    I'm an Dashoard component.\n                "
-              )
-            ])
-          ])
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -60747,6 +62227,1251 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/NotFound.vue?vue&type=template&id=2ce50e5a&":
+/*!***********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/NotFound.vue?vue&type=template&id=2ce50e5a& ***!
+  \***********************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "col-md-10 mt-4" }, [
+        _c("h3", [_vm._v("  Page Not Found. You are not authorised.")]),
+        _vm._v(" "),
+        _c(
+          "svg",
+          {
+            attrs: {
+              id: "f2059cf3-5beb-4c16-b86e-a491cbb2d73f",
+              "data-name": "Layer 1",
+              xmlns: "http://www.w3.org/2000/svg",
+              "xmlns:xlink": "http://www.w3.org/1999/xlink",
+              width: "700",
+              height: "100%",
+              viewBox: "0 0 1096.46 805.97"
+            }
+          },
+          [
+            _c(
+              "defs",
+              [
+                _c(
+                  "linearGradient",
+                  {
+                    attrs: {
+                      id: "fe3366dc-1c26-4135-9415-0b0409d0ae5c",
+                      x1: "699.46",
+                      y1: "846.78",
+                      x2: "699.46",
+                      y2: "546.12",
+                      gradientUnits: "userSpaceOnUse"
+                    }
+                  },
+                  [
+                    _c("stop", {
+                      attrs: {
+                        offset: "0",
+                        "stop-color": "gray",
+                        "stop-opacity": "0.25"
+                      }
+                    }),
+                    _c("stop", {
+                      attrs: {
+                        offset: "0.54",
+                        "stop-color": "gray",
+                        "stop-opacity": "0.12"
+                      }
+                    }),
+                    _c("stop", {
+                      attrs: {
+                        offset: "1",
+                        "stop-color": "gray",
+                        "stop-opacity": "0.1"
+                      }
+                    })
+                  ],
+                  1
+                )
+              ],
+              1
+            ),
+            _c("title", [_vm._v("mobile marketing")]),
+            _c("path", {
+              attrs: {
+                d:
+                  "M693.59,158.42c-64.72-2.25-126.36-23.14-185.22-46S391.21,64.23,328,52.12C287.41,44.33,240.94,43.23,208.2,65c-31.5,21-41.68,57.15-47.15,90.72-4.12,25.27-6.54,51.85,4.74,75.5,7.84,16.42,21.74,30.22,31.36,46,33.47,54.72,9.81,122.2-26.45,175.63-17,25.06-36.75,49-49.88,75.66s-19.2,57.25-7.71,84.46c11.38,27,38.51,47.24,67.9,61.5,59.69,28.94,130,37.23,198.61,41.92,151.83,10.39,304.46,5.89,456.69,1.39,56.34-1.67,112.92-3.36,168.34-12.07,30.78-4.84,62.55-12.52,84.89-31,28.37-23.53,35.4-63.38,16.39-92.88-31.88-49.49-120-61.79-142.31-114.9-12.26-29.23.33-61.8,18.16-88.91,38.24-58.17,102.33-109.19,105.7-175.68,2.32-45.66-28.49-91.39-76.13-113-49.93-22.65-119.18-19.8-156,17.69C817.4,145.55,750.74,160.4,693.59,158.42Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#6c63ff",
+                opacity: "0.1"
+              }
+            }),
+            _c("g", { attrs: { opacity: "0.9" } }, [
+              _c("rect", {
+                attrs: {
+                  x: "708.33",
+                  y: "248.78",
+                  width: "8.86",
+                  height: "73.02",
+                  rx: "2.29",
+                  ry: "2.29",
+                  fill: "#3a3768"
+                }
+              }),
+              _c("rect", {
+                attrs: {
+                  x: "413.89",
+                  y: "191.58",
+                  width: "4.97",
+                  height: "24.04",
+                  rx: "2.29",
+                  ry: "2.29",
+                  fill: "#3a3768"
+                }
+              }),
+              _c("rect", {
+                attrs: {
+                  x: "413.71",
+                  y: "235.59",
+                  width: "5.6",
+                  height: "41.84",
+                  rx: "2.29",
+                  ry: "2.29",
+                  fill: "#3a3768"
+                }
+              }),
+              _c("rect", {
+                attrs: {
+                  x: "413.8",
+                  y: "292.07",
+                  width: "5.33",
+                  height: "42.2",
+                  rx: "2.29",
+                  ry: "2.29",
+                  fill: "#3a3768"
+                }
+              }),
+              _c("rect", {
+                attrs: {
+                  x: "416.71",
+                  y: "112.14",
+                  width: "296.4",
+                  height: "602.39",
+                  rx: "38.99",
+                  ry: "38.99",
+                  fill: "#3a3768"
+                }
+              }),
+              _c("rect", {
+                attrs: {
+                  x: "536.31",
+                  y: "130.12",
+                  width: "41.39",
+                  height: "8.4",
+                  rx: "3.87",
+                  ry: "3.87",
+                  fill: "#e6e8ec"
+                }
+              }),
+              _c("circle", {
+                attrs: {
+                  cx: "588.73",
+                  cy: "134.33",
+                  r: "4.77",
+                  fill: "#e6e8ec"
+                }
+              })
+            ]),
+            _c("ellipse", {
+              attrs: {
+                cx: "238.04",
+                cy: "728.39",
+                rx: "199.97",
+                ry: "20.38",
+                fill: "#6c63ff",
+                opacity: "0.1"
+              }
+            }),
+            _c("ellipse", {
+              attrs: {
+                cx: "682.68",
+                cy: "796.42",
+                rx: "93.68",
+                ry: "9.55",
+                fill: "#6c63ff",
+                opacity: "0.1"
+              }
+            }),
+            _c("ellipse", {
+              attrs: {
+                cx: "1002.78",
+                cy: "748.3",
+                rx: "93.68",
+                ry: "9.55",
+                fill: "#6c63ff",
+                opacity: "0.1"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M723,174.84H689.1v4.09a19.38,19.38,0,0,1-19.38,19.38H561.54a19.38,19.38,0,0,1-19.38-19.38v-4.09H510.32a23.53,23.53,0,0,0-23.53,23.54V722.31a23.53,23.53,0,0,0,23.53,23.54H723a23.54,23.54,0,0,0,23.54-23.54V198.38A23.54,23.54,0,0,0,723,174.84Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#6c63ff"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M867.49,132.73s-84.2-5.08-74.27,53.92c0,0-2,10.43,7.48,15.16,0,0,.15-4.37,8.63-2.89a38.44,38.44,0,0,0,9.15.44,19,19,0,0,0,11.19-4.61h0s23.66-9.78,32.87-48.46c0,0,6.81-8.44,6.54-10.61l-14.21,6.07s4.85,10.25,1,18.77c0,0-.46-18.4-3.19-18-.56.08-7.39,3.55-7.39,3.55s8.36,17.85,2,30.83c0,0,2.39-22-4.66-29.54l-10,5.84s9.76,18.44,3.15,33.49c0,0,1.69-23.08-5.25-32.07l-9.06,7.07s9.17,18.17,3.58,30.65c0,0-.74-26.86-5.55-28.89,0,0-7.93,7-9.14,9.86,0,0,6.28,13.2,2.39,20.16,0,0-2.39-17.9-4.35-18,0,0-7.9,11.86-8.72,20,0,0,.34-12.09,6.8-21.12,0,0-7.63,1.31-12.09,6.26,0,0,1.23-8.38,14-9.12,0,0,6.53-9,8.28-9.54,0,0-12.75-1.07-20.48,2.36,0,0,6.8-7.91,22.82-4.31l8.94-7.31s-16.78-2.29-23.9.24c0,0,8.2-7,26.32-1.9l9.74-5.82s-14.31-3.09-22.84-2c0,0,9-4.85,25.69.41l7-3.13s-10.49-2.06-13.56-2.39-3.23-1.17-3.23-1.17A36.35,36.35,0,0,1,853,139.19S867.74,133.66,867.49,132.73Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#6c63ff"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M781.13,106.49s-38-2.29-33.56,24.37c0,0-.89,4.71,3.38,6.85,0,0,.07-2,3.9-1.31a17.51,17.51,0,0,0,4.13.2,8.62,8.62,0,0,0,5.06-2.08h0s10.69-4.42,14.85-21.9c0,0,3.08-3.81,3-4.79l-6.42,2.74s2.19,4.63.46,8.48c0,0-.2-8.31-1.44-8.12-.25,0-3.33,1.61-3.33,1.61s3.77,8.06.92,13.93c0,0,1.08-9.94-2.1-13.35l-4.52,2.64s4.41,8.33,1.42,15.13c0,0,.77-10.43-2.37-14.49l-4.1,3.2s4.15,8.21,1.62,13.85c0,0-.33-12.14-2.5-13.06,0,0-3.59,3.16-4.13,4.46,0,0,2.83,6,1.07,9.11,0,0-1.08-8.09-2-8.13,0,0-3.57,5.36-3.94,9a19.46,19.46,0,0,1,3.07-9.54,10.71,10.71,0,0,0-5.46,2.83s.55-3.79,6.34-4.12c0,0,2.95-4.07,3.74-4.32,0,0-5.76-.48-9.25,1.07,0,0,3.07-3.57,10.31-2l4-3.3s-7.58-1-10.8.11c0,0,3.71-3.16,11.89-.86l4.4-2.63s-6.46-1.39-10.31-.89c0,0,4.06-2.19,11.6.18l3.15-1.41s-4.73-.93-6.12-1.08-1.46-.53-1.46-.53a16.36,16.36,0,0,1,8.89,1S781.24,106.91,781.13,106.49Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#6c63ff"
+              }
+            }),
+            _c("ellipse", {
+              attrs: {
+                cx: "40.21",
+                cy: "678.57",
+                rx: "40.21",
+                ry: "6.8",
+                fill: "#6c63ff"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M108.6,714.46a11.63,11.63,0,0,0,3.84-5.78c.49-2.3-.49-5-2.68-5.89-2.46-.95-5.09.76-7.08,2.48s-4.28,3.69-6.89,3.32A10.47,10.47,0,0,0,99,698.78a4,4,0,0,0-.9-2c-1.36-1.46-3.84-.83-5.48.32-5.2,3.66-6.65,10.72-6.67,17.08-.53-2.3-.09-4.69-.1-7s-.66-5-2.64-6.22a8,8,0,0,0-4-.95c-2.34-.08-4.94.15-6.54,1.86-2,2.12-1.47,5.69.26,8s4.35,3.8,6.76,5.42a14.92,14.92,0,0,1,4.84,4.61,4.41,4.41,0,0,1,.36.82H99.54A40.77,40.77,0,0,0,108.6,714.46Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#6c63ff"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M882.34,630.54s8.65,11.32-4,28.4-23.07,31.5-18.85,42.15c0,0,19.08-31.72,34.61-32.17S899.42,649.62,882.34,630.54Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#6c63ff"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M882.34,630.54a14.25,14.25,0,0,1,1.77,3.55c15.15,17.8,23.22,34.42,8.65,34.83-13.56.39-29.84,24.65-33.73,30.77a11.46,11.46,0,0,0,.46,1.4s19.08-31.72,34.61-32.17S899.42,649.62,882.34,630.54Z",
+                transform: "translate(-51.77 -47.02)",
+                opacity: "0.1"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M898.42,645c0,4-.45,7.21-1,7.21s-1-3.23-1-7.21.56-2.1,1.11-2.1S898.42,641,898.42,645Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#ffd037"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M903.94,649.72c-3.5,1.9-6.54,3.06-6.81,2.57s2.36-2.42,5.86-4.33,2.11-.51,2.38,0S907.44,647.81,903.94,649.72Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#ffd037"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M836.64,630.54s-8.65,11.32,4,28.4,23.07,31.5,18.86,42.15c0,0-19.08-31.72-34.61-32.17S819.56,649.62,836.64,630.54Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#6c63ff"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M836.64,630.54a13.85,13.85,0,0,0-1.77,3.55c-15.15,17.8-23.22,34.42-8.66,34.83,13.57.39,29.84,24.65,33.74,30.77a13.48,13.48,0,0,1-.46,1.4s-19.08-31.72-34.61-32.17S819.56,649.62,836.64,630.54Z",
+                transform: "translate(-51.77 -47.02)",
+                opacity: "0.1"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M820.55,645c0,4,.45,7.21,1,7.21s1-3.23,1-7.21-.56-2.1-1.11-2.1S820.55,641,820.55,645Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#ffd037"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M815,649.72c3.49,1.9,6.54,3.06,6.8,2.57s-2.35-2.42-5.85-4.33-2.12-.51-2.38,0S811.54,647.81,815,649.72Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#ffd037"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M823.31,699.61s24.19-.75,31.48-5.94,37.21-11.39,39-3.06,36.35,41.41,9,41.63-63.46-4.26-70.73-8.69S823.31,699.61,823.31,699.61Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#a8a8a8"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M903.34,729.34c-27.31.22-63.46-4.26-70.73-8.69-5.55-3.37-7.75-15.48-8.49-21.07l-.81,0s1.53,19.51,8.81,23.94,43.42,8.91,70.73,8.69c7.88-.07,10.61-2.87,10.46-7C912.21,727.72,909.21,729.29,903.34,729.34Z",
+                transform: "translate(-51.77 -47.02)",
+                opacity: "0.2"
+              }
+            }),
+            _c("rect", {
+              attrs: {
+                x: "584.53",
+                y: "487.87",
+                width: "78.03",
+                height: "78.03",
+                fill: "#3a3768",
+                opacity: "0.3"
+              }
+            }),
+            _c("rect", {
+              attrs: {
+                x: "469.53",
+                y: "384.87",
+                width: "78.03",
+                height: "78.03",
+                fill: "#3a3768",
+                opacity: "0.3"
+              }
+            }),
+            _c("rect", {
+              attrs: {
+                x: "477.03",
+                y: "589.11",
+                width: "78.03",
+                height: "78.03",
+                fill: "#3a3768",
+                opacity: "0.3"
+              }
+            }),
+            _c("rect", {
+              attrs: {
+                x: "459.62",
+                y: "193.28",
+                width: "78.03",
+                height: "78.03",
+                fill: "#fff"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M565.55,265.79l-2.77,2.76a9.77,9.77,0,0,1,0,13.83l2.77,2.78a13.7,13.7,0,0,0,0-19.37Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#6c63ff"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M571.09,260.46l-2.73,2.73a17.38,17.38,0,0,1,0,24.56l2.73,2.73a21.22,21.22,0,0,0,0-30Zm-13,10.22v-12.5h-3.85l-11.52,9.6H527.36l-3.84,1.92v13.45l3.84,1.92L537,300.44h5.76l-3.6-15.37h3.6l11.52,7.69h3.85v-12.5a4.91,4.91,0,0,0,0-9.58Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#6c63ff"
+              }
+            }),
+            _c("rect", {
+              attrs: {
+                x: "656.92",
+                y: "522.77",
+                width: "78.03",
+                height: "78.03",
+                transform: "translate(-248.8 565.21) rotate(-42.14)",
+                fill: "#fff"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M673.34,551.14,679,546,710,580.17l-5.7,5.16Zm13.37,32,5.7-5.15,9,10-5.7,5.15Zm11.94-21.16,5.7-5.16,14.17,15.67-5.69,5.15Zm.81-16.28,5.7-5.16,21.91,24.21-5.7,5.16Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#6c63ff"
+              }
+            }),
+            _c("rect", {
+              attrs: {
+                x: "583.24",
+                y: "287.31",
+                width: "78.03",
+                height: "78.03",
+                fill: "#fff"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M688.84,364l-10.47,16a5.7,5.7,0,0,1,1.3,3.64,5.77,5.77,0,0,1-11.53,0,6.36,6.36,0,0,1,.1-1.07l-6.92-4a5.79,5.79,0,0,1-6.83.86l-7.36,6.89v6.87a5.14,5.14,0,0,0,5.13,5.13H695.8a5.15,5.15,0,0,0,5.13-5.13V367.67l-7-4.67a5.7,5.7,0,0,1-3.53,1.22,5.87,5.87,0,0,1-1.52-.21Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#6c63ff"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M657.33,368.66a5.76,5.76,0,0,1,5.77,5.76c0,.25,0,.51-.05.75l7.22,4a5.67,5.67,0,0,1,3.65-1.3,5.54,5.54,0,0,1,1.24.14l10.5-16.26a5.76,5.76,0,1,1,10.46-3.34,6,6,0,0,1-.16,1.36l5,3.31v-9.62a5.14,5.14,0,0,0-5.13-5.12H652.26a5.13,5.13,0,0,0-5.13,5.12V381l4.8-4.6a5.82,5.82,0,0,1-.36-2A5.76,5.76,0,0,1,657.33,368.66Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#6c63ff"
+              }
+            }),
+            _c("rect", {
+              attrs: {
+                x: "484.6",
+                y: "374.31",
+                width: "78.03",
+                height: "78.03",
+                fill: "#fff"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M598.93,435.49l-48,26a1,1,0,0,0,.07,1.79l8.19,3.09a2,2,0,0,1,1.08,1l6.36,13.1c.12.58,1.19.74,1.2.15l-1-10.83a3.85,3.85,0,0,1,.88-2.19l24.88-24.38a.62.62,0,0,1,.55-.16.57.57,0,0,1,.31.91L572,470.19a4.79,4.79,0,0,0-.84,2.16l-1.28,9.35c.1.82.74,1.13,1.26.4l4.62-5.43a1,1,0,0,1,1.36-.22l11.91,8.68a1,1,0,0,0,1.51-.59l9.77-48a1,1,0,0,0-1.4-1.08Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#6c63ff"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M1023.61,779.61c4.54.59,9.25,1,13.6-.46.67-.21,1.44-.67,1.35-1.36a1.6,1.6,0,0,0-.31-.66,42.41,42.41,0,0,1-4.13-7.83.64.64,0,0,0-.25-.35.61.61,0,0,0-.44,0c-2,.52-3.74,1.82-5.74,2.37a8.2,8.2,0,0,1-3.12.24c-.9-.1-2.14-.85-2.95-.76C1022.12,773.77,1023.26,776.58,1023.61,779.61Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#6c63ff"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M1109.54,772c3-2,6.1-4.22,7.87-7.39a1.21,1.21,0,0,0,.21-.63,1.3,1.3,0,0,0-.25-.62,25.62,25.62,0,0,0-6.39-6.9,18.89,18.89,0,0,0-3.57,3.29c-.75.79-2.83,2.09-2.85,3.27,0,.71.79,1.48,1.16,2,.5.74,1,1.5,1.43,2.26C1107.38,767.74,1109.76,771.88,1109.54,772Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#6c63ff"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M1041.41,788.79a3,3,0,0,1-.54,2,2.67,2.67,0,0,1-1.15.67c-6.36,2.27-13.68-.57-20,1.68-1.31.46-2.54,1.12-3.85,1.56a20.85,20.85,0,0,1-4.77.85c-2.25.22-4.5.35-6.75.41a16.33,16.33,0,0,1-5.08-.44,6.15,6.15,0,0,1-3.9-3.09,3,3,0,0,1-.19-2.2,2.49,2.49,0,0,1,.41-.71,6.09,6.09,0,0,1,1.5-1.21l2.34-1.51a15.63,15.63,0,0,1,3.54-1.88c.92-.3,1.91-.43,2.84-.7,3.29-1,5.79-3.57,8.12-6.07l3.18-3.39a3.11,3.11,0,0,1,1.1-.88,3,3,0,0,1,1.36-.14,18.37,18.37,0,0,1,8.67,2.92,12.51,12.51,0,0,0,2.14,1.26,7.64,7.64,0,0,0,6-.75c.82-.43.64-.7,1-1.47s1.18-1.27,1.9-.56a2.09,2.09,0,0,1,.45.86c.7,2.27.43,4.7.43,7.07a3.14,3.14,0,0,0,.14,1.1,6.69,6.69,0,0,0,.62,1,1.58,1.58,0,0,1,.13.26A6.94,6.94,0,0,1,1041.41,788.79Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#514e7f"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M1041.41,788.79a3,3,0,0,1-.54,2,2.67,2.67,0,0,1-1.15.67c-6.36,2.27-13.68-.57-20,1.68-1.31.46-2.54,1.12-3.85,1.56a20.85,20.85,0,0,1-4.77.85c-2.25.22-4.5.35-6.75.41a16.33,16.33,0,0,1-5.08-.44,6.15,6.15,0,0,1-3.9-3.09,3,3,0,0,1-.19-2.2,2.49,2.49,0,0,1,.41-.71c.38.78.65,1.8.88,2.17a4.44,4.44,0,0,0,3,2.15,7.61,7.61,0,0,0,2.71-.35c5.76-1.43,11.88-1.45,17.4-3.61a41.57,41.57,0,0,1,5.7-2.19,45.28,45.28,0,0,1,6.16-.5c3.25-.26,6.39-1.24,9.6-1.75A6.94,6.94,0,0,1,1041.41,788.79Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#464353"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M1124.06,771.61c-.3,2.41-1.83,4.49-3.51,6.25a40.07,40.07,0,0,0-4.9,5.37c-1.66,2.52-2.39,5.63-4.53,7.76a12.27,12.27,0,0,1-2.72,2,18.8,18.8,0,0,1-3.53,1.62c-3.19,1-6.63.79-10,.55a8.89,8.89,0,0,1-3.16-.62,9.18,9.18,0,0,1-1.34-.81,6.36,6.36,0,0,1-2-2.07,2.08,2.08,0,0,1-.19-1.49,3.4,3.4,0,0,1,1-1.46,22.6,22.6,0,0,1,2.41-2.17,14.31,14.31,0,0,0,3.14-2.76,9,9,0,0,0,1.21-2.76,24.73,24.73,0,0,0,.88-5.25,16.54,16.54,0,0,1,.37-3.51c.51-1.8,1.85-3.43,1.69-5.3a1.36,1.36,0,0,1,.07-.8,1.25,1.25,0,0,1,.63-.39,11.4,11.4,0,0,1,3.28-.75,3.78,3.78,0,0,1,3,1.19c.47.56.77,1.34,1.46,1.59a2.42,2.42,0,0,0,1,0c1.68-.17,3.47-.38,4.76-1.47a6,6,0,0,0,2-4.37c0-.62-.28-1.27.67-1.4.73-.1,1.3.66,1.67,1.16a16.32,16.32,0,0,1,3.21,5.85,1.62,1.62,0,0,1,.61-.12,2.61,2.61,0,0,1,2.18,1.12A4.32,4.32,0,0,1,1124.06,771.61Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#514e7f"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M1124.06,771.61c-.3,2.41-1.83,4.49-3.51,6.25a40.07,40.07,0,0,0-4.9,5.37c-1.66,2.52-2.39,5.63-4.53,7.76a12.27,12.27,0,0,1-2.72,2,18.8,18.8,0,0,1-3.53,1.62c-3.19,1-6.63.79-10,.55a8.89,8.89,0,0,1-3.16-.62,9.18,9.18,0,0,1-1.34-.81,6.36,6.36,0,0,1-2-2.07,4.87,4.87,0,0,1,2.06-.49c1.49.08,2.57,1.48,4,1.91,2,.61,4-.82,6.09-1.31,1.34-.31,2.76-.22,4.07-.65a10.05,10.05,0,0,0,3-1.82,15.23,15.23,0,0,0,3.21-3.1,19.76,19.76,0,0,0,1.89-3.76,53.71,53.71,0,0,1,3.81-7.29,4.84,4.84,0,0,1,.78-1c.31-.29.7-.5,1-.76,1.37-1,1.94-2.77,2.42-4.41a7.38,7.38,0,0,1,.54-1.47,2.61,2.61,0,0,1,2.18,1.12A4.32,4.32,0,0,1,1124.06,771.61Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#464353"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M980.4,558a14.52,14.52,0,0,1,4.08,4.77c1,1.88,6.49,16.48,6.17,18.57,1.8-1.82,8.94-2.12,10.73-3.93.76-.76,4.87-4.56,5.48-5.44s5.19-2.77,5.69-3.67c1.87-3.35-13.26-16-11.33-19.36a.82.82,0,0,0,.16-.52.8.8,0,0,0-.25-.4,24.08,24.08,0,0,0-4.38-3,7,7,0,0,1-3.34-4,14.37,14.37,0,0,0-3.87,2.62q-4.15,3.55-8.18,7.28c-1.06,1-3.08,2.27-3.57,3.66S979.39,557.18,980.4,558Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#a1616a"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M1004.89,552.61a43.84,43.84,0,0,0-6.48,5.3c-1.88,1.85-3.66,4-4.13,6.61-.19,1-.16,2.06-.32,3.09-.67,4.48-4.56,7.77-6.27,12a20.52,20.52,0,0,0-1.1,4,47.15,47.15,0,0,0-.78,7.86c0,2.56,2.46,4.32,3.38,6.71a40.7,40.7,0,0,1,1.63,7.27,88.58,88.58,0,0,0,4.09,13.5c3.38,9.33,14.33,35.13,17.71,44.47,10.35-2.6,37.91-8.57,47.07-14,3.06-1.82-21.2-22.38-17.93-23.8a1.65,1.65,0,0,0,.91-.69,1.58,1.58,0,0,0,0-1c-3.26-14.29-13.49-26-18.12-40-1.61-4.83-4.5-8.95-6.7-13.55-2-4.16-3.05-8.75-5.42-12.7a8.49,8.49,0,0,0-1.73-2.17,10.61,10.61,0,0,0-1.92-1.15C1007.47,553.66,1006.21,553.27,1004.89,552.61Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#514e7f"
+              }
+            }),
+            _c("circle", {
+              attrs: { cx: "929.18", cy: "493.15", r: "16.2", fill: "#a1616a" }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M997.43,547.78a5.43,5.43,0,0,1,6.09-.87,3,3,0,0,1,1.81,2.92l8,.12a16.74,16.74,0,0,1,3.81.35,5.54,5.54,0,0,1,3.18,2c.1.13.21.28.37.31a.64.64,0,0,0,.37-.13,7.05,7.05,0,0,1,4-.72c4.34.28,8.36,2.46,11.76,5.17a3.81,3.81,0,0,1,1.4,1.71c.28.91,0,2.08.66,2.7,0,7.55,2.59,14.58,4.32,21.93.3,1.31,1.56,2.46,2.43,3.49a14,14,0,0,1,2.6,3.88c1.46,3.81-.56,8.28.87,12.11a19.5,19.5,0,0,0,2.76,4.35,11.21,11.21,0,0,1,2.35,5.62c.06.92-.06,1.84,0,2.77a16.88,16.88,0,0,0,.66,3.64c.58,2.21,1.2,4.42,1.84,6.62,1,3.56,2.4,7.41,5.59,9.31-7.71,1.31-15.83,2.58-23.18-.09a12,12,0,0,1-2.89-1.45c-2.65-1.89-3.93-5.13-5.07-8.18-1.28-3.43-2.58-6.91-2.84-10.56a12.08,12.08,0,0,0-.48-3.45c-.75-2-2.73-3.19-4.55-4.29a21.89,21.89,0,0,1-5.47-4.26,8.5,8.5,0,0,1-2.22-6.4c.14-1.13.58-2.22.63-3.36a2.69,2.69,0,0,0-1.56-2.77c-5.61-1.7-8.29-8.34-9.54-14.07a44.89,44.89,0,0,1-.72-9l-.07-5.79a7.68,7.68,0,0,1-2.52-5.54,6.22,6.22,0,0,0,0-1.83,5.13,5.13,0,0,0-1.28-2A16.9,16.9,0,0,1,997.43,547.78Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#464353"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M980.17,566.31c-.18,1.81.23,3.66-.18,5.44-.16.68-.43,1.33-.63,2a11.8,11.8,0,0,0,.75,7.62,42.35,42.35,0,0,0,3.89,6.75,10.28,10.28,0,0,1,1.25,2.33,12.07,12.07,0,0,1,.48,2.67,81.32,81.32,0,0,0,1.91,10.74c.76,3.08,1.75,6.19,3.78,8.63a2.62,2.62,0,0,0,1.56,1.06,2.82,2.82,0,0,0,1.33-.28l4.14-1.57a2.89,2.89,0,0,0,1-.52,2.51,2.51,0,0,0,.58-1.62c.29-3.34-.71-6.65-1.82-9.81-3.36-9.54-7.82-18.73-10-28.6-.61-2.76-.93-7-2.94-9.15-.83-.9-.55-.52-1.54,0a12.54,12.54,0,0,0-1.45.77A4.75,4.75,0,0,0,980.17,566.31Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#464353"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d: "M1059.24,625.68",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#464353"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M992.65,584.41q1.65,8.73,3.37,17.47l16.08-4.22c.13-1.68-.77-3.24-1.39-4.81-1.47-3.68-1.5-7.77-2.69-11.55-.9-2.88-2.46-5.53-3.3-8.43-.49-1.68-.73-3.44-1.21-5.13a39.19,39.19,0,0,0-1.89-4.89,31.16,31.16,0,0,0-3.51-6.51c-2.06.77-4.25,1.66-5.42,3.51a7.46,7.46,0,0,0-1,3.46c-.28,3.62,1,7.25.59,10.83A32,32,0,0,0,992.65,584.41Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#6c63ff"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M1012.37,662c.9,3.44-.41,7-1.47,10.42a80.92,80.92,0,0,0-3.28,15.69,13,13,0,0,1-.81,4,37.42,37.42,0,0,1-1.95,3.2c-1.62,2.86-1.58,6.36-1.23,9.63.23,2.16.58,4.31,1,6.44.53,2.59,1.18,5.31.42,7.84,1.27-.28,2.14,1.36,2.09,2.67s-.51,2.71.11,3.86c1.58.57,1.6,2.74,1.55,4.41a37.19,37.19,0,0,0,1.09,8.64q3.58,17.19,7.6,34.29c5.79,1.8,12.55,3.67,18.07,1.18a3.55,3.55,0,0,0,2.29-2.3,4.14,4.14,0,0,0-.22-1.77l-2.62-9.52a17.53,17.53,0,0,1-.94-7c.26-1.77,1-3.67.16-5.22-.3-.53-.76-1-1.1-1.46-1.38-2-.66-4.69-.54-7.13a5.58,5.58,0,0,0-.12-1.63,8.56,8.56,0,0,0-.77-1.79,27.33,27.33,0,0,1-3-13.6,3.34,3.34,0,0,0-.24-1.78,4.08,4.08,0,0,1-.44-.72,1.93,1.93,0,0,1,.14-1.31,11.38,11.38,0,0,1-2.11-2,3,3,0,0,0,.5-4.62,1.54,1.54,0,0,0,.74-2.65c-.34-.24-.78-.34-1-.68-.37-.5-.07-1.21.23-1.75l1.6-2.89c1.19-2.14,1.46-4.79,2.74-6.88a51.62,51.62,0,0,0,4.22-9.63l4.56-12.7,3.1,2.69a9.71,9.71,0,0,1,2.55,2.91,12.28,12.28,0,0,1,.82,3.48c1.14,6.9,5.49,12.88,7.1,19.69a13.27,13.27,0,0,0,1.46,4.4,9.52,9.52,0,0,1,.84,1.26,6.64,6.64,0,0,1,.35,2.09,9.74,9.74,0,0,0,4.11,7c1.52,1,3.45,1.77,4.25,3.43a6.77,6.77,0,0,0,.7,1.46c.74.89,2.34,1,2.66,2.11.17.63-.16,1.37.2,1.92a1.75,1.75,0,0,0,.75.56l4.47,2.24c5,2.49,7.52,8.2,11.21,12.39a25.73,25.73,0,0,1,3.35,4.44c1.59,2.84,2.33,6.41,5,8.24a7.77,7.77,0,0,1,1.94,1.44c.85,1.11.54,2.67.61,4.07s1.15,3.06,2.48,2.64a9.65,9.65,0,0,0,0,5.17,26.06,26.06,0,0,0,15.8-6.4c1.3-1.14,2.56-2.59,2.57-4.31a1.67,1.67,0,0,0-.19-.86,2.34,2.34,0,0,0-1-.76c-4.17-2.26-5.43-7.5-7.52-11.76-1.85-3.75-4.57-7-6.88-10.48-5-7.5-8.34-16.57-15.85-21.53-1.65-1.09-3.57-2.06-4.39-3.86a30.79,30.79,0,0,1-.88-3.2,2.69,2.69,0,0,0-2.35-2,14.27,14.27,0,0,0,.54-5,6.22,6.22,0,0,0-.25-2.15,10.16,10.16,0,0,0-1.1-2.12,20.55,20.55,0,0,1-2.83-11c.06-2,.41-4-.19-5.91-.3-1-.82-1.83-1.19-2.76a17.21,17.21,0,0,1-.86-5.15l-.41-6.59a31.55,31.55,0,0,0-.85-6.51c-1.39-5.11-2.72-26.52-7.43-28.93s-12.75,14.06-18,14.39a24,24,0,0,0-6.88,1.32c-3.51,1.32-6.46,3.78-9.33,6.19l-9.72,8.16A35.42,35.42,0,0,1,1012.37,662Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#464353"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M965.74,522.18a12.22,12.22,0,0,1,9.43-4.6,22,22,0,0,1,10.42,2.62,13.43,13.43,0,0,0,3,1.25c1.72.35,3.62-.12,5.17.7,2.06,1.09,2.45,3.87,2.27,6.19s-.61,4.86.62,6.85a19,19,0,0,1,1.19,1.78,5.94,5.94,0,0,1-.11,3.81,30.6,30.6,0,0,1-2-2.51c-.72-.79-1.95-1.33-2.83-.74s-.88,1.68-.92,2.65-.3,2.14-1.22,2.46a2,2,0,0,1-2-.8c-1.57-1.92-.94-5-2.49-6.92-.89-1.1-2.36-1.63-3.18-2.78-.64-.9-.8-2.07-1.36-3s-1.87-1.69-2.75-1a3.74,3.74,0,0,0-.73,1,4.21,4.21,0,0,1-5,1.5,8.77,8.77,0,0,0-2.17-.93,2.67,2.67,0,0,0-2.47,1.34,5.32,5.32,0,0,0-.65,2.86c0,1.35.24,2.83-.54,3.93a4.06,4.06,0,0,1-1.16,1c-1.15.73-2.72,1.22-3.8.39a2.86,2.86,0,0,1-.85-2.66,21.88,21.88,0,0,1,.81-2.81c.6-2.12-.18-4.51.48-6.51A20.49,20.49,0,0,1,965.74,522.18Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#464353"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M974.42,570.51a2.5,2.5,0,0,0,.15,1.49,2.42,2.42,0,0,0,.81.78,16.78,16.78,0,0,0,7.64,2.47,2.3,2.3,0,0,1,1,.27,1.89,1.89,0,0,1,.45,2.13,5.67,5.67,0,0,0-.48,2.26c.2,1.43,1.89,2.08,3.33,2.26a7.72,7.72,0,0,0,5.79-1.12,8.93,8.93,0,0,0,2.39-3.59c3.93-9,5.31-19,9.29-28a5.69,5.69,0,0,0,.6-1.87,1.86,1.86,0,0,0-.74-1.73c-.74-.46-1.89-.2-2.39-.91-.25-.37-.22-.86-.44-1.24-.46-.82-1.66-.72-2.49-1.16-.64-.35-1.09-1-1.8-1.19a2.3,2.3,0,0,0-1.88.81c-2.33,2.18-3.56,5.27-4.86,8.19a97.27,97.27,0,0,1-7,12.91c.31-.48-1.48-4.13-2.18-4.27-1.22-.25-2.8,1.9-3.46,2.71A17.16,17.16,0,0,0,974.42,570.51Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#6c63ff"
+              }
+            }),
+            _c("rect", {
+              attrs: {
+                x: "930.83",
+                y: "536.29",
+                width: "78.03",
+                height: "78.03",
+                fill: "#fff"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M1022.22,609.51V599.27H996.64v46.1h49.95V609.51Zm-15.35,30.73h-5.11v-5.12h5.11Zm0-10.24h-5.11v-5.12h5.11Zm0-10.24h-5.11v-5.13h5.11Zm0-10.25h-5.11v-5.13h5.11Zm10.23,30.73H1012v-5.12h5.11Zm0-10.24H1012v-5.12h5.11Zm0-10.24H1012v-5.13h5.11Zm0-10.25H1012v-5.13h5.11Zm24.38,30.73h-19.26v-5.12h5.11V630h-5.11v-5.12h5.11v-5.13h-5.11v-5.12h19.26ZM1037,619.76h-5.11v5.13H1037v-5.13Zm0,10.24h-5.11v5.13H1037Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#6c63ff"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M1060,626.29a31.53,31.53,0,0,0-3.7,3.88,7.73,7.73,0,0,0-1.7,5,2.57,2.57,0,0,0,.48,1.46,1.25,1.25,0,0,0,1.39.43,2,2,0,0,0,.68-.61,32,32,0,0,1,2.3-2.5c.3-.29.68-.6,1.08-.49a1.14,1.14,0,0,1,.47.31,3.18,3.18,0,0,1,1,1.51,3.58,3.58,0,0,1-1.06,2.91,7.54,7.54,0,0,0-1.79,2.65,1.13,1.13,0,0,0,0,.85,1.39,1.39,0,0,0,.53.46,7.72,7.72,0,0,0,6.47.42c1.39-.55,2.59-1.51,4-2a9.61,9.61,0,0,0,1.77-.66,3.64,3.64,0,0,0,1.57-2.34,10,10,0,0,0,.11-2.89,33,33,0,0,0-2.41-10.9,1.3,1.3,0,0,0-.39-.58,1.37,1.37,0,0,0-.66-.19c-1.75-.18-4.63-1.08-6.32-.43a4.32,4.32,0,0,0-1.49,1.33C1061.94,624.26,1060,625.83,1060,626.29Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#a1616a"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M1059.4,624.74c0-1.68-2.08-5.71,1.21-6,0-1.78-2.53-2.9-2.07-4.78.16-.64.67-1.15.75-1.79.21-1.83-3.09-2.82-2.55-4.58.2-.67.93-1.08,1.09-1.76.37-1.58-2.46-2.29-2.51-3.91,0-.55.3-1.07.28-1.61,0-.69-.6-1.21-.93-1.8-.85-1.53-.44-3.9-2-4.68,1,.08,1.39-1.45.95-2.39s-1.3-1.75-1.3-2.79a4.43,4.43,0,0,0,0-1.15c-.29-1-1.93-1.07-2.2-2.07a10.67,10.67,0,0,1,0-1.13c-.1-.78-.9-1.26-1.65-1.49a6.56,6.56,0,0,1-2.2-.78c-.48-.37-1-1-1.55-.65-.19.11-.29.33-.44.5-.61.71-1.78.4-2.56-.13-2.29-1.55-3.42-4.34-3.92-7.06s-.47-5.53-1.07-8.23A18.85,18.85,0,0,0,1036,564a12.73,12.73,0,0,1-1.16-2.46c-.12-1.57,3.14-.5,4.38-.34a19.44,19.44,0,0,1,3.56.67,37.65,37.65,0,0,1,3.63,1.59c5,2.19,10.92,2.46,14.9,6.13,1.31,1.21,2.41,2.79,4.1,3.33a20.93,20.93,0,0,1,2.3.6c1.89.89,2.18,3.39,3.21,5.2a11.11,11.11,0,0,1,.85,1.5,5.91,5.91,0,0,1,.27,1.92l.14,4.75c.23,8,.47,15.93-.38,23.84-.28,2.6-.67,5.29.09,7.8.2.68.49,1.33.66,2a13.62,13.62,0,0,1,.26,2.47l.11,3.07a1,1,0,0,1-.15.71,1,1,0,0,1-.83.2c-4.29-.38-8.61-2.8-12.66-1.34",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#464353"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M979.66,612.21a1.32,1.32,0,0,0-.48.4,3.41,3.41,0,0,0,0,4.06,1.37,1.37,0,0,1,.24.4,1.18,1.18,0,0,1-.12.68,2.25,2.25,0,0,0,.31,2.52c.31.26.73.39.93.73.35.58-.14,1.32-.06,2,.1.89,1.15,1.33,2,1.44a2.13,2.13,0,0,0,1.95-.52,1.62,1.62,0,0,0,0-1.77,4.74,4.74,0,0,0-1.32-1.32A2,2,0,0,0,985,619a2.84,2.84,0,0,0-1.14-2.49c-.18-.15-.4-.3-.45-.54s.19-.57.41-.8c1-1,1.77-3.45-.11-4a4.63,4.63,0,0,0-2,.09c-.48.15-.48.44-.85.64S980.08,612,979.66,612.21Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#a1616a"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M999.31,543.14a3.3,3.3,0,0,0-2.54,1.28,7.31,7.31,0,0,0-1.06,3.4,29.81,29.81,0,0,1-4,10.86",
+                transform: "translate(-51.77 -47.02)",
+                opacity: "0.1"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M1002.81,545.88a3.88,3.88,0,0,0-3.32,2,11.1,11.1,0,0,0-.84,3.39,18.42,18.42,0,0,1-3.33,7.11",
+                transform: "translate(-51.77 -47.02)",
+                opacity: "0.1"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M357.66,609.59c.58,6.32-4.19,12.44-2.8,18.62.3,1.32.87,2.57,1.08,3.9.57,3.67-1.62,7.15-3.71,10.22l-17.94,26.34a17.07,17.07,0,0,1-2.57,3.17c-3.44,3-8.58,2.73-13.09,3.64a22.45,22.45,0,0,0-8.76,3.88.57.57,0,0,0-.12.79,7.55,7.55,0,0,0,6.52,3.06c.47.62,0,1.53-.65,2-1,.67-2.29.84-2.48,2.48a2.68,2.68,0,0,0,.33,1.64,5.07,5.07,0,0,0,3.14,2.18c6.21,1.9,12.93-1.43,17.57-6s8-10.27,12.56-14.9c2.53-2.55,5.4-4.75,8-7.23,5.2-4.94,9.23-11,13.13-17a18.87,18.87,0,0,0,2.84-5.78c.48-2.06.26-4.23.82-6.27.72-2.66,2.68-4.79,4.3-7,3.19-4.38,5.31-9.75,4.89-15.15s-3.76-10.74-8.86-12.57a7.93,7.93,0,0,0-5-.31c-2.09.65-3.63,2.38-5.06,4l-3.4,3.94a9.08,9.08,0,0,0-2,3,3.15,3.15,0,0,0,.7,3.35",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#fbbebe"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M357.66,609.59c.58,6.32-4.19,12.44-2.8,18.62.3,1.32.87,2.57,1.08,3.9.57,3.67-1.62,7.15-3.71,10.22l-17.94,26.34a17.07,17.07,0,0,1-2.57,3.17c-3.44,3-8.58,2.73-13.09,3.64a22.45,22.45,0,0,0-8.76,3.88.57.57,0,0,0-.12.79,7.55,7.55,0,0,0,6.52,3.06c.47.62,0,1.53-.65,2-1,.67-2.29.84-2.48,2.48a2.68,2.68,0,0,0,.33,1.64,5.07,5.07,0,0,0,3.14,2.18c6.21,1.9,12.93-1.43,17.57-6s8-10.27,12.56-14.9c2.53-2.55,5.4-4.75,8-7.23,5.2-4.94,9.23-11,13.13-17a18.87,18.87,0,0,0,2.84-5.78c.48-2.06.26-4.23.82-6.27.72-2.66,2.68-4.79,4.3-7,3.19-4.38,5.31-9.75,4.89-15.15s-3.76-10.74-8.86-12.57a7.93,7.93,0,0,0-5-.31c-2.09.65-3.63,2.38-5.06,4l-3.4,3.94a9.08,9.08,0,0,0-2,3,3.15,3.15,0,0,0,.7,3.35",
+                transform: "translate(-51.77 -47.02)",
+                opacity: "0.05"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M221,636.44c1,3.16,2,6.32,3.21,9.4A79.54,79.54,0,0,0,232.52,661a109.23,109.23,0,0,0,6.87,9c3.06,3.61,6.48,7.24,7.56,11.85.63,2.66.42,5.45.68,8.17s1.15,5.61,3.35,7.24a12.45,12.45,0,0,0,5.52,1.82c1.38.22,3.11.29,3.83-.91a3.41,3.41,0,0,0,.38-1.58l.34-4c.07-.86.37-2,1.23-2s1.3,1.11,2,1.62a2.17,2.17,0,0,0,3-1,5,5,0,0,0,.08-3.5,16.62,16.62,0,0,0-8.53-10.57,25.64,25.64,0,0,1-4.16-2.17,14.15,14.15,0,0,1-3.27-4.12c-7.56-12.45-15.16-25-20.5-38.51a28.49,28.49,0,0,1-2.11-7.59,49,49,0,0,1,.33-8,45.79,45.79,0,0,0-1.32-14.28,11.23,11.23,0,0,0-1.37-3.47c-2.19-3.34-7.36-3.83-10.62-1.53a10.94,10.94,0,0,0-4.22,7.72c-.24,2.69,1.32,5.5,2.11,8Q217.37,624.81,221,636.44Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#a1616a"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M221,636.44c1,3.16,2,6.32,3.21,9.4A79.54,79.54,0,0,0,232.52,661a109.23,109.23,0,0,0,6.87,9c3.06,3.61,6.48,7.24,7.56,11.85.63,2.66.42,5.45.68,8.17s1.15,5.61,3.35,7.24a12.45,12.45,0,0,0,5.52,1.82c1.38.22,3.11.29,3.83-.91a3.41,3.41,0,0,0,.38-1.58l.34-4c.07-.86.37-2,1.23-2s1.3,1.11,2,1.62a2.17,2.17,0,0,0,3-1,5,5,0,0,0,.08-3.5,16.62,16.62,0,0,0-8.53-10.57,25.64,25.64,0,0,1-4.16-2.17,14.15,14.15,0,0,1-3.27-4.12c-7.56-12.45-15.16-25-20.5-38.51a28.49,28.49,0,0,1-2.11-7.59,49,49,0,0,1,.33-8,45.79,45.79,0,0,0-1.32-14.28,11.23,11.23,0,0,0-1.37-3.47c-2.19-3.34-7.36-3.83-10.62-1.53a10.94,10.94,0,0,0-4.22,7.72c-.24,2.69,1.32,5.5,2.11,8Q217.37,624.81,221,636.44Z",
+                transform: "translate(-51.77 -47.02)",
+                opacity: "0.05"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M372.75,755.18c-3.92,2.39-8.8,2.53-13.36,2-.73-.09-1.6-.15-2.07.42-.68.82.12,2,.95,2.7a19.88,19.88,0,0,0,9.18,3.77,62.62,62.62,0,0,0,9,.6c8.19.14,16.42.27,24.53-.91a3.25,3.25,0,0,0,1.34-.39,2.54,2.54,0,0,0,1-1.54,6.13,6.13,0,0,0-2.14-5.84,18,18,0,0,0-5.72-3.07l-7.12-2.77c-1.67-.65-4.36-2.38-6.17-2.24C378.81,748.13,375.58,753.52,372.75,755.18Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#3f3d56"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M390.64,771.91a17.49,17.49,0,0,1-11.95,4.46c-1.12,0-2.68.21-2.68,1.33a1.76,1.76,0,0,0,.32.93,11,11,0,0,0,6.18,4.84,22,22,0,0,0,7.46.47l7.3-.38c1.38-.07,2.77-.14,4.14-.31s2.86-.45,4.29-.67a57.22,57.22,0,0,1,10.63-.5,3.09,3.09,0,0,0,2.62-.7c.65-.82.27-2,.06-3-.44-2.11,0-4.33-.41-6.46-.7-3.72-3.9-6.58-7.45-7.93-3.28-1.25-9.1-2.68-12.21-.6C395.6,765.6,393.59,769.24,390.64,771.91Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#3f3d56"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M376.22,677.45c-3,3.95-6,8.51-5.3,13.39.4,2.63,1.87,4.95,2.95,7.39a52.09,52.09,0,0,1,3,10.38c1.11,5.17,2.22,10.35,2.91,15.59a97.36,97.36,0,0,1,.65,17.9c-.09,1.44-.25,3-1.25,4-.4.4-.92.73-1.09,1.27a2.15,2.15,0,0,0,.23,1.5,16.61,16.61,0,0,0,8.9,8.19,34.09,34.09,0,0,0,12.1,2.26,3.4,3.4,0,0,0,1.62-.21,3.12,3.12,0,0,0,1.25-1.43c3-5.7,1.33-12.58,1.38-19,0-5.37,1.3-10.69,1.07-16.06-.19-4.3-1.34-8.5-1.76-12.79-.69-7,.6-14.1,1.89-21.05,1-5.32,2-10.65,3.25-15.92a30.36,30.36,0,0,1,3.44-9.24c1.4-2.21,3.3-4.06,4.9-6.14a27.87,27.87,0,0,0,5.48-20.37c-.1-.72-10.3,2.58-11.18,3a34.66,34.66,0,0,0-10,6.41c-2.36,2.24-4.21,5.24-6.28,7.76Q390,659.61,385.76,665,380.92,671.18,376.22,677.45Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#464353"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M376.22,677.45c-3,3.95-6,8.51-5.3,13.39.4,2.63,1.87,4.95,2.95,7.39a52.09,52.09,0,0,1,3,10.38c1.11,5.17,2.22,10.35,2.91,15.59a97.36,97.36,0,0,1,.65,17.9c-.09,1.44-.25,3-1.25,4-.4.4-.92.73-1.09,1.27a2.15,2.15,0,0,0,.23,1.5,16.61,16.61,0,0,0,8.9,8.19,34.09,34.09,0,0,0,12.1,2.26,3.4,3.4,0,0,0,1.62-.21,3.12,3.12,0,0,0,1.25-1.43c3-5.7,1.33-12.58,1.38-19,0-5.37,1.3-10.69,1.07-16.06-.19-4.3-1.34-8.5-1.76-12.79-.69-7,.6-14.1,1.89-21.05,1-5.32,2-10.65,3.25-15.92a30.36,30.36,0,0,1,3.44-9.24c1.4-2.21,3.3-4.06,4.9-6.14a27.87,27.87,0,0,0,5.48-20.37c-.1-.72-10.3,2.58-11.18,3a34.66,34.66,0,0,0-10,6.41c-2.36,2.24-4.21,5.24-6.28,7.76Q390,659.61,385.76,665,380.92,671.18,376.22,677.45Z",
+                transform: "translate(-51.77 -47.02)",
+                opacity: "0.05"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M397.88,647.07c.64,3.06,3.61,5.4,3.69,8.53.07,2.5-1.71,4.6-3,6.75a45.27,45.27,0,0,0-3.06,6.94,105.82,105.82,0,0,1-9,17.87c-1.71,2.72-3.63,5.67-3.23,8.86a13.08,13.08,0,0,0,1.55,4.23l5.14,10.21a29.3,29.3,0,0,1,2.62,6.45c.45,1.94.49,4,.75,5.92.81,6.26,3.74,12.56,2,18.63-.15.52-.7,1.15-1.11.79,1.7,3.17,3.07,6.37,2.93,10-.06,1.89-.64,3.85.06,5.61A6.12,6.12,0,0,1,398,760c0,.51-.24,1-.29,1.51-.14,1.44,1.18,2.65,2.56,3.11s2.88.43,4.27.84c2.68.8,4.58,3.1,6.88,4.7a14.45,14.45,0,0,0,7.89,2.57,2,2,0,0,0,1.16-.23,1.9,1.9,0,0,0,.65-1.41,7.84,7.84,0,0,0-2.83-6.81,3.15,3.15,0,0,1-1-1.1,2.67,2.67,0,0,1-.1-1.23,91.21,91.21,0,0,0-.3-16.85,26,26,0,0,1-.26-5.36,21.91,21.91,0,0,0,.43-4.47,22.82,22.82,0,0,0-1.37-4.27c-.79-2.55-.57-5.29-.65-8a70.12,70.12,0,0,0-2.26-13.69,10.39,10.39,0,0,0-2.13-4.94c-1.07-1.12-2.8-2.18-2.39-3.67a4.24,4.24,0,0,1,1-1.46,5.86,5.86,0,0,0,1.23-4.47,2,2,0,0,0,2.3-1.08,36,36,0,0,0,18.08-20.56,6.68,6.68,0,0,1,.81-1.83c.77-1.08,2.12-1.55,3.31-2.15,3.74-1.88,6.32-5.41,8.69-8.86a20.61,20.61,0,0,0,3.36-6.43,21.18,21.18,0,0,0,.46-4.64l.21-8a4.59,4.59,0,0,0-.15-1.57,4,4,0,0,0-.87-1.28,15.53,15.53,0,0,0-8.54-4.6c-2.19-.39-4.43-.32-6.65-.5-4.3-.36-8.55-1.69-12.86-1.38-6.76.5-12.78,5.19-16,11.17C401.46,645.2,400.28,647,397.88,647.07Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#464353"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M173.49,769.54a10.89,10.89,0,0,0,4.6.55c.11-1.27,1.82-1.55,3.09-1.49A3.55,3.55,0,0,1,183,769c.32.2.56.5.87.71a3.74,3.74,0,0,0,1.8.46l6.62.56c2.95.25,6,.48,8.78-.58a2.87,2.87,0,0,0,1.41-.94c.75-1.07,0-2.61-1-3.39s-2.37-1.14-3.41-1.94c-2.3-1.75-2.61-5-3.83-7.64a22.05,22.05,0,0,0-3.16-4.59,17.57,17.57,0,0,0-3.13-3.2c-2.65-1.92-5.71-1.88-8.82-2.15-2.2-.2-4.27-.33-5.85,1.62-1.95,2.42-1.17,7.3-1.05,10.19A72.94,72.94,0,0,0,173.49,769.54Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#514e7f"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M173.49,769.54a10.89,10.89,0,0,0,4.6.55c.11-1.27,1.82-1.55,3.09-1.49A3.55,3.55,0,0,1,183,769c.32.2.56.5.87.71a3.74,3.74,0,0,0,1.8.46l6.62.56c2.95.25,6,.48,8.78-.58a2.87,2.87,0,0,0,1.41-.94c.75-1.07,0-2.61-1-3.39s-2.37-1.14-3.41-1.94c-2.3-1.75-2.61-5-3.83-7.64a22.05,22.05,0,0,0-3.16-4.59,17.57,17.57,0,0,0-3.13-3.2c-2.65-1.92-5.71-1.88-8.82-2.15-2.2-.2-4.27-.33-5.85,1.62-1.95,2.42-1.17,7.3-1.05,10.19A72.94,72.94,0,0,0,173.49,769.54Z",
+                transform: "translate(-51.77 -47.02)",
+                opacity: "0.05"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M176.17,640.86c-2,.65-2.9,3.17-2.53,5.27s1.63,3.9,2.67,5.75c2.94,5.27,4.22,11.3,6.69,16.8,1.85,4.11,4.35,7.91,6.18,12s3,8.77,1.85,13.14c-.54,2.13-1.58,4.09-2.28,6.17a35,35,0,0,0-1.34,7,132.68,132.68,0,0,0-.48,24.16,7.34,7.34,0,0,0,.61,2.86c.41.8,1.13,1.64.78,2.47-.14.33-.44.57-.59.9-.42.92.43,1.88,1.2,2.53a2.07,2.07,0,0,1-1.3,1,3.07,3.07,0,0,1,1.31,3.42c-.69.1-.73,1.15-.29,1.7s1.11.9,1.42,1.52a2.13,2.13,0,0,1-1.17,2.68,5.48,5.48,0,0,1-3.19.24,34.58,34.58,0,0,1-5.34-1.17,4.8,4.8,0,0,1-1.64-.75,4.87,4.87,0,0,1-1.47-3.24,58.55,58.55,0,0,1-.37-10c.29-16.16,0-32.34-.7-48.49-.29-6.5-2.24-12.84-4.76-18.84a96.67,96.67,0,0,0-4.64-9c-3.62-6.66-6.84-14-6-21.55.09-.81.39-1.79,1.19-1.92a1.73,1.73,0,0,1,.92.15,42.53,42.53,0,0,1,4.85,2.68A18.38,18.38,0,0,0,176.17,640.86Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#464353"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M176.17,640.86c-2,.65-2.9,3.17-2.53,5.27s1.63,3.9,2.67,5.75c2.94,5.27,4.22,11.3,6.69,16.8,1.85,4.11,4.35,7.91,6.18,12s3,8.77,1.85,13.14c-.54,2.13-1.58,4.09-2.28,6.17a35,35,0,0,0-1.34,7,132.68,132.68,0,0,0-.48,24.16,7.34,7.34,0,0,0,.61,2.86c.41.8,1.13,1.64.78,2.47-.14.33-.44.57-.59.9-.42.92.43,1.88,1.2,2.53a2.07,2.07,0,0,1-1.3,1,3.07,3.07,0,0,1,1.31,3.42c-.69.1-.73,1.15-.29,1.7s1.11.9,1.42,1.52a2.13,2.13,0,0,1-1.17,2.68,5.48,5.48,0,0,1-3.19.24,34.58,34.58,0,0,1-5.34-1.17,4.8,4.8,0,0,1-1.64-.75,4.87,4.87,0,0,1-1.47-3.24,58.55,58.55,0,0,1-.37-10c.29-16.16,0-32.34-.7-48.49-.29-6.5-2.24-12.84-4.76-18.84a96.67,96.67,0,0,0-4.64-9c-3.62-6.66-6.84-14-6-21.55.09-.81.39-1.79,1.19-1.92a1.73,1.73,0,0,1,.92.15,42.53,42.53,0,0,1,4.85,2.68A18.38,18.38,0,0,0,176.17,640.86Z",
+                transform: "translate(-51.77 -47.02)",
+                opacity: "0.05"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M148.85,621.21a7.11,7.11,0,0,0-3.52-1.11A7.14,7.14,0,0,0,141.5,622a40.17,40.17,0,0,0-3.8,3.34,20.33,20.33,0,0,0-4.54,20.11c1.21,3.59,3.4,6.76,5.56,9.86l4.4,6.32c6.71,9.64,13.43,19.28,20.46,28.69a1.08,1.08,0,0,0,.76,1c.26.07.57.06.73.27a.78.78,0,0,1,.09.43,6.53,6.53,0,0,1-.39,2,.93.93,0,0,0-.08.69c.22.53,1.19.23,1.49.73.21.32,0,.75-.32,1s-.6.59-.55,1,.72.79.69,1.29c0,.28-.24.49-.41.71a1.81,1.81,0,0,0,.22,2.31c.46,4.6-2,8.95-2.53,13.55-.79,7.23,2.48,14.29,2.88,21.55a5.77,5.77,0,0,0,.45,2.38c.68,1.25,2.42,2,2.36,3.43a13.09,13.09,0,0,1-.49,1.73,13.91,13.91,0,0,0,.26,2.47c0,.83-.7,1.82-1.47,1.5q.87,2.88,1.54,5.81l15.4,1.27a13.83,13.83,0,0,0-.14-4.16c-.32-1.48-1-2.87-1.34-4.35a5.13,5.13,0,0,1,.61-4.35,1.7,1.7,0,0,1-1.7-1.4,6.86,6.86,0,0,1,0-2.39c.41-4-1.28-8-1.23-12,.05-3.18,1.16-6.23,1.73-9.35,1.2-6.68-.05-13.93,2.92-20,1.8-3.68,4.29-7.76,2.27-11.32-1-1.76-2.75-3-3.89-4.62a18.77,18.77,0,0,1-2.09-5c-2.38-7.36-6.21-14.15-9.58-21.12a22.23,22.23,0,0,1-2.06-5.55,28.21,28.21,0,0,1-.25-5.12,78.48,78.48,0,0,0-.57-9.2,8.61,8.61,0,0,0-1.12-3.81,8.53,8.53,0,0,0-2.4-2.19C160.32,626.07,154.3,624.08,148.85,621.21Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#464353"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M167.3,775.18a10.89,10.89,0,0,0,4.6.55c.12-1.27,1.82-1.55,3.09-1.49a3.55,3.55,0,0,1,1.77.41c.32.2.56.5.88.71a3.68,3.68,0,0,0,1.8.46l6.61.56c2.95.25,6,.48,8.79-.58a2.89,2.89,0,0,0,1.4-.94c.75-1.07,0-2.61-1-3.39s-2.37-1.14-3.42-1.94c-2.29-1.75-2.61-5-3.83-7.64a22.05,22.05,0,0,0-3.16-4.59,17.52,17.52,0,0,0-3.12-3.2c-2.66-1.92-5.71-1.88-8.82-2.15-2.21-.2-4.28-.33-5.85,1.62-2,2.42-1.18,7.3-1.06,10.19A74.3,74.3,0,0,0,167.3,775.18Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#514e7f"
+              }
+            }),
+            _c("rect", {
+              attrs: {
+                x: "199.03",
+                y: "612.17",
+                width: "78.03",
+                height: "78.03",
+                fill: "#fff"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M312.87,695.59c0,8.9-4.17,14.5-10.76,14.5-3.37,0-5.94-1.8-6.39-4.47h-.48a7,7,0,0,1-6.93,4.31c-5.86,0-9.77-4.7-9.77-11.69,0-6.71,3.94-11.38,9.69-11.38a7,7,0,0,1,6.57,3.93h.48v-3.34h4.79V703a2.78,2.78,0,0,0,3,3.1c3.32,0,5.44-4,5.44-10.3,0-10-7.5-16.69-18.57-16.69s-18.75,8-18.75,19.28c0,11.55,7.72,18.93,19.74,18.93a36.21,36.21,0,0,0,6.53-.56,1.9,1.9,0,0,1,.8,3.71,33.24,33.24,0,0,1-7.52.82c-14.61,0-24-9-24-23,0-13.68,9.55-23.07,23.46-23.07C303.6,675.14,312.87,683.49,312.87,695.59Zm-29.15,2.76c0,4.44,2.08,7.13,5.48,7.13,3.58,0,5.84-2.76,5.84-7.13s-2.26-7.07-5.78-7.07S283.72,693.9,283.72,698.35Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#6c63ff"
+              }
+            }),
+            _c("circle", {
+              attrs: { cx: "183.77", cy: "532.28", r: "15.25", fill: "#a1616a" }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M221.16,583.82c-2.19,1.89-5.32,2-8.19,2.32a51.19,51.19,0,0,0-17.62,5.1,6.29,6.29,0,0,0-2,1.4,5.77,5.77,0,0,0-1,2.18,14.42,14.42,0,0,0-.58,5.3,15.28,15.28,0,0,0,1.47,5,26.84,26.84,0,0,0,9.46,10.78A6.87,6.87,0,0,0,205,617c2,.42,3.95-.75,5.92-1.27a9.7,9.7,0,0,1,5.47.18c1.66.55,3.41,1.56,5,.89a5.22,5.22,0,0,0,2.28-2.59,87.89,87.89,0,0,0,4.16-9.11,34.52,34.52,0,0,1,1.51-3.54c1.77-3.37,4.83-6,6.35-9.46a2.08,2.08,0,0,0,.14-1.78,2.47,2.47,0,0,0-1.12-.86,26.73,26.73,0,0,1-6.09-4.78c-1-1-2.85-3.56-4.29-3.79C222.75,580.68,222.26,582.88,221.16,583.82Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#a1616a"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M221.52,614.81c-1.77.85-3.85.47-5.77.07-4.94-1-9.93-2.08-14.5-4.22a7.76,7.76,0,0,1-3.56-2.73,8.73,8.73,0,0,1-1-3.42l-.84-5.67c-.29-2,.22-3.82.26-5.82a1.7,1.7,0,0,0-.33-1.27,1.37,1.37,0,0,0-1-.31c-2.29,0-3.67,2.43-5.28,4.06a9.75,9.75,0,0,1-3.24,2.18c-1.47.6-3.28,1-3.87,2.49-.25.61-.22,1.31-.47,1.92-1,2.44-5.4,1.63-6.51,4-.32.68-.3,1.54-.83,2.08s-1.5.52-2.3.66c-3.18.52-4.73,4.2-7.45,5.93-2.29,1.46-5.24,1.43-7.7,2.57a29.48,29.48,0,0,1-4,2,18.9,18.9,0,0,1-4.64.23,1.25,1.25,0,0,0-.93.3,1.28,1.28,0,0,0-.15,1,28.07,28.07,0,0,0,17.35,21.73,6.12,6.12,0,0,1,1.48.71c1.39,1,1.63,3.27,3.2,4a3.31,3.31,0,0,0,3.34-.72,29.05,29.05,0,0,0,2.41-2.66,9.6,9.6,0,0,1,5.37-2.82c1.89-.3,4-.08,5.53-1.24a17,17,0,0,0,1.74-1.86,10.91,10.91,0,0,1,4-2.36A40,40,0,0,1,204.33,633c4-.23,8.15.14,11.94-1.17a7,7,0,0,0,2.66-1.5,8,8,0,0,0,1.78-3.09A23.59,23.59,0,0,0,221.52,614.81Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#514e7f"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M201.86,592.34c1.13-.1,2.26,0,3.39,0,1.33,0,2.64-.32,4-.33a9.86,9.86,0,0,1,9.3,7.08,1.8,1.8,0,0,1,.06,1,.71.71,0,0,1-.77.52,16.9,16.9,0,0,0-1.71-3.43,9.71,9.71,0,0,0-5.12-3.56,13.29,13.29,0,0,0-6.3-.23c-.86.16-1.71.39-2.56.63L198,595.14c-.75.2-1.5.41-2.23.68-.56.2-1.53,1-2.08,1-.75,0-.14-.65.19-1.09a5.34,5.34,0,0,1,2.66-1.93A22.38,22.38,0,0,1,201.86,592.34Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#514e7f"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M212.14,638.15c1,3.16,2,6.32,3.21,9.4a79.54,79.54,0,0,0,8.32,15.16,109.23,109.23,0,0,0,6.87,9c3.06,3.61,6.48,7.24,7.56,11.85.63,2.66.42,5.45.68,8.17s1.15,5.61,3.35,7.24a12.45,12.45,0,0,0,5.52,1.82c1.38.22,3.11.29,3.83-.91a3.41,3.41,0,0,0,.38-1.58l.33-4c.08-.86.38-2,1.24-2s1.3,1.11,2,1.62a2.17,2.17,0,0,0,3-1,5.07,5.07,0,0,0,.08-3.5A16.62,16.62,0,0,0,250,678.84a25.64,25.64,0,0,1-4.16-2.17,14,14,0,0,1-3.27-4.12c-7.57-12.45-15.17-25-20.5-38.51a28.49,28.49,0,0,1-2.11-7.59,49,49,0,0,1,.33-8A45.79,45.79,0,0,0,219,604.15a11.23,11.23,0,0,0-1.37-3.47c-2.19-3.34-7.36-3.83-10.62-1.53a10.94,10.94,0,0,0-4.22,7.72c-.24,2.69,1.32,5.5,2.11,8Q208.52,626.52,212.14,638.15Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#a1616a"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M257.73,568.52c.12-1.27-1-2.42-2.31-3.23a32.25,32.25,0,0,1-3.92-2.4c-1.16-1-1.79-2.31-2.95-3.31a13,13,0,0,0-4.4-2.19,33.4,33.4,0,0,0-10.52-1.89,18.53,18.53,0,0,0-10.07,2.66,6,6,0,0,0-1.71,1.59,7,7,0,0,0-.83,2.53,50,50,0,0,1-2.63,8c-1.13,2.88-2.34,5.86-5,8.08-2.85,2.38-7.22,3.75-9.1,6.62a2.15,2.15,0,0,0-.41,1.85c.27.72,1.14,1.21,1.93,1.67,4.63,2.66,8.62,6.1,10.68,10.22a11.85,11.85,0,0,1-.94,12.75c-1.07,1.4-2.55,3.06-1.5,4.47,1.59,2.14,7.08.92,8.34,3.18a4.52,4.52,0,0,1,.17,2.34c0,2.37,2.29,4.49,5.07,5.58a28.27,28.27,0,0,0,9.12,1.5,7.88,7.88,0,0,0,.23-5.9,2.36,2.36,0,0,1-.23-1.34,3.22,3.22,0,0,1,1-1.29c3.35-3.16,2.64-7.81.63-11.56s-5.13-7.19-6.29-11.14c-.58-2-.59-4.17,1-5.8a20.2,20.2,0,0,1,2.87-2.1,10.91,10.91,0,0,0,4-5c.93-2.6.79-5.73,3.53-7.45s6.29-1.16,9.18-2.27C255,573.76,257.55,570.37,257.73,568.52Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#464353"
+              }
+            }),
+            _c("circle", {
+              attrs: { cx: "291.47", cy: "526.89", r: "16.63", fill: "#fbbebe" }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M358.21,573.21a21.56,21.56,0,0,0,13.8,9.65l-1.25,4.54c-2.16,7.82-4.6,16.1-10.64,21.52a10.06,10.06,0,0,0-1.69-7.78,29.46,29.46,0,0,0-5.64-5.9l-9.57-8.33a2.61,2.61,0,0,1-.72-.8,2.44,2.44,0,0,1,0-1.82c1.22-3.8,4.7-6.17,7.52-8.73a26.52,26.52,0,0,0,3.79-4.41C355.77,568.45,357,571.18,358.21,573.21Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#fbbebe"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M360.33,594.72a9,9,0,0,1-.49,3.67,2.58,2.58,0,0,1-3,1.54c.35-.79-.57-1.69-1.43-1.59a2.69,2.69,0,0,0-1.9,1.61,6,6,0,0,0-.55,3.72c.27,1.58,1.18,3.09.94,4.67-.19,1.31-1.16,2.62-.64,3.85a6.18,6.18,0,0,0,1.24,1.48,4.2,4.2,0,0,1-.45,5.76l13,.25c-.48,2.17.5,4.39,1.61,6.31a39.73,39.73,0,0,0,29.62,19.34,2.58,2.58,0,0,0-.62,3.94c1.06,1.05,2.84.92,4.16.24a31.58,31.58,0,0,0,3.57-2.67,10.91,10.91,0,0,1,7.32-2c1.63.15,3.2.67,4.83.76,4.8.26,8.93-3.2,13.52-4.61,3.37-1,7.18-1,10-3.14,1.22-.9,2.22-2.38,1.86-3.86a6.29,6.29,0,0,0-1.4-2.26c-1.63-2.11-2.58-4.64-3.75-7a41.79,41.79,0,0,0-9.37-12.54,82.71,82.71,0,0,0-9.28-7.05,15.71,15.71,0,0,0-2.52-1.51,25.81,25.81,0,0,1-3.44-1.4c-1.53-1-2.4-2.65-3.57-4-2.57-3-6.52-4.37-9.69-6.73-2.12-1.58-4-3.66-6.53-4.43-1.23-.37-2.55-.4-3.78-.77-2.8-.85-4.84-3.34-7.59-4.34-2.17-.8-4.57-.59-6.87-.88a16,16,0,0,1-7.06-2.67,8.49,8.49,0,0,0-2.28-1.34c-3.47-1-3.75,5.42-4.08,7.66C361.19,588,360.33,591.35,360.33,594.72Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#3f3d56"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M363.72,616.43c.58,6.31-4.19,12.43-2.8,18.62.3,1.32.86,2.57,1.07,3.9.58,3.67-1.61,7.14-3.7,10.21l-18,26.34a16,16,0,0,1-2.56,3.17c-3.44,3.05-8.58,2.73-13.09,3.65a22.41,22.41,0,0,0-8.77,3.88.57.57,0,0,0-.11.78,7.52,7.52,0,0,0,6.52,3.06c.47.62,0,1.54-.65,2-1,.67-2.29.85-2.48,2.48a2.78,2.78,0,0,0,.32,1.65,5.12,5.12,0,0,0,3.15,2.18c6.21,1.9,12.92-1.44,17.57-6s8-10.27,12.56-14.9c2.53-2.56,5.4-4.75,8-7.23,5.19-5,9.23-11,13.13-17a18.92,18.92,0,0,0,2.84-5.79c.48-2.05.26-4.23.82-6.26.72-2.67,2.67-4.8,4.3-7,3.19-4.39,5.31-9.75,4.89-15.16s-3.77-10.73-8.86-12.57a7.93,7.93,0,0,0-5-.3c-2.09.64-3.63,2.37-5.06,4l-3.41,3.94a9.36,9.36,0,0,0-2,3,3.15,3.15,0,0,0,.7,3.35",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#fbbebe"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M372.8,590.5c-2.36.14-5,.37-6.63,2a9.26,9.26,0,0,0-1.66,2.62c-1.62,3.29-3.2,6.74-3.31,10.41-.1,2.93.75,5.8,1.2,8.7.37,2.41-.57,4.87-.75,7.31a49.91,49.91,0,0,0,9.44-3.63,31.56,31.56,0,0,1,5.53-2.87c2.81-.94,7.55.67,10.21,2,.15-1.88-1.26-5.15-1.11-7a7.67,7.67,0,0,1,.42-2.33,13.89,13.89,0,0,1,1.41-2.25,9.21,9.21,0,0,0-.83-10.81c-2.37-2.67-6.09-3.67-9.64-4.09a42.16,42.16,0,0,0-6.74-.23",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#3f3d56"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M321.33,557.19l-.38-3.13c2.63.67,5.12-1.55,6.8-3.86s3.23-5,5.78-6c3.11-1.17,6.4.7,9.37,2.24A29.33,29.33,0,0,0,353.65,550a7.61,7.61,0,0,1,1.78.29c1.93.69,2.85,3.11,3.13,5.31s.2,4.54,1.15,6.5c.73,1.48,2,2.59,2.72,4,2,3.93.07,9.31,2.22,13.17l-5.33-4.88c-.49-.45-1.18-.92-1.71-.54s-.46,1-.64,1.47a2.79,2.79,0,0,1-3.79,1.38,10.39,10.39,0,0,1-3.39-3.1,20.72,20.72,0,0,0-8.46-6.41,10.81,10.81,0,0,0-8.95.53c-2.49,1.41-4.31,4.68-7.36,4.79-4.18.16-5.92-7.62-7.85-10.69a3.79,3.79,0,0,0,1.1-4.72C318.56,557,321.27,556.71,321.33,557.19Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#464353"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M770.23,840.52c-.81-3.43-1.3-6.43-1.3-6.43a13.32,13.32,0,0,0-1.49-6.53v-.94h0v-6.9a22.81,22.81,0,0,1,1.74-3.61c1.24-2.16,0-10.1,0-10.1s-4.6-11.19-3.49-18.29-9.44-31.53-9.44-31.53a31.15,31.15,0,0,1,1-7,5.05,5.05,0,0,0,.13-1.46,1.09,1.09,0,0,0,0-.18v.06c-.16-4.68-3.86-13.46-3.86-13.46l.5-16.72s2.36-9.87-1.49-23.11c-1.35-4.62-2.21-8.31-2.76-11.17-.06-.32-.12-.63-.17-.93,7.93-1.21,14-2.22,14-2.22s-4.6-19.25-7.71-22.62-5.59-13.95-5.59-13.95-1.62-13.6,1-17.57,3-10.83,3-10.83,6-4.33,6.71-6.26a31.7,31.7,0,0,0,2-8.54c0-2.29-.75-4.33-.5-5.54s-1.74-5.77-.74-7.94a5.81,5.81,0,0,0,.39-2.09.13.13,0,0,0,0-.06v0a29.73,29.73,0,0,0-.53-5.65,16,16,0,0,0-5.9-3.16l-.13-.51-.34-1.35a4.56,4.56,0,0,0-.59-.35v-.5l0-2,.93-4.4c1.84-7.63-8.36-8.77-8.36-8.77a5.38,5.38,0,0,0-2.89-2.54c-2-.72-.34,11.5.62,12.28.72.58,3,4.42,4,6.3h0l.18.31a4.06,4.06,0,0,0-.47.49l.39,2.65.06.41a10.89,10.89,0,0,0-1.63,2.77s1.87,2.05,1.49,4.34a13.6,13.6,0,0,0,.62,5.29c-.11-.13-1.42-1.55-2.73-1.2s-5,1.44-5,1.44-2.74.48-2.49,1.08-1.86,3.25-1.86,3.25l-7.35-7c-.08-.21-.15-.42-.22-.63a16.8,16.8,0,0,1-.63-3,16.33,16.33,0,0,0,2.34-.75,5.07,5.07,0,0,0,2-1.3,7.94,7.94,0,0,0,1.18-3.17c.58-2.14,1.83-4.05,2.73-6.08A19.78,19.78,0,0,0,739,562a7.22,7.22,0,0,0-1.12-3.2c-1.2-1.65-3.38-2.32-5-3.64s-2.6-3.32-4.45-4.31a8.77,8.77,0,0,0-5.58-.48,29.82,29.82,0,0,0-10.41,3.78c-1.08.64-2.25,1.37-3.49,1.15a4.71,4.71,0,0,1-2.51-1.84.49.49,0,0,1,0-.11l-.09-.09a13.17,13.17,0,0,0-1.14,5.5c0,.29,0,.58,0,.88,0,.1,0,.2,0,.3a2.26,2.26,0,0,1,0,.26h0a1.76,1.76,0,0,1-.06.39,2.83,2.83,0,0,1-.68,1,4.43,4.43,0,0,0-.6.82c0-.1.06-.2.1-.3a4.34,4.34,0,0,0-.77,2.31,2.3,2.3,0,0,0,.56,1.66,8,8,0,0,0,1.19,1,14,14,0,0,0-.21,2.44,14.22,14.22,0,0,0,6.92,12.13l.25.63a17.49,17.49,0,0,1,1.33,8c0,.2,0,.39-.09.59l-.26.3h0s-12.14.12-15-2.47-7.21,6.32-7.21,6.32-4.35.85-5.22,0-6-.12-6-.12a11,11,0,0,0-7.58-2.76,22.27,22.27,0,0,0-5.57-3.1h0l-.14-.05h0a6.22,6.22,0,0,0-2.74-.34s-6-4.94-7.7-7.58-10-12.47-10.07-12.52l0-.47-.1-1.43a5.58,5.58,0,0,1-.74.07c0-.15-.1-.31-.17-.5a27,27,0,0,0-1.76-4s0-1.8.53-2.25-.22-7.07-.22-7.07-5.38-12.57-10.19-3.19c0,0-9.11,6.07-1.47,13.15,0,0,3,1.47,3.48,2.64.29.76,1.32,2.89,2,4.3l.31.63-.09.07.12,1.18,0,.46c-1.44.81-2.41,1.62-2.18,2.24a13.16,13.16,0,0,1,.87,3.25s10.57,13.23,11.94,18.89c0,0,28.34,16.84,37.66,18.05l-1.61,8.42a66.59,66.59,0,0,0-.37,6.86c.12,1.8-1.12,10-1.12,10s-1.62,12-3,13.71-1.12,8.91-1.12,8.91a60.09,60.09,0,0,1-1.86,10.22c-1.37,4.58-.37,10.23-.37,10.23s-4.73,10.83,6.59,3.49c0,0,5.55-.34,12-.56,0,.21,0,.42,0,.64,0,.82,0,1.71,0,2.65-.08,6.2-.12,14.75.16,21.22.5,11.43,4,34,4,34v11.36a15.89,15.89,0,0,0-.32,3.25,21.06,21.06,0,0,0,3.06,11.38l.87,7.58s2,5,2.08,8a3.93,3.93,0,0,1-.09.72,5.38,5.38,0,0,0-.1,1.16c-.11,3.44,2,11.68,2,11.68s.13,8.3,1.37,8.78c1.06.41-1.42,4.79-2.16,6a2,2,0,0,1-.05-.24c-.09.16-.15.25-.15.25a5.83,5.83,0,0,0-.39,2.1,3,3,0,0,0,1.38,2.92c2.36,1.45,3.63,2.65,1.63,3.13a19.86,19.86,0,0,0-2.19.46c0-.09-.08-.19-.11-.28A1.34,1.34,0,0,0,705,824a6.15,6.15,0,0,0,.75,2.81,30,30,0,0,0,3.36,6.14l1-.11a4.72,4.72,0,0,1-.56,1,3.87,3.87,0,0,1-1.4,1.24,4.48,4.48,0,0,1-1.7.59,4.74,4.74,0,0,0-3.52,1.71c-1.24,1.6-2,3.79.43,5.71l8.89,3.06s15.29,2,14.48-1.44-1.3-6.43-1.3-6.43a13.57,13.57,0,0,0-1.25-6.09,6,6,0,0,0-.54-.9l.54-.06s1.12-7.58,2.61-9c.35-.33.43-.59.34-.79.16-.41-.23-.65-.73-.79l-.11.3a7.5,7.5,0,0,0-1.48-.16s-.5-4,1.11-5.42a1.53,1.53,0,0,0,.32-1.18,6.8,6.8,0,0,0-.17-1.62l-.06.1a57.75,57.75,0,0,0-3.57-9.33s-.12-3.61.87-5.06-.12-19.61-.12-19.61.37-8.78-.75-12.87,1.37-8.91,1.37-8.91l0-.26,0-.06s-.06-.54-.15-1.39l0,.09c-.25-2.33-.72-6.54-1.07-8.48-.5-2.77.12-16,.12-16l2.24-5.65,4,9.74,4.22,13a11.05,11.05,0,0,1,2.15,5.52c0,.14,0,.28,0,.41a6.53,6.53,0,0,0,0,.87,7.76,7.76,0,0,0,1.29,4.63s1.12,6.14,2.86,7.7,1.74,4.57,1.74,4.57,2.11,8.91,3.11,10.47c.84,1.32.88,4.94.87,6h0v.33s.29,3.18.28,5.86c0,.32,0,.65,0,1v-.07a9.32,9.32,0,0,1-.26,2.16l0,.13c0-.15,0-.31,0-.45a22.26,22.26,0,0,0-.64,5.55c-.06,3.2.43,7,2.37,9.21,3.36,3.85,5.47,3.37,5.47,3.37s-1.62,4.81-3.61,5.78a1.2,1.2,0,0,0-.21.13c0-.09,0-.19-.05-.28a2.35,2.35,0,0,0-.58,1.8,12.88,12.88,0,0,0,2.46,7.13,3.94,3.94,0,0,0,1.68,1l-.31.19a7,7,0,0,1-.69.33,3.26,3.26,0,0,1-1,.26,4.74,4.74,0,0,0-3.52,1.71c-1.24,1.6-2,3.79.43,5.71l8.89,3.06S771,844,770.23,840.52Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "url(#fe3366dc-1c26-4135-9415-0b0409d0ae5c)"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M711.83,846.2l-8.61-3.06c-2.37-1.92-1.61-4.11-.41-5.71a4.53,4.53,0,0,1,3.4-1.71,4.21,4.21,0,0,0,1.65-.59,3.9,3.9,0,0,0,1.36-1.24,6.33,6.33,0,0,0,1-3.33s9.45-2.76,12,0a7.06,7.06,0,0,1,1.15,1.68,14,14,0,0,1,1.2,6.09s.48,3,1.26,6.43S711.83,846.2,711.83,846.2Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#2d293d"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M753.94,842l-8.6-3.06c-2.38-1.92-1.62-4.11-.42-5.7a4.52,4.52,0,0,1,3.41-1.72,3.11,3.11,0,0,0,1-.26,5.06,5.06,0,0,0,.66-.33c2.41-1.32,2.35-4.57,2.35-4.57s9.44-2.77,12,0a6.69,6.69,0,0,1,.9,1.23,13.74,13.74,0,0,1,1.45,6.54s.48,3,1.26,6.43S753.94,842,753.94,842Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#2d293d"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M722.23,830.56a7.06,7.06,0,0,1,1.15,1.68h0l-14.16,1.64a6.33,6.33,0,0,0,1-3.33S719.65,827.8,722.23,830.56Z",
+                transform: "translate(-51.77 -47.02)",
+                opacity: "0.1"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M765.25,827.55v2.65c-2.2,3.63-12.85,2.84-15.94,1a5.06,5.06,0,0,0,.66-.33c2.41-1.32,2.35-4.57,2.35-4.57s9.44-2.77,12,0A6.69,6.69,0,0,1,765.25,827.55Z",
+                transform: "translate(-51.77 -47.02)",
+                opacity: "0.1"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M766.94,816.12a23.62,23.62,0,0,0-1.69,3.61v9.51c-2.4,4-14.92,2.65-16.6.48s-3.49-7.82-1.57-8.78,3.49-5.78,3.49-5.78-2,.48-5.29-3.37S743,799.4,743.6,797.35s0-8.9,0-8.9.12-4.81-.84-6.38-3-10.47-3-10.47,0-3-1.68-4.57-2.77-7.7-2.77-7.7a7.89,7.89,0,0,1-1.2-5.17c.36-3-2.05-6.26-2.05-6.26l-4.09-13-3.85-9.75-2.16,5.65s-.61,13.24-.12,16,1.2,10.1,1.2,10.1-2.41,4.82-1.32,8.91.72,12.87.72,12.87,1.08,18.17.12,19.62-.84,5-.84,5,4.93,10.59,3.36,12-1.08,5.42-1.08,5.42,3.37,0,1.93,1.44-2.53,9-2.53,9L708.83,833a30.8,30.8,0,0,1-3.26-6.14c-1.92-4.45.36-4,2.3-4.45s.71-1.68-1.58-3.13-1-4.69-1-4.69,3.49-5.9,2.29-6.38-1.33-8.78-1.33-8.78-2.4-9.87-1.8-12.51-1.93-9-1.93-9l-.84-7.58A20.84,20.84,0,0,1,699.08,756V744.29s-3.37-22.62-3.86-34c-.3-7.32-.22-17.31-.12-23.55.06-3.49.12-5.81.12-5.81l52-5.41a43.08,43.08,0,0,0,.95,7.72c.53,2.85,1.36,6.55,2.66,11.17,3.73,13.23,1.45,23.1,1.45,23.1l-.48,16.72s4.57,11.19,3.61,15a31.76,31.76,0,0,0-1,7s10.23,24.43,9.15,31.53S766.94,806,766.94,806,768.14,814,766.94,816.12Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#464353"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d: "M737.22,753.44,753,751.33S744.08,760.47,737.22,753.44Z",
+                transform: "translate(-51.77 -47.02)",
+                opacity: "0.05"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M750.75,735.87s.55,5.59-2.88,7.7C747.87,743.57,754,742.61,750.75,735.87Z",
+                transform: "translate(-51.77 -47.02)",
+                opacity: "0.1"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M749.78,718.06s-13.22,10.89-18,10S749.78,718.06,749.78,718.06Z",
+                transform: "translate(-51.77 -47.02)",
+                opacity: "0.1"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M717.6,758.55s-10,2.29-10.34,6.32S717.6,758.55,717.6,758.55Z",
+                transform: "translate(-51.77 -47.02)",
+                opacity: "0.1"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M719.81,808.72s-14.19,2.65-10.16,4.46a68.8,68.8,0,0,0,10.65,3.24S724.87,816.66,719.81,808.72Z",
+                transform: "translate(-51.77 -47.02)",
+                opacity: "0.05"
+              }
+            }),
+            _c("g", { attrs: { opacity: "0.05" } }, [
+              _c("path", {
+                attrs: {
+                  d:
+                    "M706.78,816a2.81,2.81,0,0,1-1.3-2.06l-.14.26s-1.33,3.24,1,4.69c.26.16.51.33.74.49.42-.08.88-.14,1.31-.25C710.29,818.69,709.07,817.48,706.78,816Z",
+                  transform: "translate(-51.77 -47.02)"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M725.07,815.08c.39-.36.37-1.29.14-2.48a6.71,6.71,0,0,0-.81,3.49A2.67,2.67,0,0,1,725.07,815.08Z",
+                  transform: "translate(-51.77 -47.02)"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M722.88,755.22a16.56,16.56,0,0,0-1,4.42,17.48,17.48,0,0,1,1.1-3S723,756.06,722.88,755.22Z",
+                  transform: "translate(-51.77 -47.02)"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M755.39,748.9a5.72,5.72,0,0,0,.13-1.32c-.18.9-.3,1.74-.39,2.47C755.21,749.67,755.29,749.29,755.39,748.9Z",
+                  transform: "translate(-51.77 -47.02)"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M722.54,798a7.57,7.57,0,0,0,.36-2.67,8.81,8.81,0,0,0-.69,3.37A3.24,3.24,0,0,1,722.54,798Z",
+                  transform: "translate(-51.77 -47.02)"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M725.52,820.68a48.12,48.12,0,0,0-1.65,7.39l-14.55,1.69a30.14,30.14,0,0,1-3.26-6.14,10.72,10.72,0,0,1-.41-1.06c-.87.4-1.22,1.3-.07,4a29.79,29.79,0,0,0,3.26,6.13L723.38,831s1.09-7.58,2.53-9C726.62,821.23,726.17,820.87,725.52,820.68Z",
+                  transform: "translate(-51.77 -47.02)"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M706.3,799.07s.12,8.31,1.32,8.79h0c.61-1.37,1-2.67.47-2.89-1.2-.48-1.32-8.78-1.32-8.78s-2.41-9.87-1.8-12.52-1.93-9-1.93-9l-.84-7.58a20.88,20.88,0,0,1-2.65-14.32V741.08s-3.37-22.62-3.85-34.05c-.31-7.32-.22-17.31-.12-23.55,0-1.12,0-2.12,0-3l-.41,0s-.06,2.31-.12,5.81c-.1,6.23-.19,16.23.12,23.55.48,11.43,3.85,34.05,3.85,34.05v11.67A20.81,20.81,0,0,0,701.73,770l.84,7.58s2.53,6.37,1.92,9S706.3,799.07,706.3,799.07Z",
+                  transform: "translate(-51.77 -47.02)"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M749.13,826.51a14,14,0,0,1-2.3-5.72c-1.49,1.34.22,6.55,1.82,8.61s14.2,3.49,16.61-.49v-2.29C762,829.85,750.73,828.56,749.13,826.51Z",
+                  transform: "translate(-51.77 -47.02)"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M767.42,812.91a24.05,24.05,0,0,0-1.68,3.61v1.69c.27-.62.66-1.44,1.2-2.41a7.29,7.29,0,0,0,.53-3Z",
+                  transform: "translate(-51.77 -47.02)"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M749.87,814.81a23.17,23.17,0,0,0,1.19-2.86s-2,.48-5.3-3.37c-2.36-2.8-2.49-8.09-2.16-11.55-.6,2.05-1.57,10.59,1.68,14.44C747.41,814,749,814.65,749.87,814.81Z",
+                  transform: "translate(-51.77 -47.02)"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M743.6,788.13a66.12,66.12,0,0,1,.24,7.13c.08-.47.17-.85.24-1.12.61-2,0-8.9,0-8.9s.12-4.82-.84-6.38-3-10.47-3-10.47,0-3-1.68-4.57-2.77-7.7-2.77-7.7a7.89,7.89,0,0,1-1.21-5.17c.37-3-2-6.26-2-6.26l-4.09-13L724.59,722l-2.17,5.65s0,.71-.07,1.83l1.76-4.59,3.85,9.74,4.09,13s2.4,3.25,2,6.25A7.91,7.91,0,0,0,735.3,759s1.08,6.13,2.76,7.7,1.69,4.57,1.69,4.57,2,8.9,3,10.47S743.6,788.13,743.6,788.13Z",
+                  transform: "translate(-51.77 -47.02)"
+                }
+              })
+            ]),
+            _c("path", {
+              attrs: {
+                d:
+                  "M753.7,566.75l-.9,4.4.05,2,0,1.44-5,.52-.56-1h0c-1-1.88-3.2-5.71-3.9-6.3-.93-.78-2.58-13-.6-12.27a5.24,5.24,0,0,1,2.8,2.53S755.48,559.11,753.7,566.75Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#ffcdd3"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d: "M752.89,574.54l-5,.52-.56-1h0a4.42,4.42,0,0,1,5.54-.91Z",
+                transform: "translate(-51.77 -47.02)",
+                opacity: "0.1"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M754.15,576.92l-6.61,1.54-.14-1-.38-2.65a4.55,4.55,0,0,1,6.41-.88l.33,1.35Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#dce6f2"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M646.91,567.23l-7.06,3.8-.64-1.34c-.68-1.41-1.68-3.53-2-4.29-.42-1.17-3.37-2.65-3.37-2.65-7.4-7.07,1.41-13.14,1.41-13.14,4.67-9.39,9.87,3.18,9.87,3.18s.72,6.63.21,7.07-.51,2.26-.51,2.26a27.49,27.49,0,0,1,1.71,4C646.8,566.82,646.91,567.23,646.91,567.23Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#ffcdd3"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M646.91,567.23l-7.06,3.8-.64-1.34c1-.83,4.53-3.7,5.69-3.57a8.28,8.28,0,0,0,1.68,0C646.8,566.82,646.91,567.23,646.91,567.23Z",
+                transform: "translate(-51.77 -47.02)",
+                opacity: "0.1"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M647.63,569.37l-7.94,3.91-.16-1.71-.11-1.17s4.6-3.95,6-3.8a7.38,7.38,0,0,0,2.08,0l.09,1.43Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#dce6f2"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M734.45,595.93s-34.63,3.91-28.16,1.81c4.51-1.47,6.3-4.33,6.68-7.51a18.29,18.29,0,0,0-1.29-8,34.77,34.77,0,0,0-3.1-6.26s26.47-14.56,21.18-1.32a20.76,20.76,0,0,0-1.5,6.27,17.68,17.68,0,0,0,.67,6.34A18.91,18.91,0,0,0,734.45,595.93Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#ffcdd3"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M729.76,574.64a20.76,20.76,0,0,0-1.5,6.27c-2.5,2.09-5.23,2-8.74,2-2.7,0-5.69.66-7.84-.64a34.77,34.77,0,0,0-3.1-6.26S735.05,561.4,729.76,574.64Z",
+                transform: "translate(-51.77 -47.02)",
+                opacity: "0.1"
+              }
+            }),
+            _c("circle", {
+              attrs: { cx: "667.28", cy: "522.45", r: "14.32", fill: "#ffcdd3" }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M734.45,595.93s-34.63,3.91-28.16,1.81c4.51-1.47,6.3-4.33,6.68-7.51,1.72-1.87,5.18-3.22,7.41-3.93a10.33,10.33,0,0,1,6.27-.1,8.36,8.36,0,0,1,2.28,1A18.91,18.91,0,0,0,734.45,595.93Z",
+                transform: "translate(-51.77 -47.02)",
+                opacity: "0.1"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d: "M754.15,576.92l-6.61,1.54-.14-1a5.84,5.84,0,0,1,6.36-2.18Z",
+                transform: "translate(-51.77 -47.02)",
+                opacity: "0.1"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M647.63,569.37l-7.94,3.91-.16-1.71a58.44,58.44,0,0,1,8-3.54Z",
+                transform: "translate(-51.77 -47.02)",
+                opacity: "0.1"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M748.15,683.19c-13.41,2.11-32.5,4.87-35.53,3.95-2.51-.77-10.53-.69-17.52-.45.06-3.49.12-5.81.12-5.81l52-5.41A43.08,43.08,0,0,0,748.15,683.19Z",
+                transform: "translate(-51.77 -47.02)",
+                opacity: "0.1"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M761.52,680s-44.16,7.58-48.9,6.13-29.07.13-29.07.13c-10.95,7.33-6.37-3.49-6.37-3.49s-1-5.66.36-10.23a62.65,62.65,0,0,0,1.8-10.23s-.24-7.22,1.08-8.9,2.89-13.72,2.89-13.72,1.21-8.18,1.09-10,.36-6.85.36-6.85l1.56-8.43c-9-1.2-36.46-18.05-36.46-18.05-1.32-5.65-11.55-18.89-11.55-18.89a13.93,13.93,0,0,0-.84-3.25c-.72-1.92,10.11-5.77,10.11-5.77s8.06,9.87,9.74,12.51,7.46,7.58,7.46,7.58a5.83,5.83,0,0,1,2.65.35l.14,0h0a21.34,21.34,0,0,1,5.38,3.09,10.43,10.43,0,0,1,7.34,2.77s4.94-.72,5.78.12,5,0,5,0,4.22-8.9,7-6.32,14.51,2.47,14.51,2.47c1.57-2.08,5.37-3.57,7.76-4.34a10.33,10.33,0,0,1,6.27-.1,7.76,7.76,0,0,1,2.48,1.2l7.12,7s2-2.65,1.81-3.25,2.41-1.08,2.41-1.08,3.49-1.08,4.81-1.45,2.54,1.08,2.64,1.2a14.09,14.09,0,0,1-.6-5.29,6,6,0,0,0-1.44-4.33C750.09,570.3,759.6,579,759.6,579s1.08,5.65.12,7.82,1,6.74.72,7.94.48,3.25.48,5.53a32.9,32.9,0,0,1-1.92,8.55c-.73,1.92-6.5,6.25-6.5,6.25s-.36,6.86-2.89,10.83-1,17.57-1,17.57,2.4,10.59,5.41,14S761.52,680,761.52,680Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#3f3d56"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M697.15,600.87s-1.32-4-2.53-4.34a28.49,28.49,0,0,1-3.49-1.56l.78-1.48s4.52,1.24,5.24,2.56S697.15,600.87,697.15,600.87Z",
+                transform: "translate(-51.77 -47.02)",
+                opacity: "0.1"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M673,592.08c-.24,1.21-10.94,2.29-10.94,2.29l5.41-5.43h0l.14.05h0A21.34,21.34,0,0,1,673,592.08Z",
+                transform: "translate(-51.77 -47.02)",
+                opacity: "0.1"
+              }
+            }),
+            _c("circle", {
+              attrs: { cx: "590.21", cy: "528.55", r: "0.96", fill: "#575988" }
+            }),
+            _c("circle", {
+              attrs: { cx: "591.44", cy: "530.48", r: "0.96", fill: "#575988" }
+            }),
+            _c("circle", {
+              attrs: { cx: "592.65", cy: "532.25", r: "0.96", fill: "#575988" }
+            }),
+            _c("circle", {
+              attrs: { cx: "593.91", cy: "534.18", r: "0.96", fill: "#575988" }
+            }),
+            _c("circle", {
+              attrs: { cx: "707.33", cy: "534.07", r: "0.78", fill: "#575988" }
+            }),
+            _c("circle", {
+              attrs: { cx: "707.45", cy: "535.85", r: "0.78", fill: "#575988" }
+            }),
+            _c("circle", {
+              attrs: { cx: "707.55", cy: "537.62", r: "0.78", fill: "#575988" }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M697.21,633.47c-.11-.14,27,34.11,48.07,14.32C745.28,647.79,712,652.3,697.21,633.47Z",
+                transform: "translate(-51.77 -47.02)",
+                opacity: "0.1"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M681.63,651.28s16.23.44,17.93,5.11v4.86a3.11,3.11,0,0,1-3,0c-1.64-.88-11.45-5.87-14.91-3.47Z",
+                transform: "translate(-51.77 -47.02)",
+                opacity: "0.1"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M681.93,651.28s15.52.42,17.15,4.87v4.64a3,3,0,0,1-2.89,0c-1.57-.85-11-5.6-14.26-3.31Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#3f3d56"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M690.49,616a52.28,52.28,0,0,0,6.29,10.79,42.15,42.15,0,0,0,9.86,9.52S690.76,618.27,690.49,616Z",
+                transform: "translate(-51.77 -47.02)",
+                opacity: "0.1"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d: "M685.18,597.18s2.71,11.69,9.68,15.66Z",
+                transform: "translate(-51.77 -47.02)",
+                opacity: "0.1"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M681,598.36c-.07-.22-2.41,9.24,9,14.48C690,612.84,685.18,611.2,681,598.36Z",
+                transform: "translate(-51.77 -47.02)",
+                opacity: "0.1"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M751.9,590.52c-.18,0,5.62,3.7,7.2,5.41C759.1,595.93,755.33,590.28,751.9,590.52Z",
+                transform: "translate(-51.77 -47.02)",
+                opacity: "0.1"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d:
+                  "M715.18,582.44a3.05,3.05,0,0,0,1.11,1.94,3.13,3.13,0,0,0,1.35.3c4.37.27,8.91.46,13-1.22a4.84,4.84,0,0,0,2-1.31A7.79,7.79,0,0,0,733.7,579c.57-2.14,1.78-4,2.65-6.08A20.43,20.43,0,0,0,737.76,562a7.31,7.31,0,0,0-1.09-3.2c-1.16-1.65-3.27-2.32-4.8-3.64s-2.52-3.33-4.3-4.32a8.36,8.36,0,0,0-5.4-.48,28.53,28.53,0,0,0-10.08,3.79c-1,.64-2.18,1.37-3.37,1.15a4.63,4.63,0,0,1-2.48-1.9,13.32,13.32,0,0,0-1.07,6.23,3,3,0,0,1,0,.94,3,3,0,0,1-.67,1c-1.08,1.25-1.75,3.23-.69,4.49.47.55,1.18.85,1.63,1.41.81,1,.53,2.45.51,3.74a2,2,0,0,0,.32,1.27,1.86,1.86,0,0,0,1.77.42,4.84,4.84,0,0,1,1.88-.18,3.17,3.17,0,0,1,1.64,1.26C713.54,576.54,714.33,579.35,715.18,582.44Z",
+                transform: "translate(-51.77 -47.02)",
+                fill: "#2d293d"
+              }
+            }),
+            _c("g", { attrs: { opacity: "0.1" } }, [
+              _c("path", {
+                attrs: {
+                  d:
+                    "M733,581.05a4.73,4.73,0,0,1-2,1.3c-4,1.69-8.58,1.49-12.94,1.22a2.94,2.94,0,0,1-1.35-.3,3,3,0,0,1-1.12-1.93c-.85-3.09-1.63-5.91-3.65-8.47a3.12,3.12,0,0,0-1.64-1.26,4.84,4.84,0,0,0-1.88.18,1.86,1.86,0,0,1-1.77-.42,1.94,1.94,0,0,1-.31-1.27c0-1.29.29-2.74-.52-3.74-.45-.56-1.16-.86-1.63-1.41a2.82,2.82,0,0,1-.27-2.88c-.77,1.22-1.1,2.78-.21,3.84.47.55,1.18.85,1.63,1.41.81,1,.53,2.45.51,3.74a2,2,0,0,0,.32,1.27,1.85,1.85,0,0,0,1.77.42,4.84,4.84,0,0,1,1.88-.18,3.17,3.17,0,0,1,1.64,1.26c2,2.57,2.8,5.38,3.65,8.47a3.05,3.05,0,0,0,1.11,1.94,3.13,3.13,0,0,0,1.35.3c4.37.27,8.91.46,13-1.22a4.91,4.91,0,0,0,2-1.31,3.81,3.81,0,0,0,.62-1.16C733.13,580.92,733.09,581,733,581.05Z",
+                  transform: "translate(-51.77 -47.02)"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M705.18,560.19a2,2,0,0,0,.44-.73,3,3,0,0,0,0-.94,13.2,13.2,0,0,1,.67-5.18l-.08-.09a13.2,13.2,0,0,0-1.07,6.23A4.21,4.21,0,0,1,705.18,560.19Z",
+                  transform: "translate(-51.77 -47.02)"
+                }
+              })
+            ]),
+            _c("path", {
+              attrs: {
+                d: "M712.62,591.12s17.89,2.37,19.5-.32",
+                transform: "translate(-51.77 -47.02)",
+                opacity: "0.1"
+              }
+            }),
+            _c("path", {
+              attrs: {
+                d: "M747.4,583.72s9.93,0,12.12,3.74",
+                transform: "translate(-51.77 -47.02)",
+                opacity: "0.1"
+              }
+            })
+          ]
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Profile.vue?vue&type=template&id=3bd692e4&scoped=true&":
 /*!**********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Profile.vue?vue&type=template&id=3bd692e4&scoped=true& ***!
@@ -60785,19 +63510,24 @@ var render = function() {
             ]
           ),
           _vm._v(" "),
-          _vm._m(0),
+          _c("div", { staticClass: "widget-user-image" }, [
+            _c("img", {
+              staticClass: "img-circle",
+              attrs: { src: _vm.getProfilePhoto(), alt: "User Avatar" }
+            })
+          ]),
           _vm._v(" "),
-          _vm._m(1)
+          _vm._m(0)
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "card" }, [
-          _vm._m(2),
+          _vm._m(1),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
             _c("div", { staticClass: "tab-content" }, [
               _c("div", { staticClass: "tab-pane", attrs: { id: "activity" } }),
               _vm._v(" "),
-              _vm._m(3),
+              _vm._m(2),
               _vm._v(" "),
               _c(
                 "div",
@@ -60817,33 +63547,45 @@ var render = function() {
                         [_vm._v("Name")]
                       ),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col-sm-10" }, [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.form.name,
-                              expression: "form.name"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "text",
-                            id: "inputName",
-                            placeholder: "Name"
-                          },
-                          domProps: { value: _vm.form.name },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
+                      _c(
+                        "div",
+                        { staticClass: "col-sm-10" },
+                        [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.name,
+                                expression: "form.name"
                               }
-                              _vm.$set(_vm.form, "name", $event.target.value)
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has("name")
+                            },
+                            attrs: {
+                              type: "text",
+                              id: "inputName",
+                              placeholder: "Name"
+                            },
+                            domProps: { value: _vm.form.name },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(_vm.form, "name", $event.target.value)
+                              }
                             }
-                          }
-                        })
-                      ])
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: { form: _vm.form, field: "name" }
+                          })
+                        ],
+                        1
+                      )
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "form-group" }, [
@@ -60856,36 +63598,101 @@ var render = function() {
                         [_vm._v("Email")]
                       ),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col-sm-10" }, [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.form.email,
-                              expression: "form.email"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "email",
-                            id: "inputEmail",
-                            placeholder: "Email"
-                          },
-                          domProps: { value: _vm.form.email },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
+                      _c(
+                        "div",
+                        { staticClass: "col-sm-10" },
+                        [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.email,
+                                expression: "form.email"
                               }
-                              _vm.$set(_vm.form, "email", $event.target.value)
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has("email")
+                            },
+                            attrs: {
+                              type: "email",
+                              id: "inputEmail",
+                              placeholder: "Email"
+                            },
+                            domProps: { value: _vm.form.email },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(_vm.form, "email", $event.target.value)
+                              }
                             }
-                          }
-                        })
-                      ])
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: { form: _vm.form, field: "email" }
+                          })
+                        ],
+                        1
+                      )
                     ]),
                     _vm._v(" "),
-                    _vm._m(4),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "col-sm-2 control-label",
+                          attrs: { for: "inputName2" }
+                        },
+                        [_vm._v("Password")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "col-sm-10" },
+                        [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.password,
+                                expression: "form.password"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has("password")
+                            },
+                            attrs: {
+                              type: "password",
+                              id: "inputName2",
+                              placeholder: "password"
+                            },
+                            domProps: { value: _vm.form.password },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "password",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: { form: _vm.form, field: "password" }
+                          })
+                        ],
+                        1
+                      )
+                    ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "form-group" }, [
                       _c(
@@ -60897,32 +63704,42 @@ var render = function() {
                         [_vm._v("Bio ")]
                       ),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col-sm-10" }, [
-                        _c("textarea", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.form.bio,
-                              expression: "form.bio"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            id: "inputExperience",
-                            placeholder: "Experience"
-                          },
-                          domProps: { value: _vm.form.bio },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
+                      _c(
+                        "div",
+                        { staticClass: "col-sm-10" },
+                        [
+                          _c("textarea", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.bio,
+                                expression: "form.bio"
                               }
-                              _vm.$set(_vm.form, "bio", $event.target.value)
+                            ],
+                            staticClass: "form-control",
+                            class: { "is-invalid": _vm.form.errors.has("bio") },
+                            attrs: {
+                              id: "inputExperience",
+                              placeholder: "Experience"
+                            },
+                            domProps: { value: _vm.form.bio },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(_vm.form, "bio", $event.target.value)
+                              }
                             }
-                          }
-                        })
-                      ])
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: { form: _vm.form, field: "bio" }
+                          })
+                        ],
+                        1
+                      )
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "form-group" }, [
@@ -60938,13 +63755,14 @@ var render = function() {
                       _c("div", { staticClass: "col-sm-10" }, [
                         _c("input", {
                           staticClass: "form-control",
+                          class: { "is-invalid": _vm.form.errors.has("photo") },
                           attrs: { type: "file", id: "photo" },
                           on: { change: _vm.updateProfile }
                         })
                       ])
                     ]),
                     _vm._v(" "),
-                    _vm._m(5),
+                    _vm._m(3),
                     _vm._v(" "),
                     _c("div", { staticClass: "form-group" }, [
                       _c("div", { staticClass: "col-sm-offset-2 col-sm-10" }, [
@@ -60975,17 +63793,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "widget-user-image" }, [
-      _c("img", {
-        staticClass: "img-circle",
-        attrs: { src: "", alt: "User Avatar" }
-      })
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -61202,25 +64009,6 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "form-group" }, [
-      _c(
-        "label",
-        { staticClass: "col-sm-2 control-label", attrs: { for: "inputName2" } },
-        [_vm._v("Name")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-sm-10" }, [
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "text", id: "inputName2", placeholder: "Name" }
-        })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
       _c("div", { staticClass: "col-sm-offset-2 col-sm-10" }, [
         _c("div", { staticClass: "checkbox" }, [
           _c("label", [
@@ -61255,91 +64043,135 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row mt-5" }, [
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-header" }, [
-            _c("h3", { staticClass: "card-title" }, [_vm._v("User Tables")]),
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.$gate.isAdmin(),
+            expression: "$gate.isAdmin()"
+          }
+        ],
+        staticClass: "row mt-5"
+      },
+      [
+        _c("div", { staticClass: "col-md-12" }, [
+          _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "card-header" }, [
+              _c("h3", { staticClass: "card-title" }, [_vm._v("User Tables")]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-tools" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-success",
+                    on: { click: _vm.openNewModal }
+                  },
+                  [
+                    _vm._v(" Add User "),
+                    _c("i", { staticClass: "fas fa-user-plus fa-fw" })
+                  ]
+                )
+              ])
+            ]),
             _vm._v(" "),
-            _c("div", { staticClass: "card-tools" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-success",
-                  on: { click: _vm.openNewModal }
-                },
-                [
-                  _vm._v(" Add User "),
-                  _c("i", { staticClass: "fas fa-user-plus fa-fw" })
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body table-responsive p-0" }, [
-            _c("table", { staticClass: "table table-hover" }, [
-              _c(
-                "tbody",
-                [
-                  _vm._m(0),
-                  _vm._v(" "),
-                  _vm._l(_vm.users, function(user) {
-                    return _c("tr", { key: user.id }, [
-                      _c("td", [_vm._v(_vm._s(user.id))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(user.name))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(user.email))]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c("span", { staticClass: "tag tag-success" }, [
-                          _vm._v(_vm._s(_vm._f("to-uppercase")(user.type)))
+            _c("div", { staticClass: "card-body table-responsive p-0" }, [
+              _c("table", { staticClass: "table table-hover" }, [
+                _c(
+                  "tbody",
+                  [
+                    _vm._m(0),
+                    _vm._v(" "),
+                    _vm._l(_vm.users.data, function(user) {
+                      return _c("tr", { key: user.id }, [
+                        _c("td", [_vm._v(_vm._s(user.id))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(user.name))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(user.email))]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c("span", { staticClass: "tag tag-success" }, [
+                            _vm._v(_vm._s(_vm._f("to-uppercase")(user.type)))
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(_vm._s(_vm._f("my-date")(user.created_at)))
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c(
+                            "a",
+                            {
+                              attrs: { href: "#" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.openEditModal(user)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fa fa-edit blue" })]
+                          ),
+                          _vm._v(
+                            "\n                            /\n                        "
+                          ),
+                          _c(
+                            "a",
+                            {
+                              attrs: { href: "#" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.deleteUser(user.id)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fa fa-trash red" })]
+                          )
                         ])
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _vm._v(_vm._s(_vm._f("my-date")(user.created_at)))
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c(
-                          "a",
-                          {
-                            attrs: { href: "#" },
-                            on: {
-                              click: function($event) {
-                                return _vm.openEditModal(user)
-                              }
-                            }
-                          },
-                          [_c("i", { staticClass: "fa fa-edit blue" })]
-                        ),
-                        _vm._v(
-                          "\n                            /\n                        "
-                        ),
-                        _c(
-                          "a",
-                          {
-                            attrs: { href: "#" },
-                            on: {
-                              click: function($event) {
-                                return _vm.deleteUser(user.id)
-                              }
-                            }
-                          },
-                          [_c("i", { staticClass: "fa fa-trash red" })]
-                        )
                       ])
-                    ])
-                  })
-                ],
-                2
-              )
-            ])
+                    })
+                  ],
+                  2
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "card-footer" },
+              [
+                _c(
+                  "pagination",
+                  {
+                    attrs: { data: _vm.users },
+                    on: { "pagination-change-page": _vm.getResults }
+                  },
+                  [
+                    _c(
+                      "span",
+                      { attrs: { slot: "prev-nav" }, slot: "prev-nav" },
+                      [_vm._v("< Previous")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "span",
+                      { attrs: { slot: "next-nav" }, slot: "next-nav" },
+                      [_vm._v("Next >")]
+                    )
+                  ]
+                )
+              ],
+              1
+            )
           ])
         ])
-      ])
-    ]),
+      ]
+    ),
+    _vm._v(" "),
+    !_vm.$gate.isAdminOrAuthor() ? _c("div", [_c("not-found")], 1) : _vm._e(),
     _vm._v(" "),
     _c(
       "div",
@@ -61497,7 +64329,7 @@ var render = function() {
                         }),
                         _vm._v(" "),
                         _c("has-error", {
-                          attrs: { form: _vm.form, field: "email" }
+                          attrs: { form: _vm.form, field: "bio" }
                         })
                       ],
                       1
@@ -62927,7 +65759,7 @@ function normalizeComponent (
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /*!
-  * vue-router v3.0.6
+  * vue-router v3.0.7
   * (c) 2019 Evan You
   * @license MIT
   */
@@ -64315,10 +67147,8 @@ function createMatcher (
         }
       }
 
-      if (record) {
-        location.path = fillParams(record.path, location.params, ("named route \"" + name + "\""));
-        return _createRoute(record, location, redirectedFrom)
-      }
+      location.path = fillParams(record.path, location.params, ("named route \"" + name + "\""));
+      return _createRoute(record, location, redirectedFrom)
     } else if (location.path) {
       location.params = {};
       for (var i = 0; i < pathList.length; i++) {
@@ -64473,7 +67303,12 @@ var positionStore = Object.create(null);
 function setupScroll () {
   // Fix for #1585 for Firefox
   // Fix for #2195 Add optional third attribute to workaround a bug in safari https://bugs.webkit.org/show_bug.cgi?id=182678
-  window.history.replaceState({ key: getStateKey() }, '', window.location.href.replace(window.location.origin, ''));
+  // Fix for #2774 Support for apps loaded from Windows file shares not mapped to network drives: replaced location.origin with
+  // window.location.protocol + '//' + window.location.host
+  // location.host contains the port and location.hostname doesn't
+  var protocolAndPath = window.location.protocol + '//' + window.location.host;
+  var absolutePath = window.location.href.replace(protocolAndPath, '');
+  window.history.replaceState({ key: getStateKey() }, '', absolutePath);
   window.addEventListener('popstate', function (e) {
     saveScrollPosition();
     if (e.state && e.state.key) {
@@ -65045,7 +67880,6 @@ function bindEnterGuard (
 ) {
   return function routeEnterGuard (to, from, next) {
     return guard(to, from, function (cb) {
-      next(cb);
       if (typeof cb === 'function') {
         cbs.push(function () {
           // #750
@@ -65056,6 +67890,7 @@ function bindEnterGuard (
           poll(cb, match.instances, key, isValid);
         });
       }
+      next(cb);
     })
   }
 }
@@ -65590,7 +68425,7 @@ function createHref (base, fullPath, mode) {
 }
 
 VueRouter.install = install;
-VueRouter.version = '3.0.6';
+VueRouter.version = '3.0.7';
 
 if (inBrowser && window.Vue) {
   window.Vue.use(VueRouter);
@@ -77630,6 +80465,65 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./resources/js/Gate.js":
+/*!******************************!*\
+  !*** ./resources/js/Gate.js ***!
+  \******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Gate; });
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var Gate =
+/*#__PURE__*/
+function () {
+  function Gate(user) {
+    _classCallCheck(this, Gate);
+
+    this.user = user;
+  }
+
+  _createClass(Gate, [{
+    key: "isAdmin",
+    value: function isAdmin() {
+      return this.user.type === 'admin';
+    }
+  }, {
+    key: "isUser",
+    value: function isUser() {
+      return this.user.type === 'user';
+    }
+  }, {
+    key: "isAuthor",
+    value: function isAuthor() {
+      return this.user.type === 'author';
+    }
+  }, {
+    key: "isAdminOrAuthor",
+    value: function isAdminOrAuthor() {
+      if (this.user.type === 'admin' || this.user.type === 'author') return true;
+    }
+  }, {
+    key: "isAuthorOrUser",
+    value: function isAuthorOrUser() {
+      if (this.user.type === 'author' || this.user.type === 'user') return true;
+    }
+  }]);
+
+  return Gate;
+}();
+
+
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -77650,10 +80544,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_progressbar__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vue_progressbar__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _components_Dashboard_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/Dashboard.vue */ "./resources/js/components/Dashboard.vue");
-/* harmony import */ var _components_Profile_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/Profile.vue */ "./resources/js/components/Profile.vue");
-/* harmony import */ var _components_Users_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/Users.vue */ "./resources/js/components/Users.vue");
-/* harmony import */ var _components_Developer_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/Developer.vue */ "./resources/js/components/Developer.vue");
+/* harmony import */ var _Gate__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Gate */ "./resources/js/Gate.js");
+/* harmony import */ var _components_Dashboard_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/Dashboard.vue */ "./resources/js/components/Dashboard.vue");
+/* harmony import */ var _components_Profile_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/Profile.vue */ "./resources/js/components/Profile.vue");
+/* harmony import */ var _components_NotFound_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/NotFound.vue */ "./resources/js/components/NotFound.vue");
+/* harmony import */ var _components_Users_vue__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/Users.vue */ "./resources/js/components/Users.vue");
+/* harmony import */ var _components_Developer_vue__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/Developer.vue */ "./resources/js/components/Developer.vue");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -77662,10 +80558,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js"); // passport components
-
-vue__WEBPACK_IMPORTED_MODULE_2___default.a.component('passport-clients', __webpack_require__(/*! ./components/passport/Clients.vue */ "./resources/js/components/passport/Clients.vue")["default"]);
-vue__WEBPACK_IMPORTED_MODULE_2___default.a.component('passport-authorized-clients', __webpack_require__(/*! ./components/passport/AuthorizedClients.vue */ "./resources/js/components/passport/AuthorizedClients.vue")["default"]);
-vue__WEBPACK_IMPORTED_MODULE_2___default.a.component('passport-personal-access-tokens', __webpack_require__(/*! ./components/passport/PersonalAccessTokens.vue */ "./resources/js/components/passport/PersonalAccessTokens.vue")["default"]); //import moment after installation
+//import moment after installation
 
  //import vform package that we installed for vue-laravel form validation INSTALLED THUS: npm i axios vform
 
@@ -77694,29 +80587,42 @@ var toast = sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.mixin({
   showConfirmButton: false,
   timer: 3000
 });
-window.toast = toast;
+window.toast = toast; //importing pagination
 
-vue__WEBPACK_IMPORTED_MODULE_2___default.a.component('dashboard', _components_Dashboard_vue__WEBPACK_IMPORTED_MODULE_6__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_2___default.a.component('pagination', __webpack_require__(/*! laravel-vue-pagination */ "./node_modules/laravel-vue-pagination/dist/laravel-vue-pagination.common.js")); //importing our gate folder for ACL
 
-vue__WEBPACK_IMPORTED_MODULE_2___default.a.component('profile', _components_Profile_vue__WEBPACK_IMPORTED_MODULE_7__["default"]);
 
-vue__WEBPACK_IMPORTED_MODULE_2___default.a.component('users', _components_Users_vue__WEBPACK_IMPORTED_MODULE_8__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_2___default.a.prototype.$gate = new _Gate__WEBPACK_IMPORTED_MODULE_6__["default"](window.user);
+vue__WEBPACK_IMPORTED_MODULE_2___default.a.component('passport-clients', __webpack_require__(/*! ./components/passport/Clients.vue */ "./resources/js/components/passport/Clients.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_2___default.a.component('passport-authorized-clients', __webpack_require__(/*! ./components/passport/AuthorizedClients.vue */ "./resources/js/components/passport/AuthorizedClients.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_2___default.a.component('passport-personal-access-tokens', __webpack_require__(/*! ./components/passport/PersonalAccessTokens.vue */ "./resources/js/components/passport/PersonalAccessTokens.vue")["default"]);
 
-vue__WEBPACK_IMPORTED_MODULE_2___default.a.component('developer', _components_Developer_vue__WEBPACK_IMPORTED_MODULE_9__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_2___default.a.component('dashboard', _components_Dashboard_vue__WEBPACK_IMPORTED_MODULE_7__["default"]);
+
+vue__WEBPACK_IMPORTED_MODULE_2___default.a.component('profile', _components_Profile_vue__WEBPACK_IMPORTED_MODULE_8__["default"]);
+
+vue__WEBPACK_IMPORTED_MODULE_2___default.a.component('not-found', _components_NotFound_vue__WEBPACK_IMPORTED_MODULE_9__["default"]);
+
+vue__WEBPACK_IMPORTED_MODULE_2___default.a.component('users', _components_Users_vue__WEBPACK_IMPORTED_MODULE_10__["default"]);
+
+vue__WEBPACK_IMPORTED_MODULE_2___default.a.component('developer', _components_Developer_vue__WEBPACK_IMPORTED_MODULE_11__["default"]);
 var routes = [{
   path: '/dasboard',
-  component: _components_Dashboard_vue__WEBPACK_IMPORTED_MODULE_6__["default"]
+  component: _components_Dashboard_vue__WEBPACK_IMPORTED_MODULE_7__["default"]
 }, {
   path: '/profile',
-  component: _components_Profile_vue__WEBPACK_IMPORTED_MODULE_7__["default"]
+  component: _components_Profile_vue__WEBPACK_IMPORTED_MODULE_8__["default"]
 }, {
   path: '/users',
-  component: _components_Users_vue__WEBPACK_IMPORTED_MODULE_8__["default"]
+  component: _components_Users_vue__WEBPACK_IMPORTED_MODULE_10__["default"]
 }, {
   path: '/developer',
-  component: _components_Developer_vue__WEBPACK_IMPORTED_MODULE_9__["default"]
-}]; //creating the router instance
-
+  component: _components_Developer_vue__WEBPACK_IMPORTED_MODULE_11__["default"]
+}, {
+  path: '*',
+  component: _components_NotFound_vue__WEBPACK_IMPORTED_MODULE_9__["default"]
+}];
+//creating the router instance
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_3__["default"]({
   mode: 'history',
   //to remove the # that appears in the link
@@ -77729,12 +80635,24 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.filter('to-uppercase', function (valu
 });
 vue__WEBPACK_IMPORTED_MODULE_2___default.a.filter('my-date', function (created) {
   return moment__WEBPACK_IMPORTED_MODULE_0___default()(created).format('MMMM Do YYYY, h:mm:ss a');
-});
+}); //thiis very important to initialize fire in order to use globally to fire events assign an instance of vue to the windows object
+
 var Fire = new vue__WEBPACK_IMPORTED_MODULE_2___default.a();
 window.Fire = Fire;
 var app = new vue__WEBPACK_IMPORTED_MODULE_2___default.a({
   el: '#app',
-  router: router
+  router: router,
+  data: {
+    search: ''
+  },
+  methods: {
+    searchIt: _.debounce(function () {
+      Fire.$emit('searching');
+    }, 1000),
+    printme: function printme() {
+      window.print(); //check app.scss for a custome code that will remove print of heading laravel page
+    }
+  }
 });
 
 /***/ }),
@@ -77932,6 +80850,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Developer_vue_vue_type_template_id_5932c622___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Developer_vue_vue_type_template_id_5932c622___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/NotFound.vue":
+/*!**********************************************!*\
+  !*** ./resources/js/components/NotFound.vue ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _NotFound_vue_vue_type_template_id_2ce50e5a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./NotFound.vue?vue&type=template&id=2ce50e5a& */ "./resources/js/components/NotFound.vue?vue&type=template&id=2ce50e5a&");
+/* harmony import */ var _NotFound_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NotFound.vue?vue&type=script&lang=js& */ "./resources/js/components/NotFound.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _NotFound_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _NotFound_vue_vue_type_template_id_2ce50e5a___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _NotFound_vue_vue_type_template_id_2ce50e5a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/NotFound.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/NotFound.vue?vue&type=script&lang=js&":
+/*!***********************************************************************!*\
+  !*** ./resources/js/components/NotFound.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_NotFound_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./NotFound.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/NotFound.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_NotFound_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/NotFound.vue?vue&type=template&id=2ce50e5a&":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/components/NotFound.vue?vue&type=template&id=2ce50e5a& ***!
+  \*****************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NotFound_vue_vue_type_template_id_2ce50e5a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./NotFound.vue?vue&type=template&id=2ce50e5a& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/NotFound.vue?vue&type=template&id=2ce50e5a&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NotFound_vue_vue_type_template_id_2ce50e5a___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NotFound_vue_vue_type_template_id_2ce50e5a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
